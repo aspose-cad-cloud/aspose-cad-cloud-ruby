@@ -47,5 +47,11 @@ Please put your credentials into [Configuration](lib/configuration.rb).
 - Ruby 2.3 or later
 - referenced packages (see [here](Gemfile) for more details)
 
-## Contact Us
-Your feedback is very important to us. Please feel free to contact us using our [Support Forums](https://forum.aspose.cloud/c/CAD).
+# Resources
++ [**Web API reference**](https://apireference.aspose.cloud/cad/)
++ [**Website**](https://www.aspose.cloud/)
++ [**Product Home**](https://products.aspose.cloud/cad)
++ [**Documentation**](https://docs.aspose.cloud/display/cadcloud/Home)
++ [**Free Support Forum**](https://forum.aspose.cloud/c/cad)
++ [**Paid Support Helpdesk**](https://helpdesk.aspose.cloud/)
++ [**Blog**](https://blog.aspose.cloud/category/cad/)
