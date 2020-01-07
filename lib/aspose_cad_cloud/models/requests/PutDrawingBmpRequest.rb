@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PostImageSaveAsRequest.rb">
+ # <copyright company="Aspose" file="PutDrawingBmpRequest.rb">
  #   Copyright (c) 2018 Aspose.Cad for Cloud
  # </copyright>
  # <summary>
@@ -28,17 +28,15 @@
 module AsposeCadCloud
 
   #
-  # Request model for post_image_save_as operation.
+  # Request model for put_drawing_bmp operation.
   #
-  class PostImageSaveAsRequest
+  class PutDrawingBmpRequest
 
         # Input drawing
         attr_accessor :drawing_data
-        # Output file format. Valid Formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF.
-        attr_accessor :format
-        # The raster options as Base64 string.
-        attr_accessor :raster_options
-        # Path to updated file, if this is empty, response contains streamed image.
+        # JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/BmpOptionsDTO model definition.
+        attr_accessor :options
+        # Path to updated file (if this is empty, response contains streamed image).
         attr_accessor :out_path
         # Your Aspose Cloud Storage name.
         attr_accessor :storage
@@ -46,14 +44,12 @@ module AsposeCadCloud
         #
         # Initializes a new instance.
         # @param drawing_data Input drawing
-        # @param format Output file format. Valid Formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF.
-        # @param raster_options The raster options as Base64 string.
-        # @param out_path Path to updated file, if this is empty, response contains streamed image.
+        # @param options JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/BmpOptionsDTO model definition.
+        # @param out_path Path to updated file (if this is empty, response contains streamed image).
         # @param storage Your Aspose Cloud Storage name.
-        def initialize(drawing_data, format, raster_options = nil, out_path = nil, storage = nil)
+        def initialize(drawing_data, options = nil, out_path = nil, storage = nil)
            self.drawing_data = drawing_data
-           self.format = format
-           self.raster_options = raster_options
+           self.options = options
            self.out_path = out_path
            self.storage = storage
         end

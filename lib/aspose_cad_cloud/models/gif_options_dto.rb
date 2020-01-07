@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="ImagePropertiesResponse.rb">
+ # <copyright company="Aspose" file="GifOptionsDTO.rb">
  #   Copyright (c) 2017 Aspose.Cad for Cloud
  # </copyright>
  # <summary>
@@ -29,13 +29,40 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Represents properties of the image.
-  class ImagePropertiesResponse
-    # Gets or sets the response status code.
-    attr_accessor :code
+  # Export options for GIF format
+  class GifOptionsDTO
+    # Resulting rotation operation
+    attr_accessor :rotation
 
-    # Gets or sets response status.
-    attr_accessor :status
+    # Layers to export
+    attr_accessor :layers
+
+    # DPI resolution settings
+    attr_accessor :resolution_settings
+
+    # Raster options
+    attr_accessor :vector_rasterization_options
+
+    # Determines whether to do auto-correction of a palette
+    attr_accessor :do_palette_correction
+
+    # Color resolution
+    attr_accessor :color_resolution
+
+    # Determines whether a palette is sorted
+    attr_accessor :is_palette_sorted
+
+    # Pixel aspect ration
+    attr_accessor :pixel_aspect_ratio
+
+    # Background color index
+    attr_accessor :background_color_index
+
+    # Determines whether image has to have a trailer
+    attr_accessor :has_trailer
+
+    # Determines whether an image has to be interlaced
+    attr_accessor :interlaced
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -62,16 +89,34 @@ module AsposeCadCloud
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'code' => :'Code',
-        :'status' => :'Status'
+        :'rotation' => :'Rotation',
+        :'layers' => :'Layers',
+        :'resolution_settings' => :'ResolutionSettings',
+        :'vector_rasterization_options' => :'VectorRasterizationOptions',
+        :'do_palette_correction' => :'DoPaletteCorrection',
+        :'color_resolution' => :'ColorResolution',
+        :'is_palette_sorted' => :'IsPaletteSorted',
+        :'pixel_aspect_ratio' => :'PixelAspectRatio',
+        :'background_color_index' => :'BackgroundColorIndex',
+        :'has_trailer' => :'HasTrailer',
+        :'interlaced' => :'Interlaced'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'code' => :'String',
-        :'status' => :'String'
+        :'rotation' => :'String',
+        :'layers' => :'Array<String>',
+        :'resolution_settings' => :'ResolutionSetting',
+        :'vector_rasterization_options' => :'CadRasterizationOptionsDTO',
+        :'do_palette_correction' => :'BOOLEAN',
+        :'color_resolution' => :'Integer',
+        :'is_palette_sorted' => :'BOOLEAN',
+        :'pixel_aspect_ratio' => :'Integer',
+        :'background_color_index' => :'Integer',
+        :'has_trailer' => :'BOOLEAN',
+        :'interlaced' => :'BOOLEAN'
       }
     end
 
@@ -83,12 +128,50 @@ module AsposeCadCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'Code')
-        self.code = attributes[:'Code']
+      if attributes.key?(:'Rotation')
+        self.rotation = attributes[:'Rotation']
       end
 
-      if attributes.key?(:'Status')
-        self.status = attributes[:'Status']
+      if attributes.key?(:'Layers')
+        if (value = attributes[:'Layers']).is_a?(Array)
+          self.layers = value
+        end
+      end
+
+      if attributes.key?(:'ResolutionSettings')
+        self.resolution_settings = attributes[:'ResolutionSettings']
+      end
+
+      if attributes.key?(:'VectorRasterizationOptions')
+        self.vector_rasterization_options = attributes[:'VectorRasterizationOptions']
+      end
+
+      if attributes.key?(:'DoPaletteCorrection')
+        self.do_palette_correction = attributes[:'DoPaletteCorrection']
+      end
+
+      if attributes.key?(:'ColorResolution')
+        self.color_resolution = attributes[:'ColorResolution']
+      end
+
+      if attributes.key?(:'IsPaletteSorted')
+        self.is_palette_sorted = attributes[:'IsPaletteSorted']
+      end
+
+      if attributes.key?(:'PixelAspectRatio')
+        self.pixel_aspect_ratio = attributes[:'PixelAspectRatio']
+      end
+
+      if attributes.key?(:'BackgroundColorIndex')
+        self.background_color_index = attributes[:'BackgroundColorIndex']
+      end
+
+      if attributes.key?(:'HasTrailer')
+        self.has_trailer = attributes[:'HasTrailer']
+      end
+
+      if attributes.key?(:'Interlaced')
+        self.interlaced = attributes[:'Interlaced']
       end
 
     end
@@ -97,8 +180,36 @@ module AsposeCadCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = []
-      if @code.nil?
-        invalid_properties.push("invalid value for 'code', code cannot be nil.")
+      if @rotation.nil?
+        invalid_properties.push("invalid value for 'rotation', rotation cannot be nil.")
+      end
+
+      if @do_palette_correction.nil?
+        invalid_properties.push("invalid value for 'do_palette_correction', do_palette_correction cannot be nil.")
+      end
+
+      if @color_resolution.nil?
+        invalid_properties.push("invalid value for 'color_resolution', color_resolution cannot be nil.")
+      end
+
+      if @is_palette_sorted.nil?
+        invalid_properties.push("invalid value for 'is_palette_sorted', is_palette_sorted cannot be nil.")
+      end
+
+      if @pixel_aspect_ratio.nil?
+        invalid_properties.push("invalid value for 'pixel_aspect_ratio', pixel_aspect_ratio cannot be nil.")
+      end
+
+      if @background_color_index.nil?
+        invalid_properties.push("invalid value for 'background_color_index', background_color_index cannot be nil.")
+      end
+
+      if @has_trailer.nil?
+        invalid_properties.push("invalid value for 'has_trailer', has_trailer cannot be nil.")
+      end
+
+      if @interlaced.nil?
+        invalid_properties.push("invalid value for 'interlaced', interlaced cannot be nil.")
       end
 
       return invalid_properties
@@ -107,23 +218,30 @@ module AsposeCadCloud
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @code.nil?
-      code_validator = EnumAttributeValidator.new('String', ["Continue", "SwitchingProtocols", "OK", "Created", "Accepted", "NonAuthoritativeInformation", "NoContent", "ResetContent", "PartialContent", "MultipleChoices", "Ambiguous", "MovedPermanently", "Moved", "Found", "Redirect", "SeeOther", "RedirectMethod", "NotModified", "UseProxy", "Unused", "TemporaryRedirect", "RedirectKeepVerb", "BadRequest", "Unauthorized", "PaymentRequired", "Forbidden", "NotFound", "MethodNotAllowed", "NotAcceptable", "ProxyAuthenticationRequired", "RequestTimeout", "Conflict", "Gone", "LengthRequired", "PreconditionFailed", "RequestEntityTooLarge", "RequestUriTooLong", "UnsupportedMediaType", "RequestedRangeNotSatisfiable", "ExpectationFailed", "UpgradeRequired", "InternalServerError", "NotImplemented", "BadGateway", "ServiceUnavailable", "GatewayTimeout", "HttpVersionNotSupported"])
-      return false unless code_validator.valid?(@code)
+      return false if @rotation.nil?
+      rotation_validator = EnumAttributeValidator.new('String', ["RotateNoneFlipNone", "Rotate90FlipNone", "Rotate180FlipNone", "Rotate270FlipNone", "RotateNoneFlipX", "Rotate90FlipX", "Rotate180FlipX", "Rotate270FlipX", "RotateNoneFlipY", "Rotate90FlipY", "Rotate180FlipY", "Rotate270FlipY", "RotateNoneFlipXY", "Rotate90FlipXY", "Rotate180FlipXY", "Rotate270FlipXY"])
+      return false unless rotation_validator.valid?(@rotation)
+      return false if @do_palette_correction.nil?
+      return false if @color_resolution.nil?
+      return false if @is_palette_sorted.nil?
+      return false if @pixel_aspect_ratio.nil?
+      return false if @background_color_index.nil?
+      return false if @has_trailer.nil?
+      return false if @interlaced.nil?
       return true
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] code Object to be assigned
-    def code=(code)
-      validator = EnumAttributeValidator.new('String', ["Continue", "SwitchingProtocols", "OK", "Created", "Accepted", "NonAuthoritativeInformation", "NoContent", "ResetContent", "PartialContent", "MultipleChoices", "Ambiguous", "MovedPermanently", "Moved", "Found", "Redirect", "SeeOther", "RedirectMethod", "NotModified", "UseProxy", "Unused", "TemporaryRedirect", "RedirectKeepVerb", "BadRequest", "Unauthorized", "PaymentRequired", "Forbidden", "NotFound", "MethodNotAllowed", "NotAcceptable", "ProxyAuthenticationRequired", "RequestTimeout", "Conflict", "Gone", "LengthRequired", "PreconditionFailed", "RequestEntityTooLarge", "RequestUriTooLong", "UnsupportedMediaType", "RequestedRangeNotSatisfiable", "ExpectationFailed", "UpgradeRequired", "InternalServerError", "NotImplemented", "BadGateway", "ServiceUnavailable", "GatewayTimeout", "HttpVersionNotSupported"])
-      if code.to_i == 0
-        unless validator.valid?(code)
-          raise ArgumentError, "invalid value for 'code', must be one of #{validator.allowable_values}."
+    # @param [Object] rotation Object to be assigned
+    def rotation=(rotation)
+      validator = EnumAttributeValidator.new('String', ["RotateNoneFlipNone", "Rotate90FlipNone", "Rotate180FlipNone", "Rotate270FlipNone", "RotateNoneFlipX", "Rotate90FlipX", "Rotate180FlipX", "Rotate270FlipX", "RotateNoneFlipY", "Rotate90FlipY", "Rotate180FlipY", "Rotate270FlipY", "RotateNoneFlipXY", "Rotate90FlipXY", "Rotate180FlipXY", "Rotate270FlipXY"])
+      if rotation.to_i == 0
+        unless validator.valid?(rotation)
+          raise ArgumentError, "invalid value for 'rotation', must be one of #{validator.allowable_values}."
         end
-        @code = code
+        @rotation = rotation
       else
-        @code = validator.allowable_values[code.to_i]
+        @rotation = validator.allowable_values[rotation.to_i]
       end
     end
 
@@ -132,8 +250,17 @@ module AsposeCadCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          code == other.code &&
-          status == other.status
+          rotation == other.rotation &&
+          layers == other.layers &&
+          resolution_settings == other.resolution_settings &&
+          vector_rasterization_options == other.vector_rasterization_options &&
+          do_palette_correction == other.do_palette_correction &&
+          color_resolution == other.color_resolution &&
+          is_palette_sorted == other.is_palette_sorted &&
+          pixel_aspect_ratio == other.pixel_aspect_ratio &&
+          background_color_index == other.background_color_index &&
+          has_trailer == other.has_trailer &&
+          interlaced == other.interlaced
     end
 
     # @see the `==` method
@@ -145,7 +272,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, status].hash
+      [rotation, layers, resolution_settings, vector_rasterization_options, do_palette_correction, color_resolution, is_palette_sorted, pixel_aspect_ratio, background_color_index, has_trailer, interlaced].hash
     end
 
     # Builds the object from hash

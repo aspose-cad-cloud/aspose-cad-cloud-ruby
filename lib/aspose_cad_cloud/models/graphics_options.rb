@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="SaaSposeResponse.rb">
+ # <copyright company="Aspose" file="GraphicsOptions.rb">
  #   Copyright (c) 2017 Aspose.Cad for Cloud
  # </copyright>
  # <summary>
@@ -29,13 +29,13 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Base class for all responses.
-  class SaaSposeResponse
-    # Gets or sets the response status code.
-    attr_accessor :code
+  # Graphics Options
+  class GraphicsOptions
+    attr_accessor :text_rendering_hint
 
-    # Gets or sets response status.
-    attr_accessor :status
+    attr_accessor :smoothing_mode
+
+    attr_accessor :interpolation_mode
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -62,16 +62,18 @@ module AsposeCadCloud
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'code' => :'Code',
-        :'status' => :'Status'
+        :'text_rendering_hint' => :'TextRenderingHint',
+        :'smoothing_mode' => :'SmoothingMode',
+        :'interpolation_mode' => :'InterpolationMode'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'code' => :'String',
-        :'status' => :'String'
+        :'text_rendering_hint' => :'String',
+        :'smoothing_mode' => :'String',
+        :'interpolation_mode' => :'String'
       }
     end
 
@@ -83,12 +85,16 @@ module AsposeCadCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'Code')
-        self.code = attributes[:'Code']
+      if attributes.key?(:'TextRenderingHint')
+        self.text_rendering_hint = attributes[:'TextRenderingHint']
       end
 
-      if attributes.key?(:'Status')
-        self.status = attributes[:'Status']
+      if attributes.key?(:'SmoothingMode')
+        self.smoothing_mode = attributes[:'SmoothingMode']
+      end
+
+      if attributes.key?(:'InterpolationMode')
+        self.interpolation_mode = attributes[:'InterpolationMode']
       end
 
     end
@@ -97,8 +103,16 @@ module AsposeCadCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = []
-      if @code.nil?
-        invalid_properties.push("invalid value for 'code', code cannot be nil.")
+      if @text_rendering_hint.nil?
+        invalid_properties.push("invalid value for 'text_rendering_hint', text_rendering_hint cannot be nil.")
+      end
+
+      if @smoothing_mode.nil?
+        invalid_properties.push("invalid value for 'smoothing_mode', smoothing_mode cannot be nil.")
+      end
+
+      if @interpolation_mode.nil?
+        invalid_properties.push("invalid value for 'interpolation_mode', interpolation_mode cannot be nil.")
       end
 
       return invalid_properties
@@ -107,23 +121,57 @@ module AsposeCadCloud
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @code.nil?
-      code_validator = EnumAttributeValidator.new('String', ["Continue", "SwitchingProtocols", "OK", "Created", "Accepted", "NonAuthoritativeInformation", "NoContent", "ResetContent", "PartialContent", "MultipleChoices", "Ambiguous", "MovedPermanently", "Moved", "Found", "Redirect", "SeeOther", "RedirectMethod", "NotModified", "UseProxy", "Unused", "TemporaryRedirect", "RedirectKeepVerb", "BadRequest", "Unauthorized", "PaymentRequired", "Forbidden", "NotFound", "MethodNotAllowed", "NotAcceptable", "ProxyAuthenticationRequired", "RequestTimeout", "Conflict", "Gone", "LengthRequired", "PreconditionFailed", "RequestEntityTooLarge", "RequestUriTooLong", "UnsupportedMediaType", "RequestedRangeNotSatisfiable", "ExpectationFailed", "UpgradeRequired", "InternalServerError", "NotImplemented", "BadGateway", "ServiceUnavailable", "GatewayTimeout", "HttpVersionNotSupported"])
-      return false unless code_validator.valid?(@code)
+      return false if @text_rendering_hint.nil?
+      text_rendering_hint_validator = EnumAttributeValidator.new('String', ["SystemDefault", "SingleBitPerPixelGridFit", "SingleBitPerPixel", "AntiAliasGridFit", "AntiAlias", "ClearTypeGridFit"])
+      return false unless text_rendering_hint_validator.valid?(@text_rendering_hint)
+      return false if @smoothing_mode.nil?
+      smoothing_mode_validator = EnumAttributeValidator.new('String', ["Default", "HighSpeed", "HighQuality", "None", "AntiAlias", "Invalid"])
+      return false unless smoothing_mode_validator.valid?(@smoothing_mode)
+      return false if @interpolation_mode.nil?
+      interpolation_mode_validator = EnumAttributeValidator.new('String', ["Default", "Low", "High", "Bilinear", "Bicubic", "NearestNeighbor", "HighQualityBilinear", "HighQualityBicubic", "Invalid"])
+      return false unless interpolation_mode_validator.valid?(@interpolation_mode)
       return true
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] code Object to be assigned
-    def code=(code)
-      validator = EnumAttributeValidator.new('String', ["Continue", "SwitchingProtocols", "OK", "Created", "Accepted", "NonAuthoritativeInformation", "NoContent", "ResetContent", "PartialContent", "MultipleChoices", "Ambiguous", "MovedPermanently", "Moved", "Found", "Redirect", "SeeOther", "RedirectMethod", "NotModified", "UseProxy", "Unused", "TemporaryRedirect", "RedirectKeepVerb", "BadRequest", "Unauthorized", "PaymentRequired", "Forbidden", "NotFound", "MethodNotAllowed", "NotAcceptable", "ProxyAuthenticationRequired", "RequestTimeout", "Conflict", "Gone", "LengthRequired", "PreconditionFailed", "RequestEntityTooLarge", "RequestUriTooLong", "UnsupportedMediaType", "RequestedRangeNotSatisfiable", "ExpectationFailed", "UpgradeRequired", "InternalServerError", "NotImplemented", "BadGateway", "ServiceUnavailable", "GatewayTimeout", "HttpVersionNotSupported"])
-      if code.to_i == 0
-        unless validator.valid?(code)
-          raise ArgumentError, "invalid value for 'code', must be one of #{validator.allowable_values}."
+    # @param [Object] text_rendering_hint Object to be assigned
+    def text_rendering_hint=(text_rendering_hint)
+      validator = EnumAttributeValidator.new('String', ["SystemDefault", "SingleBitPerPixelGridFit", "SingleBitPerPixel", "AntiAliasGridFit", "AntiAlias", "ClearTypeGridFit"])
+      if text_rendering_hint.to_i == 0
+        unless validator.valid?(text_rendering_hint)
+          raise ArgumentError, "invalid value for 'text_rendering_hint', must be one of #{validator.allowable_values}."
         end
-        @code = code
+        @text_rendering_hint = text_rendering_hint
       else
-        @code = validator.allowable_values[code.to_i]
+        @text_rendering_hint = validator.allowable_values[text_rendering_hint.to_i]
+      end
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] smoothing_mode Object to be assigned
+    def smoothing_mode=(smoothing_mode)
+      validator = EnumAttributeValidator.new('String', ["Default", "HighSpeed", "HighQuality", "None", "AntiAlias", "Invalid"])
+      if smoothing_mode.to_i == 0
+        unless validator.valid?(smoothing_mode)
+          raise ArgumentError, "invalid value for 'smoothing_mode', must be one of #{validator.allowable_values}."
+        end
+        @smoothing_mode = smoothing_mode
+      else
+        @smoothing_mode = validator.allowable_values[smoothing_mode.to_i]
+      end
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] interpolation_mode Object to be assigned
+    def interpolation_mode=(interpolation_mode)
+      validator = EnumAttributeValidator.new('String', ["Default", "Low", "High", "Bilinear", "Bicubic", "NearestNeighbor", "HighQualityBilinear", "HighQualityBicubic", "Invalid"])
+      if interpolation_mode.to_i == 0
+        unless validator.valid?(interpolation_mode)
+          raise ArgumentError, "invalid value for 'interpolation_mode', must be one of #{validator.allowable_values}."
+        end
+        @interpolation_mode = interpolation_mode
+      else
+        @interpolation_mode = validator.allowable_values[interpolation_mode.to_i]
       end
     end
 
@@ -132,8 +180,9 @@ module AsposeCadCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          code == other.code &&
-          status == other.status
+          text_rendering_hint == other.text_rendering_hint &&
+          smoothing_mode == other.smoothing_mode &&
+          interpolation_mode == other.interpolation_mode
     end
 
     # @see the `==` method
@@ -145,7 +194,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, status].hash
+      [text_rendering_hint, smoothing_mode, interpolation_mode].hash
     end
 
     # Builds the object from hash

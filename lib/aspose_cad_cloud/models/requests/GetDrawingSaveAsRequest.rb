@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PostChangeImageScaleRequest.rb">
+ # <copyright company="Aspose" file="GetDrawingSaveAsRequest.rb">
  #   Copyright (c) 2018 Aspose.Cad for Cloud
  # </copyright>
  # <summary>
@@ -28,36 +28,32 @@
 module AsposeCadCloud
 
   #
-  # Request model for post_change_image_scale operation.
+  # Request model for get_drawing_save_as operation.
   #
-  class PostChangeImageScaleRequest
+  class GetDrawingSaveAsRequest
 
-        # Input drawing
-        attr_accessor :drawing_data
-        # Output file format. Valid formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF.
-        attr_accessor :format
-        # New width of the scaled image.
-        attr_accessor :new_width
-        # New height of the scaled image.
-        attr_accessor :new_height
-        # Path to updated file, if this is empty, response contains streamed image. 
+        # Filename of an input drawing on a storage.
+        attr_accessor :name
+        # Resulting image format.
+        attr_accessor :output_format
+        # Folder with a drawing to process.
+        attr_accessor :folder
+        # Path to updated file (if this is empty, response contains streamed image).
         attr_accessor :out_path
         # Your Aspose Cloud Storage name.
         attr_accessor :storage
 	
         #
         # Initializes a new instance.
-        # @param drawing_data Input drawing
-        # @param format Output file format. Valid formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF.
-        # @param new_width New width of the scaled image.
-        # @param new_height New height of the scaled image.
-        # @param out_path Path to updated file, if this is empty, response contains streamed image. 
+        # @param name Filename of an input drawing on a storage.
+        # @param output_format Resulting image format.
+        # @param folder Folder with a drawing to process.
+        # @param out_path Path to updated file (if this is empty, response contains streamed image).
         # @param storage Your Aspose Cloud Storage name.
-        def initialize(drawing_data, format, new_width, new_height, out_path = nil, storage = nil)
-           self.drawing_data = drawing_data
-           self.format = format
-           self.new_width = new_width
-           self.new_height = new_height
+        def initialize(name, output_format, folder = nil, out_path = nil, storage = nil)
+           self.name = name
+           self.output_format = output_format
+           self.folder = folder
            self.out_path = out_path
            self.storage = storage
         end

@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="GetImageSaveAsRequest.rb">
+ # <copyright company="Aspose" file="PutDrawingSaveAsRequest.rb">
  #   Copyright (c) 2018 Aspose.Cad for Cloud
  # </copyright>
  # <summary>
@@ -28,38 +28,30 @@
 module AsposeCadCloud
 
   #
-  # Request model for get_image_save_as operation.
+  # Request model for put_drawing_save_as operation.
   #
-  class GetImageSaveAsRequest
+  class PutDrawingSaveAsRequest
 
-        # Filename of drawing.
-        attr_accessor :name
-        # Output file format. Valid Formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF.
-        attr_accessor :format
-        # Original drawing folder.
-        attr_accessor :folder
-        # File storage, which has to be used.
-        attr_accessor :storage
-        # The raster options as Base64 string.
-        attr_accessor :raster_options
-        # Path to updated file, if this is empty, response contains streamed image.
+        # Input drawing
+        attr_accessor :drawing_data
+        # Resulting image format.
+        attr_accessor :output_format
+        # Path to updated file (if this is empty, response contains streamed image).
         attr_accessor :out_path
+        # Your Aspose Cloud Storage name.
+        attr_accessor :storage
 	
         #
         # Initializes a new instance.
-        # @param name Filename of drawing.
-        # @param format Output file format. Valid Formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF.
-        # @param folder Original drawing folder.
-        # @param storage File storage, which has to be used.
-        # @param raster_options The raster options as Base64 string.
-        # @param out_path Path to updated file, if this is empty, response contains streamed image.
-        def initialize(name, format, folder = nil, storage = nil, raster_options = nil, out_path = nil)
-           self.name = name
-           self.format = format
-           self.folder = folder
-           self.storage = storage
-           self.raster_options = raster_options
+        # @param drawing_data Input drawing
+        # @param output_format Resulting image format.
+        # @param out_path Path to updated file (if this is empty, response contains streamed image).
+        # @param storage Your Aspose Cloud Storage name.
+        def initialize(drawing_data, output_format, out_path = nil, storage = nil)
+           self.drawing_data = drawing_data
+           self.output_format = output_format
            self.out_path = out_path
+           self.storage = storage
         end
   end
 end

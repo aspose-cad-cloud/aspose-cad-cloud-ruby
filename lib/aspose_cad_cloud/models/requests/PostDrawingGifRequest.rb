@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="GetImagePropertiesRequest.rb">
+ # <copyright company="Aspose" file="PostDrawingGifRequest.rb">
  #   Copyright (c) 2018 Aspose.Cad for Cloud
  # </copyright>
  # <summary>
@@ -28,25 +28,33 @@
 module AsposeCadCloud
 
   #
-  # Request model for get_image_properties operation.
+  # Request model for post_drawing_gif operation.
   #
-  class GetImagePropertiesRequest
+  class PostDrawingGifRequest
 
-        # The image name.
+        # Filename of an input drawing on a storage.
         attr_accessor :name
-        # Original drawing folder.
+        # Export GIF options passed as a JSON on a request body.
+        attr_accessor :options
+        # Folder with a drawing to process.
         attr_accessor :folder
-        # File storage, which has to be used.
+        # Path to updated file (if this is empty, response contains streamed image).
+        attr_accessor :out_path
+        # Your Aspose Cloud Storage name.
         attr_accessor :storage
 	
         #
         # Initializes a new instance.
-        # @param name The image name.
-        # @param folder Original drawing folder.
-        # @param storage File storage, which has to be used.
-        def initialize(name, folder = nil, storage = nil)
+        # @param name Filename of an input drawing on a storage.
+        # @param options Export GIF options passed as a JSON on a request body.
+        # @param folder Folder with a drawing to process.
+        # @param out_path Path to updated file (if this is empty, response contains streamed image).
+        # @param storage Your Aspose Cloud Storage name.
+        def initialize(name, options = nil, folder = nil, out_path = nil, storage = nil)
            self.name = name
+           self.options = options
            self.folder = folder
+           self.out_path = out_path
            self.storage = storage
         end
   end

@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PostImageRotateFlipRequest.rb">
+ # <copyright company="Aspose" file="PostDrawingPsdRequest.rb">
  #   Copyright (c) 2018 Aspose.Cad for Cloud
  # </copyright>
  # <summary>
@@ -28,30 +28,34 @@
 module AsposeCadCloud
 
   #
-  # Request model for post_image_rotate_flip operation.
+  # Request model for post_drawing_psd operation.
   #
-  class PostImageRotateFlipRequest
+  class PostDrawingPsdRequest
 
-        # Input drawing
-        attr_accessor :drawing_data
-        # Output file format. Valid Formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF.
-        attr_accessor :format
-        # Rotate and flip method. Valid methods: Rotate180FlipNone,  Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY.
-        attr_accessor :method
-        # Path to updated file, if this is empty, response contains streamed image.
+        # Filename of an input drawing on a storage.
+        attr_accessor :name
+        # Export PSD options passed as a JSON on a request body.
+        attr_accessor :options
+        # Folder with a drawing to process.
+        attr_accessor :folder
+        # Path to updated file (if this is empty, response contains streamed image).
         attr_accessor :out_path
+        # Your Aspose Cloud Storage name.
+        attr_accessor :storage
 	
         #
         # Initializes a new instance.
-        # @param drawing_data Input drawing
-        # @param format Output file format. Valid Formats: BMP, PNG, JPG, JPEG, JPEG2000, TIF, TIFF, PSD, GIF, PDF, WMF.
-        # @param method Rotate and flip method. Valid methods: Rotate180FlipNone,  Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY.
-        # @param out_path Path to updated file, if this is empty, response contains streamed image.
-        def initialize(drawing_data, format, method, out_path = nil)
-           self.drawing_data = drawing_data
-           self.format = format
-           self.method = method
+        # @param name Filename of an input drawing on a storage.
+        # @param options Export PSD options passed as a JSON on a request body.
+        # @param folder Folder with a drawing to process.
+        # @param out_path Path to updated file (if this is empty, response contains streamed image).
+        # @param storage Your Aspose Cloud Storage name.
+        def initialize(name, options = nil, folder = nil, out_path = nil, storage = nil)
+           self.name = name
+           self.options = options
+           self.folder = folder
            self.out_path = out_path
+           self.storage = storage
         end
   end
 end
