@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PutDrawingRotateFlipRequest.rb">
+ # <copyright company="Aspose" file="PostDrawingSaveAsRequest.rb">
  #   Copyright (c) 2018 Aspose.Cad for Cloud
  # </copyright>
  # <summary>
@@ -28,17 +28,15 @@
 module AsposeCadCloud
 
   #
-  # Request model for put_drawing_rotate_flip operation.
+  # Request model for post_drawing_save_as operation.
   #
-  class PutDrawingRotateFlipRequest
+  class PostDrawingSaveAsRequest
 
         # Input drawing
         attr_accessor :drawing_data
-        # Resulting image format.
+        # Resulting file format.
         attr_accessor :output_format
-        # Rotate/flip operation to apply.
-        attr_accessor :rotate_flip_type
-        # Path to updated file (if this is empty, response contains streamed image).
+        # Path to updated file (if this is empty, response contains streamed file).
         attr_accessor :out_path
         # Your Aspose Cloud Storage name.
         attr_accessor :storage
@@ -46,14 +44,12 @@ module AsposeCadCloud
         #
         # Initializes a new instance.
         # @param drawing_data Input drawing
-        # @param output_format Resulting image format.
-        # @param rotate_flip_type Rotate/flip operation to apply.
-        # @param out_path Path to updated file (if this is empty, response contains streamed image).
+        # @param output_format Resulting file format.
+        # @param out_path Path to updated file (if this is empty, response contains streamed file).
         # @param storage Your Aspose Cloud Storage name.
-        def initialize(drawing_data, output_format, rotate_flip_type, out_path = nil, storage = nil)
+        def initialize(drawing_data, output_format, out_path = nil, storage = nil)
            self.drawing_data = drawing_data
            self.output_format = output_format
-           self.rotate_flip_type = rotate_flip_type
            self.out_path = out_path
            self.storage = storage
         end

@@ -34,11 +34,11 @@ module AsposeCadCloud
 
         # Filename of an input drawing on a storage.
         attr_accessor :name
-        # Resulting image format.
+        # Resulting file format.
         attr_accessor :output_format
         # Folder with a drawing to process.
         attr_accessor :folder
-        # Path to updated file (if this is empty, response contains streamed image).
+        # Path to updated file (if this is empty, response contains streamed file).
         attr_accessor :out_path
         # Your Aspose Cloud Storage name.
         attr_accessor :storage
@@ -46,9 +46,9 @@ module AsposeCadCloud
         #
         # Initializes a new instance.
         # @param name Filename of an input drawing on a storage.
-        # @param output_format Resulting image format.
+        # @param output_format Resulting file format.
         # @param folder Folder with a drawing to process.
-        # @param out_path Path to updated file (if this is empty, response contains streamed image).
+        # @param out_path Path to updated file (if this is empty, response contains streamed file).
         # @param storage Your Aspose Cloud Storage name.
         def initialize(name, output_format, folder = nil, out_path = nil, storage = nil)
            self.name = name

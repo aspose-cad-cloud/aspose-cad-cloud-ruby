@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PutDrawingResizeRequest.rb">
+ # <copyright company="Aspose" file="PostDrawingRotateFlipRequest.rb">
  #   Copyright (c) 2018 Aspose.Cad for Cloud
  # </copyright>
  # <summary>
@@ -28,19 +28,17 @@
 module AsposeCadCloud
 
   #
-  # Request model for put_drawing_resize operation.
+  # Request model for post_drawing_rotate_flip operation.
   #
-  class PutDrawingResizeRequest
+  class PostDrawingRotateFlipRequest
 
         # Input drawing
         attr_accessor :drawing_data
-        # Resulting image format.
+        # Resulting file format.
         attr_accessor :output_format
-        # New width.
-        attr_accessor :new_width
-        # New height.
-        attr_accessor :new_height
-        # Path to updated file (if this is empty, response contains streamed image).
+        # Rotate/flip operation to apply.
+        attr_accessor :rotate_flip_type
+        # Path to updated file (if this is empty, response contains streamed file).
         attr_accessor :out_path
         # Your Aspose Cloud Storage name.
         attr_accessor :storage
@@ -48,16 +46,14 @@ module AsposeCadCloud
         #
         # Initializes a new instance.
         # @param drawing_data Input drawing
-        # @param output_format Resulting image format.
-        # @param new_width New width.
-        # @param new_height New height.
-        # @param out_path Path to updated file (if this is empty, response contains streamed image).
+        # @param output_format Resulting file format.
+        # @param rotate_flip_type Rotate/flip operation to apply.
+        # @param out_path Path to updated file (if this is empty, response contains streamed file).
         # @param storage Your Aspose Cloud Storage name.
-        def initialize(drawing_data, output_format, new_width, new_height, out_path = nil, storage = nil)
+        def initialize(drawing_data, output_format, rotate_flip_type, out_path = nil, storage = nil)
            self.drawing_data = drawing_data
            self.output_format = output_format
-           self.new_width = new_width
-           self.new_height = new_height
+           self.rotate_flip_type = rotate_flip_type
            self.out_path = out_path
            self.storage = storage
         end

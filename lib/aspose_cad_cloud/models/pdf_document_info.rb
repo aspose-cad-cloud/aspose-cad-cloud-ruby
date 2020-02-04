@@ -29,14 +29,18 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Pdf Document Info
+  # This class represents set of metadata for document description.
   class PdfDocumentInfo
+    # Gets or sets keywords of the document.
     attr_accessor :keywords
 
+    # Gets or sets title of the document.
     attr_accessor :title
 
+    # Gets or sets author of the document.
     attr_accessor :author
 
+    # Gets or sets subject of the document.
     attr_accessor :subject
 
 

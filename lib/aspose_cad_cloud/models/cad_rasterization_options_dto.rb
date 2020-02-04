@@ -29,7 +29,7 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Cad Rasterization Options D T O
+  # Raster export options
   class CadRasterizationOptionsDTO
     # Gets or sets the border X.
     attr_accessor :border_x
@@ -57,18 +57,25 @@ module AsposeCadCloud
     # Gets or sets options to render bitmap inside pdf (if ContentAsBitmap is set to true).
     attr_accessor :graphics_options
 
+    # Zoom factor
     attr_accessor :zoom
 
+    # Pen options
     attr_accessor :pen_options
 
+    # Determines whether layout has to be scaled automatically
     attr_accessor :automatic_layouts_scaling
 
+    # Layers to export
     attr_accessor :layers
 
+    # Layouts to export
     attr_accessor :layouts
 
+    # Drawing mode
     attr_accessor :draw_type
 
+    # Determines whether scaling has to be turned off
     attr_accessor :no_scaling
 
     class EnumAttributeValidator

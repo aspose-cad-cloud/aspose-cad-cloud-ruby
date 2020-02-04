@@ -34,13 +34,13 @@ module AsposeCadCloud
 
         # Filename of a drawing.
         attr_accessor :name
-        # Resulting image format.
+        # Resulting file format.
         attr_accessor :output_format
         # Rotate/flip operation to apply.
         attr_accessor :rotate_flip_type
         # Folder with a drawing to process.
         attr_accessor :folder
-        # Path to updated file (if this is empty, response contains streamed image).
+        # Path to updated file (if this is empty, response contains streamed file).
         attr_accessor :out_path
         # Your Aspose Cloud Storage name.
         attr_accessor :storage
@@ -48,10 +48,10 @@ module AsposeCadCloud
         #
         # Initializes a new instance.
         # @param name Filename of a drawing.
-        # @param output_format Resulting image format.
+        # @param output_format Resulting file format.
         # @param rotate_flip_type Rotate/flip operation to apply.
         # @param folder Folder with a drawing to process.
-        # @param out_path Path to updated file (if this is empty, response contains streamed image).
+        # @param out_path Path to updated file (if this is empty, response contains streamed file).
         # @param storage Your Aspose Cloud Storage name.
         def initialize(name, output_format, rotate_flip_type, folder = nil, out_path = nil, storage = nil)
            self.name = name

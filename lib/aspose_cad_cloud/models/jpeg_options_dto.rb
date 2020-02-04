@@ -43,7 +43,7 @@ module AsposeCadCloud
     # Raster options
     attr_accessor :vector_rasterization_options
 
-    # Comment to resulting image
+    # Comment to Resulting file
     attr_accessor :comment
 
     # Compression type

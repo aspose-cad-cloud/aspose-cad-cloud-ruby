@@ -38,7 +38,7 @@ module AsposeCadCloud
         attr_accessor :options
         # Folder with a drawing to process.
         attr_accessor :folder
-        # Path to updated file (if this is empty, response contains streamed image).
+        # Path to updated file (if this is empty, response contains streamed file).
         attr_accessor :out_path
         # Your Aspose Cloud Storage name.
         attr_accessor :storage
@@ -48,9 +48,9 @@ module AsposeCadCloud
         # @param name Filename of an input drawing on a storage.
         # @param options Export WMF options passed as a JSON on a request body.
         # @param folder Folder with a drawing to process.
-        # @param out_path Path to updated file (if this is empty, response contains streamed image).
+        # @param out_path Path to updated file (if this is empty, response contains streamed file).
         # @param storage Your Aspose Cloud Storage name.
-        def initialize(name, options = nil, folder = nil, out_path = nil, storage = nil)
+        def initialize(name, options, folder = nil, out_path = nil, storage = nil)
            self.name = name
            self.options = options
            self.folder = folder

@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.author      = 'DenisDemenko'
   s.email       = 'denis.demenko@aspose.com'
-  s.homepage    = 'https://github.com/aspose-words-cloud/aspose-cad-cloud-ruby'
+  s.homepage    = 'https://github.com/aspose-cad-cloud/aspose-cad-cloud-ruby'
   s.summary     = 'Ruby library for communicating with the Aspose.CAD Cloud API'
   s.description = 'This SDK allows you to work with Aspose.CAD Cloud REST APIs
                   in your Ruby applications quickly and easily, with zero initial cost'

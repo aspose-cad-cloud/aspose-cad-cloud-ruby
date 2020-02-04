@@ -29,20 +29,27 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Rd Optimizer Settings
+  # RD optimizer settings class
   class RdOptimizerSettings
+    # Gets or sets the BPP (bits per pixel) scale factor.
     attr_accessor :bpp_scale
 
+    # Gets or sets the maximum R value for consideration in  in bits per pixel
     attr_accessor :bpp_max
 
+    # Gets or sets the maximum quantization value.
     attr_accessor :max_q
 
+    # Gets the minimum allowed quantization value.
     attr_accessor :min_q
 
+    # Gets the maximum pixel value.
     attr_accessor :max_pixel_value
 
+    # Gets the PSNR maximum expected value.
     attr_accessor :psnr_max
 
+    # Gets the maximum R value for consideration.
     attr_accessor :discretized_bpp_max
 
 

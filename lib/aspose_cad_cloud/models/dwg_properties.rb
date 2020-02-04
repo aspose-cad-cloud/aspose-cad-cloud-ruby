@@ -29,7 +29,7 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Dwg Properties
+  # Represents information about DWG drawing.
   class DwgProperties
 
     # Attribute mapping from ruby-style variable name to JSON key.

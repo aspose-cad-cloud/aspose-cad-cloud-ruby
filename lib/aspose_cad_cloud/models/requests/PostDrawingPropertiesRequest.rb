@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PutDrawingPropertiesRequest.rb">
+ # <copyright company="Aspose" file="PostDrawingPropertiesRequest.rb">
  #   Copyright (c) 2018 Aspose.Cad for Cloud
  # </copyright>
  # <summary>
@@ -28,9 +28,9 @@
 module AsposeCadCloud
 
   #
-  # Request model for put_drawing_properties operation.
+  # Request model for post_drawing_properties operation.
   #
-  class PutDrawingPropertiesRequest
+  class PostDrawingPropertiesRequest
 
         # Input drawing
         attr_accessor :drawing_data

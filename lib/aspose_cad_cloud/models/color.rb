@@ -29,22 +29,30 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Color
+  # The color of the pixel.
   class Color
+    # Gets the red component value of this Color structure.
     attr_accessor :r
 
+    # Gets the green component value of this Color structure.
     attr_accessor :g
 
+    # Gets the blue component value of this Color structure.
     attr_accessor :b
 
+    # Gets the alpha component value of this Color structure.
     attr_accessor :a
 
+    # Gets a value indicating whether this Color structure is a predefined color. Predefined colors are represented by the elements of the KnownColor enumeration.
     attr_accessor :is_known_color
 
+    # Gets a value indicating whether this Color structure is uninitialized.
     attr_accessor :is_empty
 
+    # Gets a value indicating whether this Color structure is a named color or a member of the KnownColor enumeration.
     attr_accessor :is_named_color
 
+    # Gets the name of this Color.
     attr_accessor :name
 
 

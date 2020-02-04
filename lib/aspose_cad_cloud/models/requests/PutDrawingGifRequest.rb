@@ -35,8 +35,8 @@ module AsposeCadCloud
         # Input drawing
         attr_accessor :drawing_data
         # JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/GifOptionsDTO model definition.
-        attr_accessor :options
-        # Path to updated file (if this is empty, response contains streamed image).
+        attr_accessor :export_options
+        # Path to updated file (if this is empty, response contains streamed file).
         attr_accessor :out_path
         # Your Aspose Cloud Storage name.
         attr_accessor :storage
@@ -44,12 +44,12 @@ module AsposeCadCloud
         #
         # Initializes a new instance.
         # @param drawing_data Input drawing
-        # @param options JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/GifOptionsDTO model definition.
-        # @param out_path Path to updated file (if this is empty, response contains streamed image).
+        # @param export_options JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/GifOptionsDTO model definition.
+        # @param out_path Path to updated file (if this is empty, response contains streamed file).
         # @param storage Your Aspose Cloud Storage name.
-        def initialize(drawing_data, options = nil, out_path = nil, storage = nil)
+        def initialize(drawing_data, export_options = nil, out_path = nil, storage = nil)
            self.drawing_data = drawing_data
-           self.options = options
+           self.export_options = export_options
            self.out_path = out_path
            self.storage = storage
         end

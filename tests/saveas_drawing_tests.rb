@@ -43,8 +43,8 @@ module AsposeCadCloud
       st_request = PutCreateRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
       @storage_api.put_create st_request
 
-      request = PostImageSaveAsRequest.new File.open(local_test_folder + filename, "r"), output_format, nil, remote_test_folder
-      result = @Cad_api.post_image_save_as_with_http_info request
+      request = PostDrawingSaveAsRequest.new File.open(local_test_folder + filename, "r"), output_format, remote_test_folder, nil
+      result = @Cad_api.post_drawing_save_as_with_http_info request
       assert_equal 200, result[1]
     end
 
@@ -60,8 +60,8 @@ module AsposeCadCloud
       st_request = PutCreateRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
       @storage_api.put_create st_request
 
-      request = GetImageSaveAsRequest.new remote_name, output_format, nil, nil, nil, nil
-      result = @Cad_api.get_image_save_as_with_http_info request
+      request = GetDrawingSaveAsRequest.new remote_name, output_format, nil, nil, nil
+      result = @Cad_api.get_drawing_save_as_with_http_info request
       assert_equal 200, result[1]
     end
   end

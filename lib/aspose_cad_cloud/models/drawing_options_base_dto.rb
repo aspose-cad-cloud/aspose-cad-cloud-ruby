@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="CadResponse.rb">
+ # <copyright company="Aspose" file="DrawingOptionsBaseDTO.rb">
  #   Copyright (c) 2017 Aspose.Cad for Cloud
  # </copyright>
  # <summary>
@@ -29,73 +29,59 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Represents information about a drawing.
-  class CadResponse
-    # Gets or sets the height of a drawing.
-    attr_accessor :height
+  # Image options base class
+  class DrawingOptionsBaseDTO
+    # Resulting rotation operation
+    attr_accessor :rotation
 
-    # Gets or sets the width of a drawing.
-    attr_accessor :width
+    # Layers to export
+    attr_accessor :layers
 
-    # Gets or sets the DWG properties.
-    attr_accessor :dwg_properties
+    # DPI resolution settings
+    attr_accessor :resolution_settings
 
-    # Gets or sets the DXF properties.
-    attr_accessor :dxf_properties
+    # Raster options
+    attr_accessor :vector_rasterization_options
 
-    # Gets or sets the DWT properties.
-    attr_accessor :dwt_properties
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    # Gets or sets the DGN properties.
-    attr_accessor :dgn_properties
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
-    # Gets or sets the IFC properties.
-    attr_accessor :ifc_properties
-
-    # Gets or sets the IGS properties.
-    attr_accessor :igs_properties
-
-    # Gets or sets the STL properties.
-    attr_accessor :stl_properties
-
-    # Gets or sets the DWF properties.
-    attr_accessor :dwf_properties
-
-    # Gets or sets the CFF2 properties.
-    attr_accessor :cff2_properties
-
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'height' => :'Height',
-        :'width' => :'Width',
-        :'dwg_properties' => :'DwgProperties',
-        :'dxf_properties' => :'DxfProperties',
-        :'dwt_properties' => :'DwtProperties',
-        :'dgn_properties' => :'DgnProperties',
-        :'ifc_properties' => :'IfcProperties',
-        :'igs_properties' => :'IgsProperties',
-        :'stl_properties' => :'StlProperties',
-        :'dwf_properties' => :'DwfProperties',
-        :'cff2_properties' => :'Cff2Properties'
+        :'rotation' => :'Rotation',
+        :'layers' => :'Layers',
+        :'resolution_settings' => :'ResolutionSettings',
+        :'vector_rasterization_options' => :'VectorRasterizationOptions'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'height' => :'Integer',
-        :'width' => :'Integer',
-        :'dwg_properties' => :'DwgProperties',
-        :'dxf_properties' => :'DxfProperties',
-        :'dwt_properties' => :'DwgProperties',
-        :'dgn_properties' => :'DgnProperties',
-        :'ifc_properties' => :'IfcProperties',
-        :'igs_properties' => :'IgsProperties',
-        :'stl_properties' => :'StlProperties',
-        :'dwf_properties' => :'DwfProperties',
-        :'cff2_properties' => :'Cff2Properties'
+        :'rotation' => :'String',
+        :'layers' => :'Array<String>',
+        :'resolution_settings' => :'ResolutionSetting',
+        :'vector_rasterization_options' => :'CadRasterizationOptionsDTO'
       }
     end
 
@@ -107,48 +93,22 @@ module AsposeCadCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'Height')
-        self.height = attributes[:'Height']
+      if attributes.key?(:'Rotation')
+        self.rotation = attributes[:'Rotation']
       end
 
-      if attributes.key?(:'Width')
-        self.width = attributes[:'Width']
+      if attributes.key?(:'Layers')
+        if (value = attributes[:'Layers']).is_a?(Array)
+          self.layers = value
+        end
       end
 
-      if attributes.key?(:'DwgProperties')
-        self.dwg_properties = attributes[:'DwgProperties']
+      if attributes.key?(:'ResolutionSettings')
+        self.resolution_settings = attributes[:'ResolutionSettings']
       end
 
-      if attributes.key?(:'DxfProperties')
-        self.dxf_properties = attributes[:'DxfProperties']
-      end
-
-      if attributes.key?(:'DwtProperties')
-        self.dwt_properties = attributes[:'DwtProperties']
-      end
-
-      if attributes.key?(:'DgnProperties')
-        self.dgn_properties = attributes[:'DgnProperties']
-      end
-
-      if attributes.key?(:'IfcProperties')
-        self.ifc_properties = attributes[:'IfcProperties']
-      end
-
-      if attributes.key?(:'IgsProperties')
-        self.igs_properties = attributes[:'IgsProperties']
-      end
-
-      if attributes.key?(:'StlProperties')
-        self.stl_properties = attributes[:'StlProperties']
-      end
-
-      if attributes.key?(:'DwfProperties')
-        self.dwf_properties = attributes[:'DwfProperties']
-      end
-
-      if attributes.key?(:'Cff2Properties')
-        self.cff2_properties = attributes[:'Cff2Properties']
+      if attributes.key?(:'VectorRasterizationOptions')
+        self.vector_rasterization_options = attributes[:'VectorRasterizationOptions']
       end
 
     end
@@ -157,12 +117,8 @@ module AsposeCadCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = []
-      if @height.nil?
-        invalid_properties.push("invalid value for 'height', height cannot be nil.")
-      end
-
-      if @width.nil?
-        invalid_properties.push("invalid value for 'width', width cannot be nil.")
+      if @rotation.nil?
+        invalid_properties.push("invalid value for 'rotation', rotation cannot be nil.")
       end
 
       return invalid_properties
@@ -171,9 +127,24 @@ module AsposeCadCloud
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @height.nil?
-      return false if @width.nil?
+      return false if @rotation.nil?
+      rotation_validator = EnumAttributeValidator.new('String', ["RotateNoneFlipNone", "Rotate90FlipNone", "Rotate180FlipNone", "Rotate270FlipNone", "RotateNoneFlipX", "Rotate90FlipX", "Rotate180FlipX", "Rotate270FlipX", "RotateNoneFlipY", "Rotate90FlipY", "Rotate180FlipY", "Rotate270FlipY", "RotateNoneFlipXY", "Rotate90FlipXY", "Rotate180FlipXY", "Rotate270FlipXY"])
+      return false unless rotation_validator.valid?(@rotation)
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] rotation Object to be assigned
+    def rotation=(rotation)
+      validator = EnumAttributeValidator.new('String', ["RotateNoneFlipNone", "Rotate90FlipNone", "Rotate180FlipNone", "Rotate270FlipNone", "RotateNoneFlipX", "Rotate90FlipX", "Rotate180FlipX", "Rotate270FlipX", "RotateNoneFlipY", "Rotate90FlipY", "Rotate180FlipY", "Rotate270FlipY", "RotateNoneFlipXY", "Rotate90FlipXY", "Rotate180FlipXY", "Rotate270FlipXY"])
+      if rotation.to_i == 0
+        unless validator.valid?(rotation)
+          raise ArgumentError, "invalid value for 'rotation', must be one of #{validator.allowable_values}."
+        end
+        @rotation = rotation
+      else
+        @rotation = validator.allowable_values[rotation.to_i]
+      end
     end
 
     # Checks equality by comparing each attribute.
@@ -181,17 +152,10 @@ module AsposeCadCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          height == other.height &&
-          width == other.width &&
-          dwg_properties == other.dwg_properties &&
-          dxf_properties == other.dxf_properties &&
-          dwt_properties == other.dwt_properties &&
-          dgn_properties == other.dgn_properties &&
-          ifc_properties == other.ifc_properties &&
-          igs_properties == other.igs_properties &&
-          stl_properties == other.stl_properties &&
-          dwf_properties == other.dwf_properties &&
-          cff2_properties == other.cff2_properties
+          rotation == other.rotation &&
+          layers == other.layers &&
+          resolution_settings == other.resolution_settings &&
+          vector_rasterization_options == other.vector_rasterization_options
     end
 
     # @see the `==` method
@@ -203,7 +167,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [height, width, dwg_properties, dxf_properties, dwt_properties, dgn_properties, ifc_properties, igs_properties, stl_properties, dwf_properties, cff2_properties].hash
+      [rotation, layers, resolution_settings, vector_rasterization_options].hash
     end
 
     # Builds the object from hash

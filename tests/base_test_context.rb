@@ -25,6 +25,9 @@
 # --------------------------------------------------------------------------------------------------------------------
 #
 module AsposeCadCloud
+  require 'openssl'
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+  
   require "minitest/autorun"
   require "minitest/unit"
   require_relative '../lib/aspose_cad_cloud'
@@ -32,20 +35,22 @@ module AsposeCadCloud
   class BaseTestContext < Minitest::Test
     include AsposeStorageCloud
     include MiniTest::Assertions
-    def setup
-      file = File.read('Settings/servercreds.json')
+    def setup      
+      ENV['http_proxy'] = 'http://localhost:8888'
+
+      file = File.read('TestData/serverAccess.json')
       if file.length == 0
-        raise ArgumentError, 'Put your credentials into servercreds.json'
+        raise ArgumentError, 'Put your credentials into TestData/serverAccess.json'
       end
       creds = JSON.parse(file)
       AsposeCadCloud.configure do |config|
         config.api_key['api_key'] = creds['AppKey']
         config.api_key['app_sid'] = creds['AppSid']
-        config.host = creds['BaseUrl']
+        config.host = creds['BaseURL']
         AsposeStorageCloud.configure do |st_conf|
           st_conf.api_key['api_key'] = config.api_key['api_key']
           st_conf.api_key['app_sid'] = config.api_key['app_sid']
-          st_conf.host = creds['BaseUrl']
+          st_conf.host = creds['BaseURL']
           st_conf.scheme = config.scheme
         end
       end

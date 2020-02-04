@@ -29,7 +29,7 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Vector Rasterization Options D T O
+  # Base raster export options class
   class VectorRasterizationOptionsDTO
     # Gets or sets the border X.
     attr_accessor :border_x

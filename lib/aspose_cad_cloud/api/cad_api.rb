@@ -53,7 +53,7 @@ module AsposeCadCloud
     # @param request GetDrawingPropertiesRequest
     # @return [Array<(CadResponse, Fixnum, Hash)>]
     # CadResponse data, response status code and response headers
-    private def get_drawing_properties_with_http_info(request)
+    def get_drawing_properties_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? GetDrawingPropertiesRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.get_drawing_properties ...' if @api_client.config.debugging
@@ -88,7 +88,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -118,7 +118,7 @@ module AsposeCadCloud
     # @param request GetDrawingResizeRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def get_drawing_resize_with_http_info(request)
+    def get_drawing_resize_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? GetDrawingResizeRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.get_drawing_resize ...' if @api_client.config.debugging
@@ -170,7 +170,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -200,7 +200,7 @@ module AsposeCadCloud
     # @param request GetDrawingRotateFlipRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def get_drawing_rotate_flip_with_http_info(request)
+    def get_drawing_rotate_flip_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? GetDrawingRotateFlipRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.get_drawing_rotate_flip ...' if @api_client.config.debugging
@@ -250,7 +250,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -280,7 +280,7 @@ module AsposeCadCloud
     # @param request GetDrawingSaveAsRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def get_drawing_save_as_with_http_info(request)
+    def get_drawing_save_as_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? GetDrawingSaveAsRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.get_drawing_save_as ...' if @api_client.config.debugging
@@ -323,7 +323,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -353,12 +353,14 @@ module AsposeCadCloud
     # @param request PostDrawingBmpRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def post_drawing_bmp_with_http_info(request)
+    def post_drawing_bmp_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingBmpRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_bmp ...' if @api_client.config.debugging
       # verify the required parameter 'name' is set
       raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_bmp' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_bmp' if @api_client.config.client_side_validation && request.options.nil?
       # resource path
       local_var_path = '/cad/{name}/bmp'
       local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
@@ -393,7 +395,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -423,12 +425,14 @@ module AsposeCadCloud
     # @param request PostDrawingGifRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def post_drawing_gif_with_http_info(request)
+    def post_drawing_gif_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingGifRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_gif ...' if @api_client.config.debugging
       # verify the required parameter 'name' is set
       raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_gif' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_gif' if @api_client.config.client_side_validation && request.options.nil?
       # resource path
       local_var_path = '/cad/{name}/gif'
       local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
@@ -463,7 +467,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -493,12 +497,14 @@ module AsposeCadCloud
     # @param request PostDrawingJpegRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def post_drawing_jpeg_with_http_info(request)
+    def post_drawing_jpeg_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingJpegRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_jpeg ...' if @api_client.config.debugging
       # verify the required parameter 'name' is set
       raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_jpeg' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_jpeg' if @api_client.config.client_side_validation && request.options.nil?
       # resource path
       local_var_path = '/cad/{name}/jpeg'
       local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
@@ -533,7 +539,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -563,12 +569,14 @@ module AsposeCadCloud
     # @param request PostDrawingJpeg2000Request
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def post_drawing_jpeg2000_with_http_info(request)
+    def post_drawing_jpeg2000_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingJpeg2000Request
 
       @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_jpeg2000 ...' if @api_client.config.debugging
       # verify the required parameter 'name' is set
       raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_jpeg2000' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_jpeg2000' if @api_client.config.client_side_validation && request.options.nil?
       # resource path
       local_var_path = '/cad/{name}/jpeg2000'
       local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
@@ -603,7 +611,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -633,12 +641,14 @@ module AsposeCadCloud
     # @param request PostDrawingPdfRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def post_drawing_pdf_with_http_info(request)
+    def post_drawing_pdf_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingPdfRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_pdf ...' if @api_client.config.debugging
       # verify the required parameter 'name' is set
       raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_pdf' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_pdf' if @api_client.config.client_side_validation && request.options.nil?
       # resource path
       local_var_path = '/cad/{name}/pdf'
       local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
@@ -673,7 +683,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -703,12 +713,14 @@ module AsposeCadCloud
     # @param request PostDrawingPngRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def post_drawing_png_with_http_info(request)
+    def post_drawing_png_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingPngRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_png ...' if @api_client.config.debugging
       # verify the required parameter 'name' is set
       raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_png' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_png' if @api_client.config.client_side_validation && request.options.nil?
       # resource path
       local_var_path = '/cad/{name}/png'
       local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
@@ -743,7 +755,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -754,6 +766,61 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#post_drawing_png\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Retrieves info about drawing which is passed as a zero-indexed multipart/form-data content or as raw body stream.
+    # 
+    # @param request PostDrawingPropertiesRequest
+    # @return [CadResponse]
+    def post_drawing_properties(request)
+      data, _status_code, _headers = post_drawing_properties_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Retrieves info about drawing which is passed as a zero-indexed multipart/form-data content or as raw body stream.
+    # 
+    # @param request PostDrawingPropertiesRequest
+    # @return [Array<(CadResponse, Fixnum, Hash)>]
+    # CadResponse data, response status code and response headers
+    def post_drawing_properties_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingPropertiesRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_properties ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.post_drawing_properties' if @api_client.config.client_side_validation && request.drawing_data.nil?
+      # resource path
+      local_var_path = '/cad/properties'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'CadResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#post_drawing_properties\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -773,12 +840,14 @@ module AsposeCadCloud
     # @param request PostDrawingPsdRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def post_drawing_psd_with_http_info(request)
+    def post_drawing_psd_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingPsdRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_psd ...' if @api_client.config.debugging
       # verify the required parameter 'name' is set
       raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_psd' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_psd' if @api_client.config.client_side_validation && request.options.nil?
       # resource path
       local_var_path = '/cad/{name}/psd'
       local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
@@ -813,7 +882,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -824,6 +893,226 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#post_drawing_psd\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Resize a drawing. Drawing data is passed as a zero-indexed multipart/form-data content or as raw body stream.
+    # 
+    # @param request PostDrawingResizeRequest
+    # @return [File]
+    def post_drawing_resize(request)
+      data, _status_code, _headers = post_drawing_resize_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Resize a drawing. Drawing data is passed as a zero-indexed multipart/form-data content or as raw body stream.
+    # 
+    # @param request PostDrawingResizeRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def post_drawing_resize_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingResizeRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_resize ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.post_drawing_resize' if @api_client.config.client_side_validation && request.drawing_data.nil?
+      # verify the required parameter 'output_format' is set
+      raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.post_drawing_resize' if @api_client.config.client_side_validation && request.output_format.nil?
+      # verify the required parameter 'new_width' is set
+      raise ArgumentError, 'Missing the required parameter new_width when calling CadApi.post_drawing_resize' if @api_client.config.client_side_validation && request.new_width.nil?
+      # verify the required parameter 'new_height' is set
+      raise ArgumentError, 'Missing the required parameter new_height when calling CadApi.post_drawing_resize' if @api_client.config.client_side_validation && request.new_height.nil?
+      # resource path
+      local_var_path = '/cad/resize'
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('outputFormat')] = request.output_format
+      query_params[downcase_first_letter('newWidth')] = request.new_width
+      query_params[downcase_first_letter('newHeight')] = request.new_height
+
+
+
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#post_drawing_resize\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Rotate/flip a drawing. Drawing data is passed as a zero-indexed multipart/form-data content or as raw body stream.
+    # 
+    # @param request PostDrawingRotateFlipRequest
+    # @return [File]
+    def post_drawing_rotate_flip(request)
+      data, _status_code, _headers = post_drawing_rotate_flip_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Rotate/flip a drawing. Drawing data is passed as a zero-indexed multipart/form-data content or as raw body stream.
+    # 
+    # @param request PostDrawingRotateFlipRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def post_drawing_rotate_flip_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingRotateFlipRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_rotate_flip ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.post_drawing_rotate_flip' if @api_client.config.client_side_validation && request.drawing_data.nil?
+      # verify the required parameter 'output_format' is set
+      raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.post_drawing_rotate_flip' if @api_client.config.client_side_validation && request.output_format.nil?
+      # verify the required parameter 'rotate_flip_type' is set
+      raise ArgumentError, 'Missing the required parameter rotate_flip_type when calling CadApi.post_drawing_rotate_flip' if @api_client.config.client_side_validation && request.rotate_flip_type.nil?
+      # verify enum value
+      raise ArgumentError, 'invalid value for rotate_flip_type, must be one of RotateNoneFlipNone, Rotate90FlipNone, Rotate180FlipNone, Rotate270FlipNone, RotateNoneFlipX, Rotate90FlipX, Rotate180FlipX, Rotate270FlipX, RotateNoneFlipY, Rotate90FlipY, Rotate180FlipY, Rotate270FlipY, RotateNoneFlipXY, Rotate90FlipXY, Rotate180FlipXY, Rotate270FlipXY' if @api_client.config.client_side_validation && !['RotateNoneFlipNone', 'Rotate90FlipNone', 'Rotate180FlipNone', 'Rotate270FlipNone', 'RotateNoneFlipX', 'Rotate90FlipX', 'Rotate180FlipX', 'Rotate270FlipX', 'RotateNoneFlipY', 'Rotate90FlipY', 'Rotate180FlipY', 'Rotate270FlipY', 'RotateNoneFlipXY', 'Rotate90FlipXY', 'Rotate180FlipXY', 'Rotate270FlipXY'].include?(request.rotate_flip_type)
+      # resource path
+      local_var_path = '/cad/rotateflip'
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('outputFormat')] = request.output_format
+      query_params[downcase_first_letter('rotateFlipType')] = request.rotate_flip_type
+
+
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#post_drawing_rotate_flip\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export existing drawing to another format. Drawing data is passed as zero-indexed multipart/form-data content or as raw body stream.             
+    # 
+    # @param request PostDrawingSaveAsRequest
+    # @return [File]
+    def post_drawing_save_as(request)
+      data, _status_code, _headers = post_drawing_save_as_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export existing drawing to another format. Drawing data is passed as zero-indexed multipart/form-data content or as raw body stream.             
+    # 
+    # @param request PostDrawingSaveAsRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def post_drawing_save_as_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingSaveAsRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_save_as ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.post_drawing_save_as' if @api_client.config.client_side_validation && request.drawing_data.nil?
+      # verify the required parameter 'output_format' is set
+      raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.post_drawing_save_as' if @api_client.config.client_side_validation && request.output_format.nil?
+      # resource path
+      local_var_path = '/cad/saveAs/{outputFormat}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('outputFormat') + '}', request.output_format.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#post_drawing_save_as\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -843,12 +1132,14 @@ module AsposeCadCloud
     # @param request PostDrawingSvgRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def post_drawing_svg_with_http_info(request)
+    def post_drawing_svg_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingSvgRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_svg ...' if @api_client.config.debugging
       # verify the required parameter 'name' is set
       raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_svg' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_svg' if @api_client.config.client_side_validation && request.options.nil?
       # resource path
       local_var_path = '/cad/{name}/svg'
       local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
@@ -883,7 +1174,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -913,12 +1204,14 @@ module AsposeCadCloud
     # @param request PostDrawingTiffRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def post_drawing_tiff_with_http_info(request)
+    def post_drawing_tiff_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingTiffRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_tiff ...' if @api_client.config.debugging
       # verify the required parameter 'name' is set
       raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_tiff' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_tiff' if @api_client.config.client_side_validation && request.options.nil?
       # resource path
       local_var_path = '/cad/{name}/tiff'
       local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
@@ -953,7 +1246,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -983,12 +1276,14 @@ module AsposeCadCloud
     # @param request PostDrawingWmfRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def post_drawing_wmf_with_http_info(request)
+    def post_drawing_wmf_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingWmfRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_wmf ...' if @api_client.config.debugging
       # verify the required parameter 'name' is set
       raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_wmf' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_wmf' if @api_client.config.client_side_validation && request.options.nil?
       # resource path
       local_var_path = '/cad/{name}/wmf'
       local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
@@ -1023,7 +1318,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1053,7 +1348,7 @@ module AsposeCadCloud
     # @param request PutDrawingBmpRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def put_drawing_bmp_with_http_info(request)
+    def put_drawing_bmp_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingBmpRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_bmp ...' if @api_client.config.debugging
@@ -1080,16 +1375,16 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
 
       # form parameters
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
-      form_params[downcase_first_letter('options')] = request.options unless request.options.nil?
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 
       # http body (model)
       post_body = nil
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1119,7 +1414,7 @@ module AsposeCadCloud
     # @param request PutDrawingGifRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def put_drawing_gif_with_http_info(request)
+    def put_drawing_gif_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingGifRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_gif ...' if @api_client.config.debugging
@@ -1146,16 +1441,16 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
 
       # form parameters
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
-      form_params[downcase_first_letter('options')] = request.options unless request.options.nil?
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 
       # http body (model)
       post_body = nil
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1185,7 +1480,7 @@ module AsposeCadCloud
     # @param request PutDrawingJpegRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def put_drawing_jpeg_with_http_info(request)
+    def put_drawing_jpeg_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingJpegRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_jpeg ...' if @api_client.config.debugging
@@ -1212,16 +1507,16 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
 
       # form parameters
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
-      form_params[downcase_first_letter('options')] = request.options unless request.options.nil?
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 
       # http body (model)
       post_body = nil
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1251,7 +1546,7 @@ module AsposeCadCloud
     # @param request PutDrawingJpeg2000Request
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def put_drawing_jpeg2000_with_http_info(request)
+    def put_drawing_jpeg2000_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingJpeg2000Request
 
       @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_jpeg2000 ...' if @api_client.config.debugging
@@ -1278,16 +1573,16 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
 
       # form parameters
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
-      form_params[downcase_first_letter('options')] = request.options unless request.options.nil?
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 
       # http body (model)
       post_body = nil
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1317,7 +1612,7 @@ module AsposeCadCloud
     # @param request PutDrawingPdfRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def put_drawing_pdf_with_http_info(request)
+    def put_drawing_pdf_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingPdfRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_pdf ...' if @api_client.config.debugging
@@ -1344,16 +1639,16 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
 
       # form parameters
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
-      form_params[downcase_first_letter('options')] = request.options unless request.options.nil?
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 
       # http body (model)
       post_body = nil
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1383,7 +1678,7 @@ module AsposeCadCloud
     # @param request PutDrawingPngRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def put_drawing_png_with_http_info(request)
+    def put_drawing_png_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingPngRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_png ...' if @api_client.config.debugging
@@ -1410,16 +1705,16 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
 
       # form parameters
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
-      form_params[downcase_first_letter('options')] = request.options unless request.options.nil?
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 
       # http body (model)
       post_body = nil
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1430,61 +1725,6 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#put_drawing_png\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      [data, status_code, headers]
-    end
-
-    # Retrieves info about drawing which is passed as a zero-indexed multipart/form-data content or as raw body stream.
-    # 
-    # @param request PutDrawingPropertiesRequest
-    # @return [CadResponse]
-    def put_drawing_properties(request)
-      data, _status_code, _headers = put_drawing_properties_with_http_info(request)
-      request_token if _status_code == 401
-      data
-    end
-
-    # Retrieves info about drawing which is passed as a zero-indexed multipart/form-data content or as raw body stream.
-    # 
-    # @param request PutDrawingPropertiesRequest
-    # @return [Array<(CadResponse, Fixnum, Hash)>]
-    # CadResponse data, response status code and response headers
-    private def put_drawing_properties_with_http_info(request)
-      raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingPropertiesRequest
-
-      @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_properties ...' if @api_client.config.debugging
-      # verify the required parameter 'drawing_data' is set
-      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.put_drawing_properties' if @api_client.config.client_side_validation && request.drawing_data.nil?
-      # resource path
-      local_var_path = '/cad/properties'
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
-
-      # form parameters
-      form_params = {}
-      form_params[downcase_first_letter('drawingData')] = request.drawing_data
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['oauth']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-                                                        header_params: header_params,
-                                                        query_params: query_params,
-                                                        form_params: form_params,
-                                                        body: post_body,
-                                                        auth_names: auth_names,
-                                                        return_type: 'CadResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called:
-        CadApi#put_drawing_properties\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -1504,7 +1744,7 @@ module AsposeCadCloud
     # @param request PutDrawingPsdRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def put_drawing_psd_with_http_info(request)
+    def put_drawing_psd_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingPsdRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_psd ...' if @api_client.config.debugging
@@ -1531,16 +1771,16 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
 
       # form parameters
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
-      form_params[downcase_first_letter('options')] = request.options unless request.options.nil?
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 
       # http body (model)
       post_body = nil
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1551,226 +1791,6 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#put_drawing_psd\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      [data, status_code, headers]
-    end
-
-    # Resize a drawing. Drawing data is passed as a zero-indexed multipart/form-data content or as raw body stream.
-    # 
-    # @param request PutDrawingResizeRequest
-    # @return [File]
-    def put_drawing_resize(request)
-      data, _status_code, _headers = put_drawing_resize_with_http_info(request)
-      request_token if _status_code == 401
-      data
-    end
-
-    # Resize a drawing. Drawing data is passed as a zero-indexed multipart/form-data content or as raw body stream.
-    # 
-    # @param request PutDrawingResizeRequest
-    # @return [Array<(File, Fixnum, Hash)>]
-    # File data, response status code and response headers
-    private def put_drawing_resize_with_http_info(request)
-      raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingResizeRequest
-
-      @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_resize ...' if @api_client.config.debugging
-      # verify the required parameter 'drawing_data' is set
-      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.put_drawing_resize' if @api_client.config.client_side_validation && request.drawing_data.nil?
-      # verify the required parameter 'output_format' is set
-      raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.put_drawing_resize' if @api_client.config.client_side_validation && request.output_format.nil?
-      # verify the required parameter 'new_width' is set
-      raise ArgumentError, 'Missing the required parameter new_width when calling CadApi.put_drawing_resize' if @api_client.config.client_side_validation && request.new_width.nil?
-      # verify the required parameter 'new_height' is set
-      raise ArgumentError, 'Missing the required parameter new_height when calling CadApi.put_drawing_resize' if @api_client.config.client_side_validation && request.new_height.nil?
-      # resource path
-      local_var_path = '/cad/resize'
-
-      # query parameters
-      query_params = {}
-      query_params[downcase_first_letter('outputFormat')] = request.output_format
-      query_params[downcase_first_letter('newWidth')] = request.new_width
-      query_params[downcase_first_letter('newHeight')] = request.new_height
-
-
-
-      if local_var_path.include? downcase_first_letter('outPath')
-        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
-      else
-        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
-      end
-      if local_var_path.include? downcase_first_letter('storage')
-        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
-      else
-        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
-      end
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
-
-      # form parameters
-      form_params = {}
-      form_params[downcase_first_letter('drawingData')] = request.drawing_data
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['oauth']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-                                                        header_params: header_params,
-                                                        query_params: query_params,
-                                                        form_params: form_params,
-                                                        body: post_body,
-                                                        auth_names: auth_names,
-                                                        return_type: 'File')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called:
-        CadApi#put_drawing_resize\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      [data, status_code, headers]
-    end
-
-    # Rotate/flip a drawing. Drawing data is passed as a zero-indexed multipart/form-data content or as raw body stream.
-    # 
-    # @param request PutDrawingRotateFlipRequest
-    # @return [File]
-    def put_drawing_rotate_flip(request)
-      data, _status_code, _headers = put_drawing_rotate_flip_with_http_info(request)
-      request_token if _status_code == 401
-      data
-    end
-
-    # Rotate/flip a drawing. Drawing data is passed as a zero-indexed multipart/form-data content or as raw body stream.
-    # 
-    # @param request PutDrawingRotateFlipRequest
-    # @return [Array<(File, Fixnum, Hash)>]
-    # File data, response status code and response headers
-    private def put_drawing_rotate_flip_with_http_info(request)
-      raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingRotateFlipRequest
-
-      @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_rotate_flip ...' if @api_client.config.debugging
-      # verify the required parameter 'drawing_data' is set
-      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.put_drawing_rotate_flip' if @api_client.config.client_side_validation && request.drawing_data.nil?
-      # verify the required parameter 'output_format' is set
-      raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.put_drawing_rotate_flip' if @api_client.config.client_side_validation && request.output_format.nil?
-      # verify the required parameter 'rotate_flip_type' is set
-      raise ArgumentError, 'Missing the required parameter rotate_flip_type when calling CadApi.put_drawing_rotate_flip' if @api_client.config.client_side_validation && request.rotate_flip_type.nil?
-      # verify enum value
-      raise ArgumentError, 'invalid value for rotate_flip_type, must be one of RotateNoneFlipNone, Rotate90FlipNone, Rotate180FlipNone, Rotate270FlipNone, RotateNoneFlipX, Rotate90FlipX, Rotate180FlipX, Rotate270FlipX, RotateNoneFlipY, Rotate90FlipY, Rotate180FlipY, Rotate270FlipY, RotateNoneFlipXY, Rotate90FlipXY, Rotate180FlipXY, Rotate270FlipXY' if @api_client.config.client_side_validation && !['RotateNoneFlipNone', 'Rotate90FlipNone', 'Rotate180FlipNone', 'Rotate270FlipNone', 'RotateNoneFlipX', 'Rotate90FlipX', 'Rotate180FlipX', 'Rotate270FlipX', 'RotateNoneFlipY', 'Rotate90FlipY', 'Rotate180FlipY', 'Rotate270FlipY', 'RotateNoneFlipXY', 'Rotate90FlipXY', 'Rotate180FlipXY', 'Rotate270FlipXY'].include?(request.rotate_flip_type)
-      # resource path
-      local_var_path = '/cad/rotateflip'
-
-      # query parameters
-      query_params = {}
-      query_params[downcase_first_letter('outputFormat')] = request.output_format
-      query_params[downcase_first_letter('rotateFlipType')] = request.rotate_flip_type
-
-
-      if local_var_path.include? downcase_first_letter('outPath')
-        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
-      else
-        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
-      end
-      if local_var_path.include? downcase_first_letter('storage')
-        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
-      else
-        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
-      end
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
-
-      # form parameters
-      form_params = {}
-      form_params[downcase_first_letter('drawingData')] = request.drawing_data
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['oauth']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-                                                        header_params: header_params,
-                                                        query_params: query_params,
-                                                        form_params: form_params,
-                                                        body: post_body,
-                                                        auth_names: auth_names,
-                                                        return_type: 'File')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called:
-        CadApi#put_drawing_rotate_flip\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      [data, status_code, headers]
-    end
-
-    # Export existing drawing to another format. Drawing data is passed as zero-indexed multipart/form-data content or as raw body stream.             
-    # 
-    # @param request PutDrawingSaveAsRequest
-    # @return [File]
-    def put_drawing_save_as(request)
-      data, _status_code, _headers = put_drawing_save_as_with_http_info(request)
-      request_token if _status_code == 401
-      data
-    end
-
-    # Export existing drawing to another format. Drawing data is passed as zero-indexed multipart/form-data content or as raw body stream.             
-    # 
-    # @param request PutDrawingSaveAsRequest
-    # @return [Array<(File, Fixnum, Hash)>]
-    # File data, response status code and response headers
-    private def put_drawing_save_as_with_http_info(request)
-      raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingSaveAsRequest
-
-      @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_save_as ...' if @api_client.config.debugging
-      # verify the required parameter 'drawing_data' is set
-      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.put_drawing_save_as' if @api_client.config.client_side_validation && request.drawing_data.nil?
-      # verify the required parameter 'output_format' is set
-      raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.put_drawing_save_as' if @api_client.config.client_side_validation && request.output_format.nil?
-      # resource path
-      local_var_path = '/cad/saveAs/{outputFormat}'
-      local_var_path = local_var_path.sub('{' + downcase_first_letter('outputFormat') + '}', request.output_format.to_s)
-
-      # query parameters
-      query_params = {}
-      if local_var_path.include? downcase_first_letter('outPath')
-        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
-      else
-        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
-      end
-      if local_var_path.include? downcase_first_letter('storage')
-        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
-      else
-        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
-      end
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
-
-      # form parameters
-      form_params = {}
-      form_params[downcase_first_letter('drawingData')] = request.drawing_data
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['oauth']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-                                                        header_params: header_params,
-                                                        query_params: query_params,
-                                                        form_params: form_params,
-                                                        body: post_body,
-                                                        auth_names: auth_names,
-                                                        return_type: 'File')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called:
-        CadApi#put_drawing_save_as\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -1790,7 +1810,7 @@ module AsposeCadCloud
     # @param request PutDrawingSvgRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def put_drawing_svg_with_http_info(request)
+    def put_drawing_svg_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingSvgRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_svg ...' if @api_client.config.debugging
@@ -1817,16 +1837,16 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
 
       # form parameters
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
-      form_params[downcase_first_letter('options')] = request.options unless request.options.nil?
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 
       # http body (model)
       post_body = nil
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1856,7 +1876,7 @@ module AsposeCadCloud
     # @param request PutDrawingTiffRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def put_drawing_tiff_with_http_info(request)
+    def put_drawing_tiff_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingTiffRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_tiff ...' if @api_client.config.debugging
@@ -1883,16 +1903,16 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
 
       # form parameters
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
-      form_params[downcase_first_letter('options')] = request.options unless request.options.nil?
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 
       # http body (model)
       post_body = nil
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1922,7 +1942,7 @@ module AsposeCadCloud
     # @param request PutDrawingWmfRequest
     # @return [Array<(File, Fixnum, Hash)>]
     # File data, response status code and response headers
-    private def put_drawing_wmf_with_http_info(request)
+    def put_drawing_wmf_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingWmfRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_wmf ...' if @api_client.config.debugging
@@ -1949,16 +1969,16 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
 
       # form parameters
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
-      form_params[downcase_first_letter('options')] = request.options unless request.options.nil?
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 
       # http body (model)
       post_body = nil
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1988,12 +2008,11 @@ module AsposeCadCloud
       config = @api_client.config
       api_version = config.api_version
       config.api_version = ''
-      request_url = "/oauth2/token"
+      request_url = "/connect/token"
       post_data = "grant_type=client_credentials" + "&client_id=" + config.api_key['app_sid'] + "&client_secret=" + config.api_key['api_key']
-      data, status_code, header = @api_client.call_api(:POST, request_url, :body => post_data, :return_type => 'Object')
+      data, status_code, header = @api_client.call_api(:POST, request_url, :body => post_data, :header_params => { "Content-Type": "application/x-www-form-urlencoded" }, :return_type => 'Object')
       @api_client.config.access_token = data[:access_token]
       @api_client.config.api_version = api_version
-      @api_client.config.refresh_token = data[:refresh_token]
     end
     
     # requires all files inside a directory from current dir

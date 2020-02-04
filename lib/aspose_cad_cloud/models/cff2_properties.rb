@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="ImageOptionsBaseDTO.rb">
+ # <copyright company="Aspose" file="Cff2Properties.rb">
  #   Copyright (c) 2017 Aspose.Cad for Cloud
  # </copyright>
  # <summary>
@@ -29,59 +29,18 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Image options base class
-  class ImageOptionsBaseDTO
-    # Resulting rotation operation
-    attr_accessor :rotation
-
-    # Layers to export
-    attr_accessor :layers
-
-    # DPI resolution settings
-    attr_accessor :resolution_settings
-
-    # Raster options
-    attr_accessor :vector_rasterization_options
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+  # Represents information about CFF2 drawing.
+  class Cff2Properties
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'rotation' => :'Rotation',
-        :'layers' => :'Layers',
-        :'resolution_settings' => :'ResolutionSettings',
-        :'vector_rasterization_options' => :'VectorRasterizationOptions'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'rotation' => :'String',
-        :'layers' => :'Array<String>',
-        :'resolution_settings' => :'ResolutionSetting',
-        :'vector_rasterization_options' => :'CadRasterizationOptionsDTO'
       }
     end
 
@@ -93,69 +52,26 @@ module AsposeCadCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'Rotation')
-        self.rotation = attributes[:'Rotation']
-      end
-
-      if attributes.key?(:'Layers')
-        if (value = attributes[:'Layers']).is_a?(Array)
-          self.layers = value
-        end
-      end
-
-      if attributes.key?(:'ResolutionSettings')
-        self.resolution_settings = attributes[:'ResolutionSettings']
-      end
-
-      if attributes.key?(:'VectorRasterizationOptions')
-        self.vector_rasterization_options = attributes[:'VectorRasterizationOptions']
-      end
-
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = []
-      if @rotation.nil?
-        invalid_properties.push("invalid value for 'rotation', rotation cannot be nil.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @rotation.nil?
-      rotation_validator = EnumAttributeValidator.new('String', ["RotateNoneFlipNone", "Rotate90FlipNone", "Rotate180FlipNone", "Rotate270FlipNone", "RotateNoneFlipX", "Rotate90FlipX", "Rotate180FlipX", "Rotate270FlipX", "RotateNoneFlipY", "Rotate90FlipY", "Rotate180FlipY", "Rotate270FlipY", "RotateNoneFlipXY", "Rotate90FlipXY", "Rotate180FlipXY", "Rotate270FlipXY"])
-      return false unless rotation_validator.valid?(@rotation)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] rotation Object to be assigned
-    def rotation=(rotation)
-      validator = EnumAttributeValidator.new('String', ["RotateNoneFlipNone", "Rotate90FlipNone", "Rotate180FlipNone", "Rotate270FlipNone", "RotateNoneFlipX", "Rotate90FlipX", "Rotate180FlipX", "Rotate270FlipX", "RotateNoneFlipY", "Rotate90FlipY", "Rotate180FlipY", "Rotate270FlipY", "RotateNoneFlipXY", "Rotate90FlipXY", "Rotate180FlipXY", "Rotate270FlipXY"])
-      if rotation.to_i == 0
-        unless validator.valid?(rotation)
-          raise ArgumentError, "invalid value for 'rotation', must be one of #{validator.allowable_values}."
-        end
-        @rotation = rotation
-      else
-        @rotation = validator.allowable_values[rotation.to_i]
-      end
     end
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(other)
       return true if self.equal?(other)
-      self.class == other.class &&
-          rotation == other.rotation &&
-          layers == other.layers &&
-          resolution_settings == other.resolution_settings &&
-          vector_rasterization_options == other.vector_rasterization_options
+      self.class == other.class
     end
 
     # @see the `==` method
@@ -167,7 +83,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [rotation, layers, resolution_settings, vector_rasterization_options].hash
+      [].hash
     end
 
     # Builds the object from hash

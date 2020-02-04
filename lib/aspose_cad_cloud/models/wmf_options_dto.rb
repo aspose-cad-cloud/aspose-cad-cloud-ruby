@@ -43,7 +43,7 @@ module AsposeCadCloud
     # Raster options
     attr_accessor :vector_rasterization_options
 
-    # Bits per pixel for resulting image
+    # Bits per pixel for Resulting file
     attr_accessor :bits_per_pixel
 
     class EnumAttributeValidator

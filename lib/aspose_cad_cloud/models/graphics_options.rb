@@ -29,12 +29,15 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Graphics Options
+  # Represents graphics options for embedded bitmap.
   class GraphicsOptions
+    # Gets or sets text rendering hint.
     attr_accessor :text_rendering_hint
 
+    # Gets or sets smoothing mode.
     attr_accessor :smoothing_mode
 
+    # Gets or sets interpolation mode.
     attr_accessor :interpolation_mode
 
     class EnumAttributeValidator

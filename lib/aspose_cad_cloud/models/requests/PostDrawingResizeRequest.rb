@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PutDrawingSaveAsRequest.rb">
+ # <copyright company="Aspose" file="PostDrawingResizeRequest.rb">
  #   Copyright (c) 2018 Aspose.Cad for Cloud
  # </copyright>
  # <summary>
@@ -28,15 +28,19 @@
 module AsposeCadCloud
 
   #
-  # Request model for put_drawing_save_as operation.
+  # Request model for post_drawing_resize operation.
   #
-  class PutDrawingSaveAsRequest
+  class PostDrawingResizeRequest
 
         # Input drawing
         attr_accessor :drawing_data
-        # Resulting image format.
+        # Resulting file format.
         attr_accessor :output_format
-        # Path to updated file (if this is empty, response contains streamed image).
+        # New width.
+        attr_accessor :new_width
+        # New height.
+        attr_accessor :new_height
+        # Path to updated file (if this is empty, response contains streamed file).
         attr_accessor :out_path
         # Your Aspose Cloud Storage name.
         attr_accessor :storage
@@ -44,12 +48,16 @@ module AsposeCadCloud
         #
         # Initializes a new instance.
         # @param drawing_data Input drawing
-        # @param output_format Resulting image format.
-        # @param out_path Path to updated file (if this is empty, response contains streamed image).
+        # @param output_format Resulting file format.
+        # @param new_width New width.
+        # @param new_height New height.
+        # @param out_path Path to updated file (if this is empty, response contains streamed file).
         # @param storage Your Aspose Cloud Storage name.
-        def initialize(drawing_data, output_format, out_path = nil, storage = nil)
+        def initialize(drawing_data, output_format, new_width, new_height, out_path = nil, storage = nil)
            self.drawing_data = drawing_data
            self.output_format = output_format
+           self.new_width = new_width
+           self.new_height = new_height
            self.out_path = out_path
            self.storage = storage
         end
