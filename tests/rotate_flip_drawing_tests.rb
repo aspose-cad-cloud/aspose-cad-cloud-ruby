@@ -2,7 +2,7 @@
 #
 # --------------------------------------------------------------------------------------------------------------------
 # <copyright company="Aspose" file="rotate_flip_drawing_tests.rb">
-#   Copyright (c) 2018 Aspose.Cad for Cloud
+#   Copyright (c) 2018 Aspose.CAD Cloud
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -44,8 +44,8 @@ module AsposeCadCloud
       st_request = PutCreateRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
       @storage_api.put_create st_request
 
-      request = PostImageRotateFlipRequest.new File.open(local_test_folder + filename, "r"), output_format, "Rotate270FlipX", remote_test_folder
-      result = @Cad_api.post_image_rotate_flip_with_http_info request
+      request = PostDrawingRotateFlipRequest.new File.open(local_test_folder + filename, "r"), output_format, "Rotate270FlipX", remote_test_folder
+      result = @Cad_api.post_drawing_rotate_flip_with_http_info request
       assert_equal 200, result[1]
     end
 
@@ -61,8 +61,8 @@ module AsposeCadCloud
       st_request = PutCreateRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
       @storage_api.put_create st_request
 
-      request = GetImageRotateFlipRequest.new remote_name, output_format, "Rotate180FlipNone", nil, nil, dest_name
-      result = @Cad_api.get_image_rotate_flip_with_http_info request
+      request = GetDrawingRotateFlipRequest.new remote_name, output_format, "Rotate180FlipNone", remote_test_folder, dest_name, nil
+      result = @Cad_api.get_drawing_rotate_flip_with_http_info request
       assert_equal 200, result[1]
     end
   end

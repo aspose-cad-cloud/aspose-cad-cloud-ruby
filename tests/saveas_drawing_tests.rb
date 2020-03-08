@@ -1,7 +1,7 @@
 #
 # --------------------------------------------------------------------------------------------------------------------
 # <copyright company="Aspose" file="saveas_drawing_tests.rb">
-#   Copyright (c) 2018 Aspose.Cad for Cloud
+#   Copyright (c) 2018 Aspose.CAD Cloud
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,7 +43,7 @@ module AsposeCadCloud
       st_request = PutCreateRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
       @storage_api.put_create st_request
 
-      request = PostDrawingSaveAsRequest.new File.open(local_test_folder + filename, "r"), output_format, remote_test_folder, nil
+      request = PostDrawingSaveAsRequest.new File.open(local_test_folder + filename, "r"), output_format, remote_test_folder + filename, nil
       result = @Cad_api.post_drawing_save_as_with_http_info request
       assert_equal 200, result[1]
     end
@@ -60,7 +60,7 @@ module AsposeCadCloud
       st_request = PutCreateRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
       @storage_api.put_create st_request
 
-      request = GetDrawingSaveAsRequest.new remote_name, output_format, nil, nil, nil
+      request = GetDrawingSaveAsRequest.new remote_name, output_format, remote_test_folder, nil, nil
       result = @Cad_api.get_drawing_save_as_with_http_info request
       assert_equal 200, result[1]
     end

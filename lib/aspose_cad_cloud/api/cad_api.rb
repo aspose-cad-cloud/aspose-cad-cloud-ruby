@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose" file="cad_api.rb">
-#   Copyright (c) 2018 Aspose.Cad for Cloud
+#   Copyright (c) 2018 Aspose.CAD Cloud
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,7 +27,7 @@ require 'uri'
 
 module AsposeCadCloud
   #
-  # Aspose.Cad for Cloud API
+  # Aspose.CAD Cloud API
   #
   class CadApi
     attr_accessor :api_client
@@ -85,6 +85,10 @@ module AsposeCadCloud
 
       # form parameters
       form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -167,6 +171,10 @@ module AsposeCadCloud
 
       # form parameters
       form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -247,6 +255,10 @@ module AsposeCadCloud
 
       # form parameters
       form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -320,6 +332,10 @@ module AsposeCadCloud
 
       # form parameters
       form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -392,6 +408,10 @@ module AsposeCadCloud
 
       # form parameters
       form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
@@ -464,6 +484,10 @@ module AsposeCadCloud
 
       # form parameters
       form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
@@ -536,6 +560,10 @@ module AsposeCadCloud
 
       # form parameters
       form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
@@ -608,6 +636,10 @@ module AsposeCadCloud
 
       # form parameters
       form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
@@ -680,6 +712,10 @@ module AsposeCadCloud
 
       # form parameters
       form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
@@ -752,6 +788,10 @@ module AsposeCadCloud
 
       # form parameters
       form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
@@ -807,6 +847,10 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -879,6 +923,10 @@ module AsposeCadCloud
 
       # form parameters
       form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
@@ -956,6 +1004,10 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -1031,6 +1083,10 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -1099,6 +1155,10 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -1171,6 +1231,10 @@ module AsposeCadCloud
 
       # form parameters
       form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
@@ -1243,6 +1307,10 @@ module AsposeCadCloud
 
       # form parameters
       form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
@@ -1315,6 +1383,10 @@ module AsposeCadCloud
 
       # form parameters
       form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
@@ -1381,6 +1453,10 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -1447,6 +1523,10 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -1513,6 +1593,10 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -1579,6 +1663,10 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -1645,6 +1733,10 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -1711,6 +1803,10 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -1777,6 +1873,10 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -1843,6 +1943,10 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -1909,6 +2013,10 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil
@@ -1975,6 +2083,10 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
 
       # http body (model)
       post_body = nil

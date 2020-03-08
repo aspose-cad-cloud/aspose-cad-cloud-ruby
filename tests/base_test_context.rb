@@ -1,7 +1,7 @@
 #
 # --------------------------------------------------------------------------------------------------------------------
 # <copyright company="Aspose" file="base_test_context.rb">
-#   Copyright (c) 2018 Aspose.Cad for Cloud
+#   Copyright (c) 2018 Aspose.CAD Cloud
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -36,7 +36,7 @@ module AsposeCadCloud
     include AsposeStorageCloud
     include MiniTest::Assertions
     def setup      
-      ENV['http_proxy'] = 'http://localhost:8888'
+      #ENV['http_proxy'] = 'http://localhost:8888'
 
       file = File.read('TestData/serverAccess.json')
       if file.length == 0

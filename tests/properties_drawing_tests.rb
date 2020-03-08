@@ -2,7 +2,7 @@
 #
 # --------------------------------------------------------------------------------------------------------------------
 # <copyright company="Aspose" file="properties_drawing_tests.rb">
-#   Copyright (c) 2018 Aspose.Cad for Cloud
+#   Copyright (c) 2018 Aspose.CAD Cloud
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,14 +38,13 @@ module AsposeCadCloud
     def test_get_properties_drawing_tests
       filename = '910609.dxf'
       remote_name = filename
-      output_format = "jpg"
       dest_name = remote_test_out + remote_name
 
       st_request = PutCreateRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
       @storage_api.put_create st_request
 
-      request = GetImagePropertiesRequest.new remote_name
-      result = @Cad_api.get_image_properties_with_http_info request
+      request = GetDrawingPropertiesRequest.new remote_name, remote_test_folder
+      result = @Cad_api.get_drawing_properties_with_http_info request
       assert_equal 200, result[1]
     end
   end

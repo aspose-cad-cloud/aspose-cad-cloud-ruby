@@ -2,7 +2,7 @@
 #
 # --------------------------------------------------------------------------------------------------------------------
 # <copyright company="Aspose" file="scale_drawing_tests.rb">
-#   Copyright (c) 2018 Aspose.Cad for Cloud
+#   Copyright (c) 2018 Aspose.CAD Cloud
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,7 +27,7 @@
 #
 module AsposeCadCloud
   require_relative 'base_test_context'
-  class ScaleDrawingTests < BaseTestContext
+  class ResizeDrawingTests < BaseTestContext
     def test_folder
       ''
     end
@@ -44,8 +44,8 @@ module AsposeCadCloud
       st_request = PutCreateRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
       @storage_api.put_create st_request
 
-      request = PostChangeImageScaleRequest.new File.open(local_test_folder + filename, "r"), output_format, 320, 240, remote_test_folder
-      result = @Cad_api.post_change_image_scale_with_http_info request
+      request = PostDrawingResizeRequest.new File.open(local_test_folder + filename, "r"), output_format, 320, 240, remote_test_folder
+      result = @Cad_api.post_drawing_resize_with_http_info request
       assert_equal 200, result[1]
     end
 
@@ -61,8 +61,8 @@ module AsposeCadCloud
       st_request = PutCreateRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
       @storage_api.put_create st_request
 
-      request = GetChangeImageScaleRequest.new remote_name, output_format, 320, 240, nil, nil, dest_name
-      result = @Cad_api.get_change_image_scale_with_http_info request
+      request = GetDrawingResizeRequest.new remote_name, output_format, 320, 240, remote_test_folder, dest_name, nil
+      result = @Cad_api.get_drawing_resize_with_http_info request
       assert_equal 200, result[1]
     end
   end

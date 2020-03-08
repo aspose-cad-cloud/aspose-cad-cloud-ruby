@@ -5,7 +5,7 @@ module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose" file="PdfDocumentOptions.rb">
- #   Copyright (c) 2017 Aspose.Cad for Cloud
+ #   Copyright (c) 2017 Aspose.CAD Cloud
  # </copyright>
  # <summary>
  #   Permission is hereby granted, free of charge, to any person obtaining a copy
