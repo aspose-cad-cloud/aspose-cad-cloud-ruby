@@ -1,0 +1,1 @@
+rake test --verbose tests/**/*_tests.rb
