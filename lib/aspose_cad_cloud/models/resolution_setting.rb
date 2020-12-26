@@ -29,12 +29,10 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # The resolution setting for image save options.
+
   class ResolutionSetting
-    # Gets or sets the horizontal resolution.
     attr_accessor :horizontal_resolution
 
-    # Gets or sets the vertical resolution.
     attr_accessor :vertical_resolution
 
 

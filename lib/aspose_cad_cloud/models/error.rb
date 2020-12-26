@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PdfDocumentInfo.rb">
+ # <copyright company="Aspose" file="Error.rb">
  #   Copyright (c) 2017 Aspose.CAD Cloud
  # </copyright>
  # <summary>
@@ -29,34 +29,38 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
+  # Error
+  class Error
+    # Code             
+    attr_accessor :code
 
-  class PdfDocumentInfo
-    attr_accessor :keywords
+    # Message             
+    attr_accessor :message
 
-    attr_accessor :title
+    # Description             
+    attr_accessor :description
 
-    attr_accessor :author
-
-    attr_accessor :subject
+    # Inner Error             
+    attr_accessor :inner_error
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'keywords' => :'Keywords',
-        :'title' => :'Title',
-        :'author' => :'Author',
-        :'subject' => :'Subject'
+        :'code' => :'Code',
+        :'message' => :'Message',
+        :'description' => :'Description',
+        :'inner_error' => :'InnerError'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'keywords' => :'String',
-        :'title' => :'String',
-        :'author' => :'String',
-        :'subject' => :'String'
+        :'code' => :'String',
+        :'message' => :'String',
+        :'description' => :'String',
+        :'inner_error' => :'ErrorDetails'
       }
     end
 
@@ -68,20 +72,20 @@ module AsposeCadCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'Keywords')
-        self.keywords = attributes[:'Keywords']
+      if attributes.key?(:'Code')
+        self.code = attributes[:'Code']
       end
 
-      if attributes.key?(:'Title')
-        self.title = attributes[:'Title']
+      if attributes.key?(:'Message')
+        self.message = attributes[:'Message']
       end
 
-      if attributes.key?(:'Author')
-        self.author = attributes[:'Author']
+      if attributes.key?(:'Description')
+        self.description = attributes[:'Description']
       end
 
-      if attributes.key?(:'Subject')
-        self.subject = attributes[:'Subject']
+      if attributes.key?(:'InnerError')
+        self.inner_error = attributes[:'InnerError']
       end
 
     end
@@ -104,10 +108,10 @@ module AsposeCadCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          keywords == other.keywords &&
-          title == other.title &&
-          author == other.author &&
-          subject == other.subject
+          code == other.code &&
+          message == other.message &&
+          description == other.description &&
+          inner_error == other.inner_error
     end
 
     # @see the `==` method
@@ -119,7 +123,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [keywords, title, author, subject].hash
+      [code, message, description, inner_error].hash
     end
 
     # Builds the object from hash

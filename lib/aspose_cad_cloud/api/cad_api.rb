@@ -38,6 +38,484 @@ module AsposeCadCloud
       request_token
     end
 
+    # Copy file
+    # 
+    # @param request CopyFileRequest
+    # @return [nil]
+    def copy_file(request)
+      copy_file_with_http_info(request)
+      request_token if _status_code == 401
+      nil
+    end
+
+    # Copy file
+    # 
+    # @param request CopyFileRequest
+    # @return [Array<(nil, Fixnum, Hash)>]
+    # nil, response status code and response headers
+    def copy_file_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? CopyFileRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.copy_file ...' if @api_client.config.debugging
+      # verify the required parameter 'src_path' is set
+      raise ArgumentError, 'Missing the required parameter src_path when calling CadApi.copy_file' if @api_client.config.client_side_validation && request.src_path.nil?
+      # verify the required parameter 'dest_path' is set
+      raise ArgumentError, 'Missing the required parameter dest_path when calling CadApi.copy_file' if @api_client.config.client_side_validation && request.dest_path.nil?
+      # resource path
+      local_var_path = '/cad/storage/file/copy/{srcPath}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('srcPath') + '}', request.src_path.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('destPath')] = request.dest_path
+
+      if local_var_path.include? downcase_first_letter('srcStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('srcStorageName') + '}', request.src_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('srcStorageName')] = request.src_storage_name unless request.src_storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('destStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('destStorageName') + '}', request.dest_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('destStorageName')] = request.dest_storage_name unless request.dest_storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('versionId')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('versionId') + '}', request.version_id.to_s)
+      else
+        query_params[downcase_first_letter('versionId')] = request.version_id unless request.version_id.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#copy_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Copy folder
+    # 
+    # @param request CopyFolderRequest
+    # @return [nil]
+    def copy_folder(request)
+      copy_folder_with_http_info(request)
+      request_token if _status_code == 401
+      nil
+    end
+
+    # Copy folder
+    # 
+    # @param request CopyFolderRequest
+    # @return [Array<(nil, Fixnum, Hash)>]
+    # nil, response status code and response headers
+    def copy_folder_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? CopyFolderRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.copy_folder ...' if @api_client.config.debugging
+      # verify the required parameter 'src_path' is set
+      raise ArgumentError, 'Missing the required parameter src_path when calling CadApi.copy_folder' if @api_client.config.client_side_validation && request.src_path.nil?
+      # verify the required parameter 'dest_path' is set
+      raise ArgumentError, 'Missing the required parameter dest_path when calling CadApi.copy_folder' if @api_client.config.client_side_validation && request.dest_path.nil?
+      # resource path
+      local_var_path = '/cad/storage/folder/copy/{srcPath}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('srcPath') + '}', request.src_path.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('destPath')] = request.dest_path
+
+      if local_var_path.include? downcase_first_letter('srcStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('srcStorageName') + '}', request.src_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('srcStorageName')] = request.src_storage_name unless request.src_storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('destStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('destStorageName') + '}', request.dest_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('destStorageName')] = request.dest_storage_name unless request.dest_storage_name.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#copy_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Create the folder
+    # 
+    # @param request CreateFolderRequest
+    # @return [nil]
+    def create_folder(request)
+      create_folder_with_http_info(request)
+      request_token if _status_code == 401
+      nil
+    end
+
+    # Create the folder
+    # 
+    # @param request CreateFolderRequest
+    # @return [Array<(nil, Fixnum, Hash)>]
+    # nil, response status code and response headers
+    def create_folder_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? CreateFolderRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.create_folder ...' if @api_client.config.debugging
+      # verify the required parameter 'path' is set
+      raise ArgumentError, 'Missing the required parameter path when calling CadApi.create_folder' if @api_client.config.client_side_validation && request.path.nil?
+      # resource path
+      local_var_path = '/cad/storage/folder/{path}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('path') + '}', request.path.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('storageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('storageName')] = request.storage_name unless request.storage_name.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#create_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Delete file
+    # 
+    # @param request DeleteFileRequest
+    # @return [nil]
+    def delete_file(request)
+      delete_file_with_http_info(request)
+      request_token if _status_code == 401
+      nil
+    end
+
+    # Delete file
+    # 
+    # @param request DeleteFileRequest
+    # @return [Array<(nil, Fixnum, Hash)>]
+    # nil, response status code and response headers
+    def delete_file_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? DeleteFileRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.delete_file ...' if @api_client.config.debugging
+      # verify the required parameter 'path' is set
+      raise ArgumentError, 'Missing the required parameter path when calling CadApi.delete_file' if @api_client.config.client_side_validation && request.path.nil?
+      # resource path
+      local_var_path = '/cad/storage/file/{path}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('path') + '}', request.path.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('storageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('storageName')] = request.storage_name unless request.storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('versionId')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('versionId') + '}', request.version_id.to_s)
+      else
+        query_params[downcase_first_letter('versionId')] = request.version_id unless request.version_id.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#delete_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Delete folder
+    # 
+    # @param request DeleteFolderRequest
+    # @return [nil]
+    def delete_folder(request)
+      delete_folder_with_http_info(request)
+      request_token if _status_code == 401
+      nil
+    end
+
+    # Delete folder
+    # 
+    # @param request DeleteFolderRequest
+    # @return [Array<(nil, Fixnum, Hash)>]
+    # nil, response status code and response headers
+    def delete_folder_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? DeleteFolderRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.delete_folder ...' if @api_client.config.debugging
+      # verify the required parameter 'path' is set
+      raise ArgumentError, 'Missing the required parameter path when calling CadApi.delete_folder' if @api_client.config.client_side_validation && request.path.nil?
+      # resource path
+      local_var_path = '/cad/storage/folder/{path}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('path') + '}', request.path.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('storageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('storageName')] = request.storage_name unless request.storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('recursive')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('recursive') + '}', request.recursive.to_s)
+      else
+        query_params[downcase_first_letter('recursive')] = request.recursive unless request.recursive.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#delete_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Download file
+    # 
+    # @param request DownloadFileRequest
+    # @return [File]
+    def download_file(request)
+      data, _status_code, _headers = download_file_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Download file
+    # 
+    # @param request DownloadFileRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def download_file_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? DownloadFileRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.download_file ...' if @api_client.config.debugging
+      # verify the required parameter 'path' is set
+      raise ArgumentError, 'Missing the required parameter path when calling CadApi.download_file' if @api_client.config.client_side_validation && request.path.nil?
+      # resource path
+      local_var_path = '/cad/storage/file/{path}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('path') + '}', request.path.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('storageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('storageName')] = request.storage_name unless request.storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('versionId')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('versionId') + '}', request.version_id.to_s)
+      else
+        query_params[downcase_first_letter('versionId')] = request.version_id unless request.version_id.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#download_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Get disc usage
+    # 
+    # @param request GetDiscUsageRequest
+    # @return [DiscUsage]
+    def get_disc_usage(request)
+      data, _status_code, _headers = get_disc_usage_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Get disc usage
+    # 
+    # @param request GetDiscUsageRequest
+    # @return [Array<(DiscUsage, Fixnum, Hash)>]
+    # DiscUsage data, response status code and response headers
+    def get_disc_usage_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? GetDiscUsageRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.get_disc_usage ...' if @api_client.config.debugging
+      # resource path
+      local_var_path = '/cad/storage/disc'
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('storageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('storageName')] = request.storage_name unless request.storage_name.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'DiscUsage')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#get_disc_usage\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
     # Retrieves info about an existing drawing.             
     # 
     # @param request GetDrawingPropertiesRequest
@@ -350,6 +828,352 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#get_drawing_save_as\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Get file versions
+    # 
+    # @param request GetFileVersionsRequest
+    # @return [FileVersions]
+    def get_file_versions(request)
+      data, _status_code, _headers = get_file_versions_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Get file versions
+    # 
+    # @param request GetFileVersionsRequest
+    # @return [Array<(FileVersions, Fixnum, Hash)>]
+    # FileVersions data, response status code and response headers
+    def get_file_versions_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? GetFileVersionsRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.get_file_versions ...' if @api_client.config.debugging
+      # verify the required parameter 'path' is set
+      raise ArgumentError, 'Missing the required parameter path when calling CadApi.get_file_versions' if @api_client.config.client_side_validation && request.path.nil?
+      # resource path
+      local_var_path = '/cad/storage/version/{path}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('path') + '}', request.path.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('storageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('storageName')] = request.storage_name unless request.storage_name.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'FileVersions')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#get_file_versions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Get all files and folders within a folder
+    # 
+    # @param request GetFilesListRequest
+    # @return [FilesList]
+    def get_files_list(request)
+      data, _status_code, _headers = get_files_list_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Get all files and folders within a folder
+    # 
+    # @param request GetFilesListRequest
+    # @return [Array<(FilesList, Fixnum, Hash)>]
+    # FilesList data, response status code and response headers
+    def get_files_list_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? GetFilesListRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.get_files_list ...' if @api_client.config.debugging
+      # verify the required parameter 'path' is set
+      raise ArgumentError, 'Missing the required parameter path when calling CadApi.get_files_list' if @api_client.config.client_side_validation && request.path.nil?
+      # resource path
+      local_var_path = '/cad/storage/folder/{path}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('path') + '}', request.path.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('storageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('storageName')] = request.storage_name unless request.storage_name.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'FilesList')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#get_files_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Move file
+    # 
+    # @param request MoveFileRequest
+    # @return [nil]
+    def move_file(request)
+      move_file_with_http_info(request)
+      request_token if _status_code == 401
+      nil
+    end
+
+    # Move file
+    # 
+    # @param request MoveFileRequest
+    # @return [Array<(nil, Fixnum, Hash)>]
+    # nil, response status code and response headers
+    def move_file_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? MoveFileRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.move_file ...' if @api_client.config.debugging
+      # verify the required parameter 'src_path' is set
+      raise ArgumentError, 'Missing the required parameter src_path when calling CadApi.move_file' if @api_client.config.client_side_validation && request.src_path.nil?
+      # verify the required parameter 'dest_path' is set
+      raise ArgumentError, 'Missing the required parameter dest_path when calling CadApi.move_file' if @api_client.config.client_side_validation && request.dest_path.nil?
+      # resource path
+      local_var_path = '/cad/storage/file/move/{srcPath}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('srcPath') + '}', request.src_path.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('destPath')] = request.dest_path
+
+      if local_var_path.include? downcase_first_letter('srcStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('srcStorageName') + '}', request.src_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('srcStorageName')] = request.src_storage_name unless request.src_storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('destStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('destStorageName') + '}', request.dest_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('destStorageName')] = request.dest_storage_name unless request.dest_storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('versionId')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('versionId') + '}', request.version_id.to_s)
+      else
+        query_params[downcase_first_letter('versionId')] = request.version_id unless request.version_id.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#move_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Move folder
+    # 
+    # @param request MoveFolderRequest
+    # @return [nil]
+    def move_folder(request)
+      move_folder_with_http_info(request)
+      request_token if _status_code == 401
+      nil
+    end
+
+    # Move folder
+    # 
+    # @param request MoveFolderRequest
+    # @return [Array<(nil, Fixnum, Hash)>]
+    # nil, response status code and response headers
+    def move_folder_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? MoveFolderRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.move_folder ...' if @api_client.config.debugging
+      # verify the required parameter 'src_path' is set
+      raise ArgumentError, 'Missing the required parameter src_path when calling CadApi.move_folder' if @api_client.config.client_side_validation && request.src_path.nil?
+      # verify the required parameter 'dest_path' is set
+      raise ArgumentError, 'Missing the required parameter dest_path when calling CadApi.move_folder' if @api_client.config.client_side_validation && request.dest_path.nil?
+      # resource path
+      local_var_path = '/cad/storage/folder/move/{srcPath}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('srcPath') + '}', request.src_path.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('destPath')] = request.dest_path
+
+      if local_var_path.include? downcase_first_letter('srcStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('srcStorageName') + '}', request.src_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('srcStorageName')] = request.src_storage_name unless request.src_storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('destStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('destStorageName') + '}', request.dest_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('destStorageName')] = request.dest_storage_name unless request.dest_storage_name.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#move_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Check if file or folder exists
+    # 
+    # @param request ObjectExistsRequest
+    # @return [ObjectExist]
+    def object_exists(request)
+      data, _status_code, _headers = object_exists_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Check if file or folder exists
+    # 
+    # @param request ObjectExistsRequest
+    # @return [Array<(ObjectExist, Fixnum, Hash)>]
+    # ObjectExist data, response status code and response headers
+    def object_exists_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? ObjectExistsRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.object_exists ...' if @api_client.config.debugging
+      # verify the required parameter 'path' is set
+      raise ArgumentError, 'Missing the required parameter path when calling CadApi.object_exists' if @api_client.config.client_side_validation && request.path.nil?
+      # resource path
+      local_var_path = '/cad/storage/exist/{path}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('path') + '}', request.path.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('storageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('storageName')] = request.storage_name unless request.storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('versionId')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('versionId') + '}', request.version_id.to_s)
+      else
+        query_params[downcase_first_letter('versionId')] = request.version_id unless request.version_id.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'ObjectExist')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#object_exists\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -2101,6 +2925,132 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#put_drawing_wmf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Check if storage exists
+    # 
+    # @param request StorageExistsRequest
+    # @return [StorageExist]
+    def storage_exists(request)
+      data, _status_code, _headers = storage_exists_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Check if storage exists
+    # 
+    # @param request StorageExistsRequest
+    # @return [Array<(StorageExist, Fixnum, Hash)>]
+    # StorageExist data, response status code and response headers
+    def storage_exists_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? StorageExistsRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.storage_exists ...' if @api_client.config.debugging
+      # verify the required parameter 'storage_name' is set
+      raise ArgumentError, 'Missing the required parameter storage_name when calling CadApi.storage_exists' if @api_client.config.client_side_validation && request.storage_name.nil?
+      # resource path
+      local_var_path = '/cad/storage/{storageName}/exist'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('storageName') + '}', request.storage_name.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'StorageExist')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#storage_exists\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Upload file
+    # 
+    # @param request UploadFileRequest
+    # @return [FilesUploadResult]
+    def upload_file(request)
+      data, _status_code, _headers = upload_file_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Upload file
+    # 
+    # @param request UploadFileRequest
+    # @return [Array<(FilesUploadResult, Fixnum, Hash)>]
+    # FilesUploadResult data, response status code and response headers
+    def upload_file_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? UploadFileRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.upload_file ...' if @api_client.config.debugging
+      # verify the required parameter 'path' is set
+      raise ArgumentError, 'Missing the required parameter path when calling CadApi.upload_file' if @api_client.config.client_side_validation && request.path.nil?
+      # verify the required parameter 'file' is set
+      raise ArgumentError, 'Missing the required parameter file when calling CadApi.upload_file' if @api_client.config.client_side_validation && request.file.nil?
+      # resource path
+      local_var_path = '/cad/storage/file/{path}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('path') + '}', request.path.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('storageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('storageName')] = request.storage_name unless request.storage_name.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('File')] = request.file
+	  
+	  if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'FilesUploadResult')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#upload_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end

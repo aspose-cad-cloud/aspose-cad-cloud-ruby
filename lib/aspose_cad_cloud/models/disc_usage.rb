@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PdfDocumentInfo.rb">
+ # <copyright company="Aspose" file="DiscUsage.rb">
  #   Copyright (c) 2017 Aspose.CAD Cloud
  # </copyright>
  # <summary>
@@ -29,34 +29,28 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
+  # Class for disc space information.
+  class DiscUsage
+    # Application used disc space.
+    attr_accessor :used_size
 
-  class PdfDocumentInfo
-    attr_accessor :keywords
-
-    attr_accessor :title
-
-    attr_accessor :author
-
-    attr_accessor :subject
+    # Total disc space.
+    attr_accessor :total_size
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'keywords' => :'Keywords',
-        :'title' => :'Title',
-        :'author' => :'Author',
-        :'subject' => :'Subject'
+        :'used_size' => :'UsedSize',
+        :'total_size' => :'TotalSize'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'keywords' => :'String',
-        :'title' => :'String',
-        :'author' => :'String',
-        :'subject' => :'String'
+        :'used_size' => :'Integer',
+        :'total_size' => :'Integer'
       }
     end
 
@@ -68,20 +62,12 @@ module AsposeCadCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'Keywords')
-        self.keywords = attributes[:'Keywords']
+      if attributes.key?(:'UsedSize')
+        self.used_size = attributes[:'UsedSize']
       end
 
-      if attributes.key?(:'Title')
-        self.title = attributes[:'Title']
-      end
-
-      if attributes.key?(:'Author')
-        self.author = attributes[:'Author']
-      end
-
-      if attributes.key?(:'Subject')
-        self.subject = attributes[:'Subject']
+      if attributes.key?(:'TotalSize')
+        self.total_size = attributes[:'TotalSize']
       end
 
     end
@@ -90,12 +76,22 @@ module AsposeCadCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = []
+      if @used_size.nil?
+        invalid_properties.push("invalid value for 'used_size', used_size cannot be nil.")
+      end
+
+      if @total_size.nil?
+        invalid_properties.push("invalid value for 'total_size', total_size cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @used_size.nil?
+      return false if @total_size.nil?
       return true
     end
 
@@ -104,10 +100,8 @@ module AsposeCadCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          keywords == other.keywords &&
-          title == other.title &&
-          author == other.author &&
-          subject == other.subject
+          used_size == other.used_size &&
+          total_size == other.total_size
     end
 
     # @see the `==` method
@@ -119,7 +113,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [keywords, title, author, subject].hash
+      [used_size, total_size].hash
     end
 
     # Builds the object from hash

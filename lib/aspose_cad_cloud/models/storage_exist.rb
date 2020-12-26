@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PdfDocumentInfo.rb">
+ # <copyright company="Aspose" file="StorageExist.rb">
  #   Copyright (c) 2017 Aspose.CAD Cloud
  # </copyright>
  # <summary>
@@ -29,34 +29,23 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-
-  class PdfDocumentInfo
-    attr_accessor :keywords
-
-    attr_accessor :title
-
-    attr_accessor :author
-
-    attr_accessor :subject
+  # Storage exists
+  class StorageExist
+    # Shows that the storage exists.             
+    attr_accessor :exists
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'keywords' => :'Keywords',
-        :'title' => :'Title',
-        :'author' => :'Author',
-        :'subject' => :'Subject'
+        :'exists' => :'Exists'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'keywords' => :'String',
-        :'title' => :'String',
-        :'author' => :'String',
-        :'subject' => :'String'
+        :'exists' => :'BOOLEAN'
       }
     end
 
@@ -68,20 +57,8 @@ module AsposeCadCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'Keywords')
-        self.keywords = attributes[:'Keywords']
-      end
-
-      if attributes.key?(:'Title')
-        self.title = attributes[:'Title']
-      end
-
-      if attributes.key?(:'Author')
-        self.author = attributes[:'Author']
-      end
-
-      if attributes.key?(:'Subject')
-        self.subject = attributes[:'Subject']
+      if attributes.key?(:'Exists')
+        self.exists = attributes[:'Exists']
       end
 
     end
@@ -90,12 +67,17 @@ module AsposeCadCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = []
+      if @exists.nil?
+        invalid_properties.push("invalid value for 'exists', exists cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @exists.nil?
       return true
     end
 
@@ -104,10 +86,7 @@ module AsposeCadCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          keywords == other.keywords &&
-          title == other.title &&
-          author == other.author &&
-          subject == other.subject
+          exists == other.exists
     end
 
     # @see the `==` method
@@ -119,7 +98,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [keywords, title, author, subject].hash
+      [exists].hash
     end
 
     # Builds the object from hash

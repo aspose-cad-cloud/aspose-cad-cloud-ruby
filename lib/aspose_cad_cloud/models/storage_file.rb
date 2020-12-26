@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PdfDocumentInfo.rb">
+ # <copyright company="Aspose" file="StorageFile.rb">
  #   Copyright (c) 2017 Aspose.CAD Cloud
  # </copyright>
  # <summary>
@@ -29,34 +29,43 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
+  # File or folder information
+  class StorageFile
+    # File or folder name.
+    attr_accessor :name
 
-  class PdfDocumentInfo
-    attr_accessor :keywords
+    # True if it is a folder.
+    attr_accessor :is_folder
 
-    attr_accessor :title
+    # File or folder last modified DateTime.
+    attr_accessor :modified_date
 
-    attr_accessor :author
+    # File or folder size.
+    attr_accessor :size
 
-    attr_accessor :subject
+    # File or folder path.
+    attr_accessor :path
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'keywords' => :'Keywords',
-        :'title' => :'Title',
-        :'author' => :'Author',
-        :'subject' => :'Subject'
+        :'name' => :'Name',
+        :'is_folder' => :'IsFolder',
+        :'modified_date' => :'ModifiedDate',
+        :'size' => :'Size',
+        :'path' => :'Path'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'keywords' => :'String',
-        :'title' => :'String',
-        :'author' => :'String',
-        :'subject' => :'String'
+        :'name' => :'String',
+        :'is_folder' => :'BOOLEAN',
+        :'modified_date' => :'DateTime',
+        :'size' => :'Integer',
+        :'path' => :'String'
       }
     end
 
@@ -68,20 +77,24 @@ module AsposeCadCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'Keywords')
-        self.keywords = attributes[:'Keywords']
+      if attributes.key?(:'Name')
+        self.name = attributes[:'Name']
       end
 
-      if attributes.key?(:'Title')
-        self.title = attributes[:'Title']
+      if attributes.key?(:'IsFolder')
+        self.is_folder = attributes[:'IsFolder']
       end
 
-      if attributes.key?(:'Author')
-        self.author = attributes[:'Author']
+      if attributes.key?(:'ModifiedDate')
+        self.modified_date = attributes[:'ModifiedDate']
       end
 
-      if attributes.key?(:'Subject')
-        self.subject = attributes[:'Subject']
+      if attributes.key?(:'Size')
+        self.size = attributes[:'Size']
+      end
+
+      if attributes.key?(:'Path')
+        self.path = attributes[:'Path']
       end
 
     end
@@ -90,12 +103,22 @@ module AsposeCadCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = []
+      if @is_folder.nil?
+        invalid_properties.push("invalid value for 'is_folder', is_folder cannot be nil.")
+      end
+
+      if @size.nil?
+        invalid_properties.push("invalid value for 'size', size cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @is_folder.nil?
+      return false if @size.nil?
       return true
     end
 
@@ -104,10 +127,11 @@ module AsposeCadCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          keywords == other.keywords &&
-          title == other.title &&
-          author == other.author &&
-          subject == other.subject
+          name == other.name &&
+          is_folder == other.is_folder &&
+          modified_date == other.modified_date &&
+          size == other.size &&
+          path == other.path
     end
 
     # @see the `==` method
@@ -119,7 +143,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [keywords, title, author, subject].hash
+      [name, is_folder, modified_date, size, path].hash
     end
 
     # Builds the object from hash

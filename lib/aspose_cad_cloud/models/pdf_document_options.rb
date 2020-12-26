@@ -29,9 +29,8 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # The PDF options.
+
   class PdfDocumentOptions
-    # Desired conformance level for generated PDF document. Important note: This option should not be changed after PdfDocument object is constructed. Default is Pdf15.
     attr_accessor :compliance
 
     class EnumAttributeValidator

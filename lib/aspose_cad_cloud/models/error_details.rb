@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PdfDocumentInfo.rb">
+ # <copyright company="Aspose" file="ErrorDetails.rb">
  #   Copyright (c) 2017 Aspose.CAD Cloud
  # </copyright>
  # <summary>
@@ -29,34 +29,28 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
+  # The error details
+  class ErrorDetails
+    # The request id
+    attr_accessor :request_id
 
-  class PdfDocumentInfo
-    attr_accessor :keywords
-
-    attr_accessor :title
-
-    attr_accessor :author
-
-    attr_accessor :subject
+    # Date
+    attr_accessor :date
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'keywords' => :'Keywords',
-        :'title' => :'Title',
-        :'author' => :'Author',
-        :'subject' => :'Subject'
+        :'request_id' => :'RequestId',
+        :'date' => :'Date'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'keywords' => :'String',
-        :'title' => :'String',
-        :'author' => :'String',
-        :'subject' => :'String'
+        :'request_id' => :'String',
+        :'date' => :'DateTime'
       }
     end
 
@@ -68,20 +62,12 @@ module AsposeCadCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'Keywords')
-        self.keywords = attributes[:'Keywords']
+      if attributes.key?(:'RequestId')
+        self.request_id = attributes[:'RequestId']
       end
 
-      if attributes.key?(:'Title')
-        self.title = attributes[:'Title']
-      end
-
-      if attributes.key?(:'Author')
-        self.author = attributes[:'Author']
-      end
-
-      if attributes.key?(:'Subject')
-        self.subject = attributes[:'Subject']
+      if attributes.key?(:'Date')
+        self.date = attributes[:'Date']
       end
 
     end
@@ -90,12 +76,17 @@ module AsposeCadCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = []
+      if @date.nil?
+        invalid_properties.push("invalid value for 'date', date cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @date.nil?
       return true
     end
 
@@ -104,10 +95,8 @@ module AsposeCadCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          keywords == other.keywords &&
-          title == other.title &&
-          author == other.author &&
-          subject == other.subject
+          request_id == other.request_id &&
+          date == other.date
     end
 
     # @see the `==` method
@@ -119,7 +108,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [keywords, title, author, subject].hash
+      [request_id, date].hash
     end
 
     # Builds the object from hash

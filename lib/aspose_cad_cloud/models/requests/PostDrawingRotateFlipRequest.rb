@@ -36,7 +36,7 @@ module AsposeCadCloud
         attr_accessor :drawing_data
         # Resulting file format.
         attr_accessor :output_format
-        # Rotate/flip operation to apply.
+        # Rotate/flip operation to apply. Possible values: RotateNoneFlipNone, Rotate90FlipNone, Rotate180FlipNone, Rotate270FlipNone, RotateNoneFlipX, Rotate90FlipX, Rotate180FlipX, Rotate270FlipX, RotateNoneFlipY, Rotate90FlipY, Rotate180FlipY, Rotate270FlipY, RotateNoneFlipXY, Rotate90FlipXY, Rotate180FlipXY, Rotate270FlipXY
         attr_accessor :rotate_flip_type
         # Path to updated file (if this is empty, response contains streamed file).
         attr_accessor :out_path
@@ -47,7 +47,7 @@ module AsposeCadCloud
         # Initializes a new instance.
         # @param drawing_data Input drawing
         # @param output_format Resulting file format.
-        # @param rotate_flip_type Rotate/flip operation to apply.
+        # @param rotate_flip_type Rotate/flip operation to apply. Possible values: RotateNoneFlipNone, Rotate90FlipNone, Rotate180FlipNone, Rotate270FlipNone, RotateNoneFlipX, Rotate90FlipX, Rotate180FlipX, Rotate270FlipX, RotateNoneFlipY, Rotate90FlipY, Rotate180FlipY, Rotate270FlipY, RotateNoneFlipXY, Rotate90FlipXY, Rotate180FlipXY, Rotate270FlipXY
         # @param out_path Path to updated file (if this is empty, response contains streamed file).
         # @param storage Your Aspose Cloud Storage name.
         def initialize(drawing_data, output_format, rotate_flip_type, out_path = nil, storage = nil)

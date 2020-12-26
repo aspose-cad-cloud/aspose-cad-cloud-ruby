@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PdfDocumentInfo.rb">
+ # <copyright company="Aspose" file="ObjectExist.rb">
  #   Copyright (c) 2017 Aspose.CAD Cloud
  # </copyright>
  # <summary>
@@ -29,34 +29,28 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
+  # Object exists
+  class ObjectExist
+    # Indicates that the file or folder exists.
+    attr_accessor :exists
 
-  class PdfDocumentInfo
-    attr_accessor :keywords
-
-    attr_accessor :title
-
-    attr_accessor :author
-
-    attr_accessor :subject
+    # True if it is a folder, false if it is a file.
+    attr_accessor :is_folder
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'keywords' => :'Keywords',
-        :'title' => :'Title',
-        :'author' => :'Author',
-        :'subject' => :'Subject'
+        :'exists' => :'Exists',
+        :'is_folder' => :'IsFolder'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'keywords' => :'String',
-        :'title' => :'String',
-        :'author' => :'String',
-        :'subject' => :'String'
+        :'exists' => :'BOOLEAN',
+        :'is_folder' => :'BOOLEAN'
       }
     end
 
@@ -68,20 +62,12 @@ module AsposeCadCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'Keywords')
-        self.keywords = attributes[:'Keywords']
+      if attributes.key?(:'Exists')
+        self.exists = attributes[:'Exists']
       end
 
-      if attributes.key?(:'Title')
-        self.title = attributes[:'Title']
-      end
-
-      if attributes.key?(:'Author')
-        self.author = attributes[:'Author']
-      end
-
-      if attributes.key?(:'Subject')
-        self.subject = attributes[:'Subject']
+      if attributes.key?(:'IsFolder')
+        self.is_folder = attributes[:'IsFolder']
       end
 
     end
@@ -90,12 +76,22 @@ module AsposeCadCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = []
+      if @exists.nil?
+        invalid_properties.push("invalid value for 'exists', exists cannot be nil.")
+      end
+
+      if @is_folder.nil?
+        invalid_properties.push("invalid value for 'is_folder', is_folder cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @exists.nil?
+      return false if @is_folder.nil?
       return true
     end
 
@@ -104,10 +100,8 @@ module AsposeCadCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          keywords == other.keywords &&
-          title == other.title &&
-          author == other.author &&
-          subject == other.subject
+          exists == other.exists &&
+          is_folder == other.is_folder
     end
 
     # @see the `==` method
@@ -119,7 +113,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [keywords, title, author, subject].hash
+      [exists, is_folder].hash
     end
 
     # Builds the object from hash

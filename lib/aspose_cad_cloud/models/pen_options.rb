@@ -29,12 +29,10 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Drawing pen options
+
   class PenOptions
-    # Gets or sets the start cap.
     attr_accessor :start_cap
 
-    # Gets or sets the end cap.
     attr_accessor :end_cap
 
     class EnumAttributeValidator

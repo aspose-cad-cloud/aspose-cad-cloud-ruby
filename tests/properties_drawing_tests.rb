@@ -40,8 +40,8 @@ module AsposeCadCloud
       remote_name = filename
       dest_name = remote_test_out + remote_name
 
-      st_request = PutCreateRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
-      @storage_api.put_create st_request
+      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
+      @Cad_api.upload_file st_request
 
       request = GetDrawingPropertiesRequest.new remote_name, remote_test_folder
       result = @Cad_api.get_drawing_properties_with_http_info request
