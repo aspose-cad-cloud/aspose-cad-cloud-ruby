@@ -31,31 +31,30 @@ module AsposeCadCloud
   require "minitest/autorun"
   require "minitest/unit"
   require_relative '../lib/aspose_cad_cloud'
-  require 'aspose_storage_cloud'
+
   class BaseTestContext < Minitest::Test
-    include AsposeStorageCloud
     include MiniTest::Assertions
-    def setup      
+    def setup
       #ENV['http_proxy'] = 'http://localhost:8888'
 
       file = File.read('TestData/serverAccess.json')
       if file.length == 0
         raise ArgumentError, 'Put your credentials into TestData/serverAccess.json'
       end
+
       creds = JSON.parse(file)
+
       AsposeCadCloud.configure do |config|
         config.api_key['api_key'] = creds['AppKey']
         config.api_key['app_sid'] = creds['AppSid']
         config.host = creds['BaseURL']
-        AsposeStorageCloud.configure do |st_conf|
-          st_conf.api_key['api_key'] = config.api_key['api_key']
-          st_conf.api_key['app_sid'] = config.api_key['app_sid']
-          st_conf.host = creds['BaseURL']
-          st_conf.scheme = config.scheme
-        end
+
+        client = ApiClient.new config
+        @Cad_api = CadApi.new client
       end
-      @Cad_api = CadApi.new
-      @storage_api = StorageApi.new
+
+      st_request = CreateFolderRequest.new remote_test_folder
+      @Cad_api.create_folder st_request
     end
 
     def local_test_folder

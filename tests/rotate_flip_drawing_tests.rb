@@ -41,7 +41,7 @@ module AsposeCadCloud
       output_format = 'pdf'
       dest_name = remote_test_out + remote_name + '.' + output_format
 
-      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
+      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r")
       @Cad_api.upload_file st_request
 
       request = PostDrawingRotateFlipRequest.new File.open(local_test_folder + filename, "r"), output_format, "Rotate270FlipX", remote_test_folder
@@ -58,7 +58,7 @@ module AsposeCadCloud
       output_format = "jpg"
       dest_name = remote_test_out + remote_name
 
-      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
+      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r")
       @Cad_api.upload_file st_request
 
       request = GetDrawingRotateFlipRequest.new remote_name, output_format, "Rotate180FlipNone", remote_test_folder, dest_name, nil

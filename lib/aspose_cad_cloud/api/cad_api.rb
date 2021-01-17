@@ -43,7 +43,7 @@ module AsposeCadCloud
     # @param request CopyFileRequest
     # @return [nil]
     def copy_file(request)
-      copy_file_with_http_info(request)
+      data, _status_code, _headers = copy_file_with_http_info(request)
       request_token if _status_code == 401
       nil
     end
@@ -95,7 +95,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -120,7 +120,7 @@ module AsposeCadCloud
     # @param request CopyFolderRequest
     # @return [nil]
     def copy_folder(request)
-      copy_folder_with_http_info(request)
+      data, _status_code, _headers = copy_folder_with_http_info(request)
       request_token if _status_code == 401
       nil
     end
@@ -167,7 +167,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -192,7 +192,7 @@ module AsposeCadCloud
     # @param request CreateFolderRequest
     # @return [nil]
     def create_folder(request)
-      create_folder_with_http_info(request)
+      data, _status_code, _headers = create_folder_with_http_info(request)
       request_token if _status_code == 401
       nil
     end
@@ -230,7 +230,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -255,7 +255,7 @@ module AsposeCadCloud
     # @param request DeleteFileRequest
     # @return [nil]
     def delete_file(request)
-      delete_file_with_http_info(request)
+      data, _status_code, _headers = delete_file_with_http_info(request)
       request_token if _status_code == 401
       nil
     end
@@ -298,7 +298,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -323,7 +323,7 @@ module AsposeCadCloud
     # @param request DeleteFolderRequest
     # @return [nil]
     def delete_folder(request)
-      delete_folder_with_http_info(request)
+      data, _status_code, _headers = delete_folder_with_http_info(request)
       request_token if _status_code == 401
       nil
     end
@@ -366,7 +366,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -434,7 +434,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -495,7 +495,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -564,7 +564,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -650,7 +650,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -734,7 +734,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -811,7 +811,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -875,7 +875,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -939,7 +939,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -965,7 +965,7 @@ module AsposeCadCloud
     # @param request MoveFileRequest
     # @return [nil]
     def move_file(request)
-      move_file_with_http_info(request)
+      data, _status_code, _headers = move_file_with_http_info(request)
       request_token if _status_code == 401
       nil
     end
@@ -1017,7 +1017,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -1042,7 +1042,7 @@ module AsposeCadCloud
     # @param request MoveFolderRequest
     # @return [nil]
     def move_folder(request)
-      move_folder_with_http_info(request)
+      data, _status_code, _headers = move_folder_with_http_info(request)
       request_token if _status_code == 401
       nil
     end
@@ -1089,7 +1089,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -1157,7 +1157,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -1233,7 +1233,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -1309,7 +1309,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -1385,7 +1385,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -1461,7 +1461,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -1537,7 +1537,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -1613,7 +1613,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -1672,7 +1672,7 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -1748,7 +1748,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -1829,7 +1829,7 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -1908,7 +1908,7 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -1980,7 +1980,7 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -2056,7 +2056,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -2132,7 +2132,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -2208,7 +2208,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -2278,7 +2278,7 @@ module AsposeCadCloud
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -2348,7 +2348,7 @@ module AsposeCadCloud
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -2418,7 +2418,7 @@ module AsposeCadCloud
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -2488,7 +2488,7 @@ module AsposeCadCloud
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -2558,7 +2558,7 @@ module AsposeCadCloud
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -2628,7 +2628,7 @@ module AsposeCadCloud
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -2698,7 +2698,7 @@ module AsposeCadCloud
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -2768,7 +2768,7 @@ module AsposeCadCloud
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -2838,7 +2838,7 @@ module AsposeCadCloud
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -2908,7 +2908,7 @@ module AsposeCadCloud
       form_params[downcase_first_letter('drawingData')] = request.drawing_data
       form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -2967,7 +2967,7 @@ module AsposeCadCloud
       # form parameters
       form_params = {}
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 
@@ -3034,7 +3034,7 @@ module AsposeCadCloud
       form_params = {}
       form_params[downcase_first_letter('File')] = request.file
 	  
-	  if not form_params.empty?
+      if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
       end
 

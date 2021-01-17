@@ -40,7 +40,7 @@ module AsposeCadCloud
       output_format = 'pdf'
       dest_name = remote_test_out + remote_name + '.' + output_format
 
-      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
+      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r")
       @Cad_api.upload_file st_request
 
       request = PostDrawingSaveAsRequest.new File.open(local_test_folder + filename, "r"), output_format, remote_test_folder + filename, nil
@@ -57,8 +57,8 @@ module AsposeCadCloud
       output_format = "jpg"
       dest_name = remote_test_out + remote_name
 
-      st_request = PutCreateRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
-      @storage_api.put_create st_request
+      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r")
+      @Cad_api.upload_file st_request
 
       request = GetDrawingSaveAsRequest.new remote_name, output_format, remote_test_folder, nil, nil
       result = @Cad_api.get_drawing_save_as_with_http_info request

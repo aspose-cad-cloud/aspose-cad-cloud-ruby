@@ -40,7 +40,7 @@ module AsposeCadCloud
       remote_name = filename
       dest_name = remote_test_out + remote_name
 
-      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r").read
+      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r")
       @Cad_api.upload_file st_request
 
       request = GetDrawingPropertiesRequest.new remote_name, remote_test_folder
