@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="BmpOptionsDTO.rb">
+ # <copyright company="Aspose" file="KeySizes.rb">
  #   Copyright (c) 2017 Aspose.CAD Cloud
  # </copyright>
  # <summary>
@@ -29,69 +29,30 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Export options for BMP format
-  class BmpOptionsDTO
-    # Resulting rotation operation
-    attr_accessor :rotation
 
-    # Layers to export
-    attr_accessor :layers
+  class KeySizes
+    attr_accessor :min_size
 
-    # DPI resolution settings
-    attr_accessor :resolution_settings
+    attr_accessor :max_size
 
-    # Raster options
-    attr_accessor :vector_rasterization_options
+    attr_accessor :skip_size
 
-    # Bits per pixel
-    attr_accessor :bits_per_pixel
-
-    # Compression type
-    attr_accessor :compression
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'rotation' => :'Rotation',
-        :'layers' => :'Layers',
-        :'resolution_settings' => :'ResolutionSettings',
-        :'vector_rasterization_options' => :'VectorRasterizationOptions',
-        :'bits_per_pixel' => :'BitsPerPixel',
-        :'compression' => :'Compression'
+        :'min_size' => :'MinSize',
+        :'max_size' => :'MaxSize',
+        :'skip_size' => :'SkipSize'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'rotation' => :'String',
-        :'layers' => :'Array<String>',
-        :'resolution_settings' => :'ResolutionSetting',
-        :'vector_rasterization_options' => :'CadRasterizationOptionsDTO',
-        :'bits_per_pixel' => :'Integer',
-        :'compression' => :'String'
+        :'min_size' => :'Integer',
+        :'max_size' => :'Integer',
+        :'skip_size' => :'Integer'
       }
     end
 
@@ -103,30 +64,16 @@ module AsposeCadCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'Rotation')
-        self.rotation = attributes[:'Rotation']
+      if attributes.key?(:'MinSize')
+        self.min_size = attributes[:'MinSize']
       end
 
-      if attributes.key?(:'Layers')
-        if (value = attributes[:'Layers']).is_a?(Array)
-          self.layers = value
-        end
+      if attributes.key?(:'MaxSize')
+        self.max_size = attributes[:'MaxSize']
       end
 
-      if attributes.key?(:'ResolutionSettings')
-        self.resolution_settings = attributes[:'ResolutionSettings']
-      end
-
-      if attributes.key?(:'VectorRasterizationOptions')
-        self.vector_rasterization_options = attributes[:'VectorRasterizationOptions']
-      end
-
-      if attributes.key?(:'BitsPerPixel')
-        self.bits_per_pixel = attributes[:'BitsPerPixel']
-      end
-
-      if attributes.key?(:'Compression')
-        self.compression = attributes[:'Compression']
+      if attributes.key?(:'SkipSize')
+        self.skip_size = attributes[:'SkipSize']
       end
 
     end
@@ -135,16 +82,16 @@ module AsposeCadCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = []
-      if @rotation.nil?
-        invalid_properties.push("invalid value for 'rotation', rotation cannot be nil.")
+      if @min_size.nil?
+        invalid_properties.push("invalid value for 'min_size', min_size cannot be nil.")
       end
 
-      if @bits_per_pixel.nil?
-        invalid_properties.push("invalid value for 'bits_per_pixel', bits_per_pixel cannot be nil.")
+      if @max_size.nil?
+        invalid_properties.push("invalid value for 'max_size', max_size cannot be nil.")
       end
 
-      if @compression.nil?
-        invalid_properties.push("invalid value for 'compression', compression cannot be nil.")
+      if @skip_size.nil?
+        invalid_properties.push("invalid value for 'skip_size', skip_size cannot be nil.")
       end
 
       return invalid_properties
@@ -153,42 +100,10 @@ module AsposeCadCloud
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @rotation.nil?
-      rotation_validator = EnumAttributeValidator.new('String', ["RotateNoneFlipNone", "Rotate90FlipNone", "Rotate180FlipNone", "Rotate270FlipNone", "RotateNoneFlipX", "Rotate90FlipX", "Rotate180FlipX", "Rotate270FlipX", "RotateNoneFlipY", "Rotate90FlipY", "Rotate180FlipY", "Rotate270FlipY", "RotateNoneFlipXY", "Rotate90FlipXY", "Rotate180FlipXY", "Rotate270FlipXY"])
-      return false unless rotation_validator.valid?(@rotation)
-      return false if @bits_per_pixel.nil?
-      return false if @compression.nil?
-      compression_validator = EnumAttributeValidator.new('String', ["Rgb", "Rle8", "Rle4", "Bitfields", "Jpeg", "Png", "AlphaBitfields", "Dxt1"])
-      return false unless compression_validator.valid?(@compression)
+      return false if @min_size.nil?
+      return false if @max_size.nil?
+      return false if @skip_size.nil?
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] rotation Object to be assigned
-    def rotation=(rotation)
-      validator = EnumAttributeValidator.new('String', ["RotateNoneFlipNone", "Rotate90FlipNone", "Rotate180FlipNone", "Rotate270FlipNone", "RotateNoneFlipX", "Rotate90FlipX", "Rotate180FlipX", "Rotate270FlipX", "RotateNoneFlipY", "Rotate90FlipY", "Rotate180FlipY", "Rotate270FlipY", "RotateNoneFlipXY", "Rotate90FlipXY", "Rotate180FlipXY", "Rotate270FlipXY"])
-      if rotation.to_i == 0
-        unless validator.valid?(rotation)
-          raise ArgumentError, "invalid value for 'rotation', must be one of #{validator.allowable_values}."
-        end
-        @rotation = rotation
-      else
-        @rotation = validator.allowable_values[rotation.to_i]
-      end
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] compression Object to be assigned
-    def compression=(compression)
-      validator = EnumAttributeValidator.new('String', ["Rgb", "Rle8", "Rle4", "Bitfields", "Jpeg", "Png", "AlphaBitfields", "Dxt1"])
-      if compression.to_i == 0
-        unless validator.valid?(compression)
-          raise ArgumentError, "invalid value for 'compression', must be one of #{validator.allowable_values}."
-        end
-        @compression = compression
-      else
-        @compression = validator.allowable_values[compression.to_i]
-      end
     end
 
     # Checks equality by comparing each attribute.
@@ -196,12 +111,9 @@ module AsposeCadCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          rotation == other.rotation &&
-          layers == other.layers &&
-          resolution_settings == other.resolution_settings &&
-          vector_rasterization_options == other.vector_rasterization_options &&
-          bits_per_pixel == other.bits_per_pixel &&
-          compression == other.compression
+          min_size == other.min_size &&
+          max_size == other.max_size &&
+          skip_size == other.skip_size
     end
 
     # @see the `==` method
@@ -213,7 +125,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [rotation, layers, resolution_settings, vector_rasterization_options, bits_per_pixel, compression].hash
+      [min_size, max_size, skip_size].hash
     end
 
     # Builds the object from hash

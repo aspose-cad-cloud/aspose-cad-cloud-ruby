@@ -33,6 +33,8 @@ module AsposeCadCloud
   class PdfDocumentOptions
     attr_accessor :compliance
 
+    attr_accessor :digital_signature_details
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -58,14 +60,16 @@ module AsposeCadCloud
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'compliance' => :'Compliance'
+        :'compliance' => :'Compliance',
+        :'digital_signature_details' => :'DigitalSignatureDetails'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'compliance' => :'String'
+        :'compliance' => :'String',
+        :'digital_signature_details' => :'PdfDigitalSignatureDetailsCore'
       }
     end
 
@@ -79,6 +83,10 @@ module AsposeCadCloud
 
       if attributes.key?(:'Compliance')
         self.compliance = attributes[:'Compliance']
+      end
+
+      if attributes.key?(:'DigitalSignatureDetails')
+        self.digital_signature_details = attributes[:'DigitalSignatureDetails']
       end
 
     end
@@ -122,7 +130,8 @@ module AsposeCadCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          compliance == other.compliance
+          compliance == other.compliance &&
+          digital_signature_details == other.digital_signature_details
     end
 
     # @see the `==` method
@@ -134,7 +143,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [compliance].hash
+      [compliance, digital_signature_details].hash
     end
 
     # Builds the object from hash

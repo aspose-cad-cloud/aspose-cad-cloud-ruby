@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="Cff2Properties.rb">
+ # <copyright company="Aspose" file="AsymmetricAlgorithm.rb">
  #   Copyright (c) 2017 Aspose.CAD Cloud
  # </copyright>
  # <summary>
@@ -29,18 +29,34 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Represents information about CFF2 drawing.
-  class Cff2Properties
+
+  class AsymmetricAlgorithm
+    attr_accessor :key_size
+
+    attr_accessor :legal_key_sizes
+
+    attr_accessor :signature_algorithm
+
+    attr_accessor :key_exchange_algorithm
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'key_size' => :'KeySize',
+        :'legal_key_sizes' => :'LegalKeySizes',
+        :'signature_algorithm' => :'SignatureAlgorithm',
+        :'key_exchange_algorithm' => :'KeyExchangeAlgorithm'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'key_size' => :'Integer',
+        :'legal_key_sizes' => :'Array<KeySizes>',
+        :'signature_algorithm' => :'String',
+        :'key_exchange_algorithm' => :'String'
       }
     end
 
@@ -52,18 +68,41 @@ module AsposeCadCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
+      if attributes.key?(:'KeySize')
+        self.key_size = attributes[:'KeySize']
+      end
+
+      if attributes.key?(:'LegalKeySizes')
+        if (value = attributes[:'LegalKeySizes']).is_a?(Array)
+          self.legal_key_sizes = value
+        end
+      end
+
+      if attributes.key?(:'SignatureAlgorithm')
+        self.signature_algorithm = attributes[:'SignatureAlgorithm']
+      end
+
+      if attributes.key?(:'KeyExchangeAlgorithm')
+        self.key_exchange_algorithm = attributes[:'KeyExchangeAlgorithm']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = []
+      if @key_size.nil?
+        invalid_properties.push("invalid value for 'key_size', key_size cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @key_size.nil?
       return true
     end
 
@@ -71,7 +110,11 @@ module AsposeCadCloud
     # @param [Object] Object to be compared
     def ==(other)
       return true if self.equal?(other)
-      self.class == other.class
+      self.class == other.class &&
+          key_size == other.key_size &&
+          legal_key_sizes == other.legal_key_sizes &&
+          signature_algorithm == other.signature_algorithm &&
+          key_exchange_algorithm == other.key_exchange_algorithm
     end
 
     # @see the `==` method
@@ -83,7 +126,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [].hash
+      [key_size, legal_key_sizes, signature_algorithm, key_exchange_algorithm].hash
     end
 
     # Builds the object from hash

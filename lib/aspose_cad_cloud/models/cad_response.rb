@@ -61,8 +61,17 @@ module AsposeCadCloud
     # Gets or sets the DWF properties.
     attr_accessor :dwf_properties
 
-    # Gets or sets the CFF2 properties.
-    attr_accessor :cff2_properties
+    # Gets or sets the Cf2 properties.
+    attr_accessor :cf2_properties
+
+    # Gets or sets the Cf2 properties.
+    attr_accessor :fbx_properties
+
+    # Gets or sets the FBX properties.
+    attr_accessor :obj_properties
+
+    # Gets or sets the Cf2 properties.
+    attr_accessor :plt_properties
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -78,7 +87,10 @@ module AsposeCadCloud
         :'igs_properties' => :'IgsProperties',
         :'stl_properties' => :'StlProperties',
         :'dwf_properties' => :'DwfProperties',
-        :'cff2_properties' => :'Cff2Properties'
+        :'cf2_properties' => :'Cf2Properties',
+        :'fbx_properties' => :'FbxProperties',
+        :'obj_properties' => :'ObjProperties',
+        :'plt_properties' => :'PltProperties'
       }
     end
 
@@ -95,7 +107,10 @@ module AsposeCadCloud
         :'igs_properties' => :'IgsProperties',
         :'stl_properties' => :'StlProperties',
         :'dwf_properties' => :'DwfProperties',
-        :'cff2_properties' => :'Cff2Properties'
+        :'cf2_properties' => :'Cf2Properties',
+        :'fbx_properties' => :'FbxProperties',
+        :'obj_properties' => :'ObjProperties',
+        :'plt_properties' => :'PltProperties'
       }
     end
 
@@ -147,8 +162,20 @@ module AsposeCadCloud
         self.dwf_properties = attributes[:'DwfProperties']
       end
 
-      if attributes.key?(:'Cff2Properties')
-        self.cff2_properties = attributes[:'Cff2Properties']
+      if attributes.key?(:'Cf2Properties')
+        self.cf2_properties = attributes[:'Cf2Properties']
+      end
+
+      if attributes.key?(:'FbxProperties')
+        self.fbx_properties = attributes[:'FbxProperties']
+      end
+
+      if attributes.key?(:'ObjProperties')
+        self.obj_properties = attributes[:'ObjProperties']
+      end
+
+      if attributes.key?(:'PltProperties')
+        self.plt_properties = attributes[:'PltProperties']
       end
 
     end
@@ -191,7 +218,10 @@ module AsposeCadCloud
           igs_properties == other.igs_properties &&
           stl_properties == other.stl_properties &&
           dwf_properties == other.dwf_properties &&
-          cff2_properties == other.cff2_properties
+          cf2_properties == other.cf2_properties &&
+          fbx_properties == other.fbx_properties &&
+          obj_properties == other.obj_properties &&
+          plt_properties == other.plt_properties
     end
 
     # @see the `==` method
@@ -203,7 +233,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [height, width, dwg_properties, dxf_properties, dwt_properties, dgn_properties, ifc_properties, igs_properties, stl_properties, dwf_properties, cff2_properties].hash
+      [height, width, dwg_properties, dxf_properties, dwt_properties, dgn_properties, ifc_properties, igs_properties, stl_properties, dwf_properties, cf2_properties, fbx_properties, obj_properties, plt_properties].hash
     end
 
     # Builds the object from hash
