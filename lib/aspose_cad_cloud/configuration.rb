@@ -173,7 +173,14 @@ module AsposeCadCloud
     # Returns Auth Settings hash for api client.
     def auth_settings
       {
-        'JWT' =>
+        'Bearer' =>
+          {
+            type: 'api_key',
+            in: 'header',
+            key: 'Authorization',
+            value: api_key_with_prefix('Authorization')
+          },
+        'OAuth2' =>
           {
             type: 'oauth2',
             in: 'header',

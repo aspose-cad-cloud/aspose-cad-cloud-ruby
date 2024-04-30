@@ -38,6 +38,72 @@ module AsposeCadCloud
       request_token
     end
 
+    # Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.
+    # 
+    # @param request ConvertRequest
+    # @return [File]
+    def convert(request)
+      data, _status_code, _headers = convert_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.
+    # 
+    # @param request ConvertRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def convert_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? ConvertRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.convert ...' if @api_client.config.debugging
+      # verify the required parameter 'output_format' is set
+      raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.convert' if @api_client.config.client_side_validation && request.output_format.nil?
+      # resource path
+      local_var_path = '/cad/Convert'
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('outputFormat')] = request.output_format
+
+      if local_var_path.include? downcase_first_letter('outputTypeExt')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outputTypeExt') + '}', request.output_type_ext.to_s)
+      else
+        query_params[downcase_first_letter('outputTypeExt')] = request.output_type_ext unless request.output_type_ext.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#convert\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
     # Copy file
     # 
     # @param request CopyFileRequest
@@ -451,6 +517,181 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#download_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Get Metadata info
+    # 
+    # @param request EditMetadataRequest
+    # @return [String]
+    def edit_metadata(request)
+      data, _status_code, _headers = edit_metadata_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Get Metadata info
+    # 
+    # @param request EditMetadataRequest
+    # @return [Array<(String, Fixnum, Hash)>]
+    # String data, response status code and response headers
+    def edit_metadata_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? EditMetadataRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.edit_metadata ...' if @api_client.config.debugging
+      # resource path
+      local_var_path = '/cad/EditMetadata'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream', 'multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'String')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#edit_metadata\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Extract Metadata from CAD drawing to txt, xml or json file.
+    # 
+    # @param request ExtractMetadataRequest
+    # @return [File]
+    def extract_metadata(request)
+      data, _status_code, _headers = extract_metadata_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Extract Metadata from CAD drawing to txt, xml or json file.
+    # 
+    # @param request ExtractMetadataRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def extract_metadata_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? ExtractMetadataRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.extract_metadata ...' if @api_client.config.debugging
+      # verify the required parameter 'output_format' is set
+      raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.extract_metadata' if @api_client.config.client_side_validation && request.output_format.nil?
+      # resource path
+      local_var_path = '/cad/ExtractMetadata'
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('outputFormat')] = request.output_format
+
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#extract_metadata\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Extract Text from CAD drawing to txt file
+    # 
+    # @param request ExtractTextRequest
+    # @return [File]
+    def extract_text(request)
+      data, _status_code, _headers = extract_text_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Extract Text from CAD drawing to txt file
+    # 
+    # @param request ExtractTextRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def extract_text_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? ExtractTextRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.extract_text ...' if @api_client.config.debugging
+      # resource path
+      local_var_path = '/cad/ExtractText'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#extract_text\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -1178,6 +1419,67 @@ module AsposeCadCloud
       [data, status_code, headers]
     end
 
+    # Convert bitmap image to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG format.
+    # 
+    # @param request PaperToCadRequest
+    # @return [File]
+    def paper_to_cad(request)
+      data, _status_code, _headers = paper_to_cad_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Convert bitmap image to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG format.
+    # 
+    # @param request PaperToCadRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def paper_to_cad_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PaperToCadRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.paper_to_cad ...' if @api_client.config.debugging
+      # verify the required parameter 'output_format' is set
+      raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.paper_to_cad' if @api_client.config.client_side_validation && request.output_format.nil?
+      # resource path
+      local_var_path = '/cad/paper-to-cad'
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('outputFormat')] = request.output_format
+
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#paper_to_cad\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
     # Export an existing drawing to BMP format with export settings specified.
     # 
     # @param request PostDrawingBmpRequest
@@ -1250,6 +1552,158 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#post_drawing_bmp\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export an existing drawing to CGM format with export settings specified.
+    # 
+    # @param request PostDrawingCgmRequest
+    # @return [File]
+    def post_drawing_cgm(request)
+      data, _status_code, _headers = post_drawing_cgm_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export an existing drawing to CGM format with export settings specified.
+    # 
+    # @param request PostDrawingCgmRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def post_drawing_cgm_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingCgmRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_cgm ...' if @api_client.config.debugging
+      # verify the required parameter 'name' is set
+      raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_cgm' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_cgm' if @api_client.config.client_side_validation && request.options.nil?
+      # resource path
+      local_var_path = '/cad/{name}/cgm'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('folder')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('folder') + '}', request.folder.to_s)
+      else
+        query_params[downcase_first_letter('folder')] = request.folder unless request.folder.nil?
+      end
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(request.options)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#post_drawing_cgm\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export an existing drawing to Dicom format with export settings specified.
+    # 
+    # @param request PostDrawingDicomRequest
+    # @return [File]
+    def post_drawing_dicom(request)
+      data, _status_code, _headers = post_drawing_dicom_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export an existing drawing to Dicom format with export settings specified.
+    # 
+    # @param request PostDrawingDicomRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def post_drawing_dicom_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingDicomRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_dicom ...' if @api_client.config.debugging
+      # verify the required parameter 'name' is set
+      raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_dicom' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_dicom' if @api_client.config.client_side_validation && request.options.nil?
+      # resource path
+      local_var_path = '/cad/{name}/dicom'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('folder')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('folder') + '}', request.folder.to_s)
+      else
+        query_params[downcase_first_letter('folder')] = request.folder unless request.folder.nil?
+      end
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(request.options)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#post_drawing_dicom\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -1554,6 +2008,158 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#post_drawing_gif\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export an existing drawing to GLB format with export settings specified.
+    # 
+    # @param request PostDrawingGlbRequest
+    # @return [File]
+    def post_drawing_glb(request)
+      data, _status_code, _headers = post_drawing_glb_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export an existing drawing to GLB format with export settings specified.
+    # 
+    # @param request PostDrawingGlbRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def post_drawing_glb_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingGlbRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_glb ...' if @api_client.config.debugging
+      # verify the required parameter 'name' is set
+      raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_glb' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_glb' if @api_client.config.client_side_validation && request.options.nil?
+      # resource path
+      local_var_path = '/cad/{name}/glb'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('folder')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('folder') + '}', request.folder.to_s)
+      else
+        query_params[downcase_first_letter('folder')] = request.folder unless request.folder.nil?
+      end
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(request.options)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#post_drawing_glb\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export an existing drawing to GLTF format with export settings specified.
+    # 
+    # @param request PostDrawingGltfRequest
+    # @return [File]
+    def post_drawing_gltf(request)
+      data, _status_code, _headers = post_drawing_gltf_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export an existing drawing to GLTF format with export settings specified.
+    # 
+    # @param request PostDrawingGltfRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def post_drawing_gltf_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingGltfRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_gltf ...' if @api_client.config.debugging
+      # verify the required parameter 'name' is set
+      raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_gltf' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_gltf' if @api_client.config.client_side_validation && request.options.nil?
+      # resource path
+      local_var_path = '/cad/{name}/gltf'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('folder')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('folder') + '}', request.folder.to_s)
+      else
+        query_params[downcase_first_letter('folder')] = request.folder unless request.folder.nil?
+      end
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(request.options)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#post_drawing_gltf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -2305,6 +2911,82 @@ module AsposeCadCloud
       [data, status_code, headers]
     end
 
+    # Export an existing drawing to STP format with export settings specified.
+    # 
+    # @param request PostDrawingStpRequest
+    # @return [File]
+    def post_drawing_stp(request)
+      data, _status_code, _headers = post_drawing_stp_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export an existing drawing to STP format with export settings specified.
+    # 
+    # @param request PostDrawingStpRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def post_drawing_stp_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingStpRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_stp ...' if @api_client.config.debugging
+      # verify the required parameter 'name' is set
+      raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_stp' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_stp' if @api_client.config.client_side_validation && request.options.nil?
+      # resource path
+      local_var_path = '/cad/{name}/stp'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('folder')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('folder') + '}', request.folder.to_s)
+      else
+        query_params[downcase_first_letter('folder')] = request.folder unless request.folder.nil?
+      end
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(request.options)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#post_drawing_stp\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
     # Export an existing drawing to SVG format with export settings specified.
     # 
     # @param request PostDrawingSvgRequest
@@ -2381,6 +3063,82 @@ module AsposeCadCloud
       [data, status_code, headers]
     end
 
+    # Export an existing drawing to 3ds format with export settings specified.
+    # 
+    # @param request PostDrawingThreeDsRequest
+    # @return [File]
+    def post_drawing_three_ds(request)
+      data, _status_code, _headers = post_drawing_three_ds_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export an existing drawing to 3ds format with export settings specified.
+    # 
+    # @param request PostDrawingThreeDsRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def post_drawing_three_ds_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingThreeDsRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_three_ds ...' if @api_client.config.debugging
+      # verify the required parameter 'name' is set
+      raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_three_ds' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_three_ds' if @api_client.config.client_side_validation && request.options.nil?
+      # resource path
+      local_var_path = '/cad/{name}/3ds'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('folder')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('folder') + '}', request.folder.to_s)
+      else
+        query_params[downcase_first_letter('folder')] = request.folder unless request.folder.nil?
+      end
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(request.options)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#post_drawing_three_ds\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
     # Export an existing drawing into TIFF format with export settings specified.
     # 
     # @param request PostDrawingTiffRequest
@@ -2453,6 +3211,158 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#post_drawing_tiff\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export an existing drawing to U3d format with export settings specified.
+    # 
+    # @param request PostDrawingU3dRequest
+    # @return [File]
+    def post_drawing_u3d(request)
+      data, _status_code, _headers = post_drawing_u3d_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export an existing drawing to U3d format with export settings specified.
+    # 
+    # @param request PostDrawingU3dRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def post_drawing_u3d_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingU3dRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_u3d ...' if @api_client.config.debugging
+      # verify the required parameter 'name' is set
+      raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_u3d' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_u3d' if @api_client.config.client_side_validation && request.options.nil?
+      # resource path
+      local_var_path = '/cad/{name}/u3d'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('folder')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('folder') + '}', request.folder.to_s)
+      else
+        query_params[downcase_first_letter('folder')] = request.folder unless request.folder.nil?
+      end
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(request.options)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#post_drawing_u3d\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export an existing drawing to Webp format with export settings specified.
+    # 
+    # @param request PostDrawingWebpRequest
+    # @return [File]
+    def post_drawing_webp(request)
+      data, _status_code, _headers = post_drawing_webp_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export an existing drawing to Webp format with export settings specified.
+    # 
+    # @param request PostDrawingWebpRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def post_drawing_webp_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingWebpRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_webp ...' if @api_client.config.debugging
+      # verify the required parameter 'name' is set
+      raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_webp' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_webp' if @api_client.config.client_side_validation && request.options.nil?
+      # resource path
+      local_var_path = '/cad/{name}/webp'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('folder')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('folder') + '}', request.folder.to_s)
+      else
+        query_params[downcase_first_letter('folder')] = request.folder unless request.folder.nil?
+      end
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(request.options)
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#post_drawing_webp\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -2599,6 +3509,146 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#put_drawing_bmp\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export drawing to CGM format. Drawing data is passed as zero-indexed multipart/form-data as well as export CGM options serialized as JSON. Order of drawing data and CGM options could vary.
+    # 
+    # @param request PutDrawingCgmRequest
+    # @return [File]
+    def put_drawing_cgm(request)
+      data, _status_code, _headers = put_drawing_cgm_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export drawing to CGM format. Drawing data is passed as zero-indexed multipart/form-data as well as export CGM options serialized as JSON. Order of drawing data and CGM options could vary.
+    # 
+    # @param request PutDrawingCgmRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def put_drawing_cgm_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingCgmRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_cgm ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.put_drawing_cgm' if @api_client.config.client_side_validation && request.drawing_data.nil?
+      # resource path
+      local_var_path = '/cad/cgm'
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#put_drawing_cgm\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export drawing to Dicom format. Drawing data is passed as zero-indexed multipart/form-data as well as export Dicom options serialized as JSON. Order of drawing data and Dicom options could vary.
+    # 
+    # @param request PutDrawingDicomRequest
+    # @return [File]
+    def put_drawing_dicom(request)
+      data, _status_code, _headers = put_drawing_dicom_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export drawing to Dicom format. Drawing data is passed as zero-indexed multipart/form-data as well as export Dicom options serialized as JSON. Order of drawing data and Dicom options could vary.
+    # 
+    # @param request PutDrawingDicomRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def put_drawing_dicom_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingDicomRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_dicom ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.put_drawing_dicom' if @api_client.config.client_side_validation && request.drawing_data.nil?
+      # resource path
+      local_var_path = '/cad/dicom'
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#put_drawing_dicom\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -2879,6 +3929,146 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#put_drawing_gif\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export drawing to GLB format. Drawing data is passed as zero-indexed multipart/form-data as well as export GLB options serialized as JSON. Order of drawing data and GLB options could vary.
+    # 
+    # @param request PutDrawingGlbRequest
+    # @return [File]
+    def put_drawing_glb(request)
+      data, _status_code, _headers = put_drawing_glb_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export drawing to GLB format. Drawing data is passed as zero-indexed multipart/form-data as well as export GLB options serialized as JSON. Order of drawing data and GLB options could vary.
+    # 
+    # @param request PutDrawingGlbRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def put_drawing_glb_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingGlbRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_glb ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.put_drawing_glb' if @api_client.config.client_side_validation && request.drawing_data.nil?
+      # resource path
+      local_var_path = '/cad/glb'
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#put_drawing_glb\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export drawing to GLTF format. Drawing data is passed as zero-indexed multipart/form-data as well as export GLTF options serialized as JSON. Order of drawing data and GLTF options could vary.
+    # 
+    # @param request PutDrawingGltfRequest
+    # @return [File]
+    def put_drawing_gltf(request)
+      data, _status_code, _headers = put_drawing_gltf_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export drawing to GLTF format. Drawing data is passed as zero-indexed multipart/form-data as well as export GLTF options serialized as JSON. Order of drawing data and GLTF options could vary.
+    # 
+    # @param request PutDrawingGltfRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def put_drawing_gltf_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingGltfRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_gltf ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.put_drawing_gltf' if @api_client.config.client_side_validation && request.drawing_data.nil?
+      # resource path
+      local_var_path = '/cad/gltf'
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#put_drawing_gltf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -3303,6 +4493,76 @@ module AsposeCadCloud
       [data, status_code, headers]
     end
 
+    # Export drawing to Stp format. Drawing data is passed as zero-indexed multipart/form-data as well as export Stp options serialized as JSON. Order of drawing data and Stp options could vary.
+    # 
+    # @param request PutDrawingStpRequest
+    # @return [File]
+    def put_drawing_stp(request)
+      data, _status_code, _headers = put_drawing_stp_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export drawing to Stp format. Drawing data is passed as zero-indexed multipart/form-data as well as export Stp options serialized as JSON. Order of drawing data and Stp options could vary.
+    # 
+    # @param request PutDrawingStpRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def put_drawing_stp_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingStpRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_stp ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.put_drawing_stp' if @api_client.config.client_side_validation && request.drawing_data.nil?
+      # resource path
+      local_var_path = '/cad/stp'
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#put_drawing_stp\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
     # Export drawing to SVG format. Drawing data is passed as zero-indexed multipart/form-data as well as export SVG options serialized as JSON. Order of drawing data and SVG options could vary.
     # 
     # @param request PutDrawingSvgRequest
@@ -3369,6 +4629,76 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#put_drawing_svg\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export drawing to 3ds format. Drawing data is passed as zero-indexed multipart/form-data as well as export 3ds options serialized as JSON. Order of drawing data and 3ds options could vary.
+    # 
+    # @param request PutDrawingThreeDsRequest
+    # @return [File]
+    def put_drawing_three_ds(request)
+      data, _status_code, _headers = put_drawing_three_ds_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export drawing to 3ds format. Drawing data is passed as zero-indexed multipart/form-data as well as export 3ds options serialized as JSON. Order of drawing data and 3ds options could vary.
+    # 
+    # @param request PutDrawingThreeDsRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def put_drawing_three_ds_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingThreeDsRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_three_ds ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.put_drawing_three_ds' if @api_client.config.client_side_validation && request.drawing_data.nil?
+      # resource path
+      local_var_path = '/cad/3ds'
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#put_drawing_three_ds\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -3443,6 +4773,146 @@ module AsposeCadCloud
       [data, status_code, headers]
     end
 
+    # Export drawing to U3d format. Drawing data is passed as zero-indexed multipart/form-data as well as export U3d options serialized as JSON. Order of drawing data and U3d options could vary.
+    # 
+    # @param request PutDrawingU3dRequest
+    # @return [File]
+    def put_drawing_u3d(request)
+      data, _status_code, _headers = put_drawing_u3d_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export drawing to U3d format. Drawing data is passed as zero-indexed multipart/form-data as well as export U3d options serialized as JSON. Order of drawing data and U3d options could vary.
+    # 
+    # @param request PutDrawingU3dRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def put_drawing_u3d_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingU3dRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_u3d ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.put_drawing_u3d' if @api_client.config.client_side_validation && request.drawing_data.nil?
+      # resource path
+      local_var_path = '/cad/u3d'
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#put_drawing_u3d\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export drawing to Webp format. Drawing data is passed as zero-indexed multipart/form-data as well as export Webp options serialized as JSON. Order of drawing data and Webp options could vary.
+    # 
+    # @param request PutDrawingWebpRequest
+    # @return [File]
+    def put_drawing_webp(request)
+      data, _status_code, _headers = put_drawing_webp_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export drawing to Webp format. Drawing data is passed as zero-indexed multipart/form-data as well as export Webp options serialized as JSON. Order of drawing data and Webp options could vary.
+    # 
+    # @param request PutDrawingWebpRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def put_drawing_webp_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingWebpRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_webp ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.put_drawing_webp' if @api_client.config.client_side_validation && request.drawing_data.nil?
+      # resource path
+      local_var_path = '/cad/webp'
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#put_drawing_webp\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
     # Export drawing to WMF format. Drawing data is passed as zero-indexed multipart/form-data as well as export WMF options serialized as JSON. Order of drawing data and WMF options could vary.
     # 
     # @param request PutDrawingWmfRequest
@@ -3509,6 +4979,64 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#put_drawing_wmf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Save Metadata
+    # 
+    # @param request PutEditMetadataRequest
+    # @return [File]
+    def put_edit_metadata(request)
+      data, _status_code, _headers = put_edit_metadata_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Save Metadata
+    # 
+    # @param request PutEditMetadataRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def put_edit_metadata_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PutEditMetadataRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.put_edit_metadata ...' if @api_client.config.debugging
+      # resource path
+      local_var_path = '/cad/EditMetadata'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
+      form_params[downcase_first_letter('metadataComponent')] = request.metadata_component unless request.metadata_component.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#put_edit_metadata\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -3635,6 +5163,134 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#upload_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Return file for viewer
+    # 
+    # @param request ViewerRequest
+    # @return [File]
+    def viewer(request)
+      data, _status_code, _headers = viewer_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Return file for viewer
+    # 
+    # @param request ViewerRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def viewer_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? ViewerRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.viewer ...' if @api_client.config.debugging
+      # verify the required parameter 'output_format' is set
+      raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.viewer' if @api_client.config.client_side_validation && request.output_format.nil?
+      # resource path
+      local_var_path = '/cad/Viewer'
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('outputFormat')] = request.output_format
+
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#viewer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Add watermark to drawing
+    # 
+    # @param request WatermarkRequest
+    # @return [File]
+    def watermark(request)
+      data, _status_code, _headers = watermark_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Add watermark to drawing
+    # 
+    # @param request WatermarkRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def watermark_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? WatermarkRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.watermark ...' if @api_client.config.debugging
+      # verify the required parameter 'output_format' is set
+      raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.watermark' if @api_client.config.client_side_validation && request.output_format.nil?
+      # resource path
+      local_var_path = '/cad/Watermark'
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('outputFormat')] = request.output_format
+
+      if local_var_path.include? downcase_first_letter('outputTypeExt')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outputTypeExt') + '}', request.output_type_ext.to_s)
+      else
+        query_params[downcase_first_letter('outputTypeExt')] = request.output_type_ext unless request.output_type_ext.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
+      form_params[downcase_first_letter('watermarkRgb')] = request.watermark_rgb unless request.watermark_rgb.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#watermark\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end

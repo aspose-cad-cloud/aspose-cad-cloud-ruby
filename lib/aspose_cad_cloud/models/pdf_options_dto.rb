@@ -91,7 +91,7 @@ module AsposeCadCloud
         :'resolution_settings' => :'ResolutionSetting',
         :'vector_rasterization_options' => :'CadRasterizationOptionsDTO',
         :'pdf_document_info' => :'PdfDocumentInfo',
-        :'core_pdf_options' => :'PdfDocumentOptions'
+        :'core_pdf_options' => :'PdfDocumentOptionsDTO'
       }
     end
 

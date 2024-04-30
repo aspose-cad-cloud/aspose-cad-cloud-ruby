@@ -73,6 +73,9 @@ module AsposeCadCloud
     # Gets or sets the Cf2 properties.
     attr_accessor :plt_properties
 
+    # Gets or sets the STP properties.
+    attr_accessor :stp_properties
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -90,7 +93,8 @@ module AsposeCadCloud
         :'cf2_properties' => :'Cf2Properties',
         :'fbx_properties' => :'FbxProperties',
         :'obj_properties' => :'ObjProperties',
-        :'plt_properties' => :'PltProperties'
+        :'plt_properties' => :'PltProperties',
+        :'stp_properties' => :'StpProperties'
       }
     end
 
@@ -110,7 +114,8 @@ module AsposeCadCloud
         :'cf2_properties' => :'Cf2Properties',
         :'fbx_properties' => :'FbxProperties',
         :'obj_properties' => :'ObjProperties',
-        :'plt_properties' => :'PltProperties'
+        :'plt_properties' => :'PltProperties',
+        :'stp_properties' => :'StpProperties'
       }
     end
 
@@ -178,6 +183,10 @@ module AsposeCadCloud
         self.plt_properties = attributes[:'PltProperties']
       end
 
+      if attributes.key?(:'StpProperties')
+        self.stp_properties = attributes[:'StpProperties']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -221,7 +230,8 @@ module AsposeCadCloud
           cf2_properties == other.cf2_properties &&
           fbx_properties == other.fbx_properties &&
           obj_properties == other.obj_properties &&
-          plt_properties == other.plt_properties
+          plt_properties == other.plt_properties &&
+          stp_properties == other.stp_properties
     end
 
     # @see the `==` method
@@ -233,7 +243,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [height, width, dwg_properties, dxf_properties, dwt_properties, dgn_properties, ifc_properties, igs_properties, stl_properties, dwf_properties, cf2_properties, fbx_properties, obj_properties, plt_properties].hash
+      [height, width, dwg_properties, dxf_properties, dwt_properties, dgn_properties, ifc_properties, igs_properties, stl_properties, dwf_properties, cf2_properties, fbx_properties, obj_properties, plt_properties, stp_properties].hash
     end
 
     # Builds the object from hash
