@@ -35,7 +35,7 @@ Detalied official documentation can be found at the [following link](https://doc
 To install this package do the following:
 update your Gemfile
 ```ruby
-gem 'aspose_cad_cloud', '~> 20.11'
+gem 'aspose_cad_cloud', '~> 24.1'
 ```
 or install directly
 ```bash
@@ -48,24 +48,28 @@ gem install aspose_cad_cloud
 ```ruby
     # Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
 
+require 'aspose_cad_cloud/api/cad_api'
+require 'aspose_cad_cloud/models/requests/PutDrawingBmpRequest'
+require 'aspose_cad_cloud/configuration'
+require 'aspose_cad_cloud/api_client'
+require 'faraday/middleware'
+require 'faraday/multipart'
+
+module AsposeCadCloud
+
 	@config = Configuration.new
 	@config.api_key['api_key'] = 'MY_CLIENT_SECRET'
 	@config.api_key['app_sid'] = 'MY_CLIENT_ID'
-	@api_client = ApiClient.new @config
-	
-	@CAD_api = CADApi.new @api_client
-	
-	AsposeApp.app_key_and_sid(@config.api_key['api_key'], @config.api_key['app_sid'])
-	filename = 'sample.dwg'
-	remote_name = filename
-	output_format = 'pdf'
-	dest_name = remote_test_out + remote_name + '.' + output_format
 
-	st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r")
-	@Cad_api.upload_file st_request
+  	@api_client = ApiClient.new(@config)
+  	@cad_api = CadApi.new(@api_client)
 
-	request = PostDrawingSaveAsRequest.new File.open(local_test_folder + filename, "r"), output_format, remote_test_folder + filename, nil
-	result = @Cad_api.post_drawing_save_as_with_http_info request
+  	file_path = "file.dxf"
+
+  	request = PutDrawingBmpRequest.new(File.open(file_path, "r"))
+
+  	result = @cad_api.put_drawing_bmp(request)	
+end
 ```
       
 [Tests](https://github.com/aspose-cad-cloud/aspose-cad-cloud-ruby/tree/master/tests) contain various examples of using the SDK.

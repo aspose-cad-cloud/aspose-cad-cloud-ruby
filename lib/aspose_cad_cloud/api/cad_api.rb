@@ -89,7 +89,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -167,7 +167,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -239,7 +239,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -302,7 +302,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -370,7 +370,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -438,7 +438,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -506,7 +506,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -524,7 +524,7 @@ module AsposeCadCloud
     # Get Metadata info
     # 
     # @param request EditMetadataRequest
-    # @return [String]
+    # @return [File]
     def edit_metadata(request)
       data, _status_code, _headers = edit_metadata_with_http_info(request)
       request_token if _status_code == 401
@@ -534,8 +534,8 @@ module AsposeCadCloud
     # Get Metadata info
     # 
     # @param request EditMetadataRequest
-    # @return [Array<(String, Fixnum, Hash)>]
-    # String data, response status code and response headers
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
     def edit_metadata_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? EditMetadataRequest
 
@@ -551,7 +551,7 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream', 'multipart/form-data'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
 
       # form parameters
       form_params = {}
@@ -563,14 +563,14 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
                                                         form_params: form_params,
                                                         body: post_body,
                                                         auth_names: auth_names,
-                                                        return_type: 'String')
+                                                        return_type: 'File')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#edit_metadata\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
@@ -624,7 +624,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -681,7 +681,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -742,7 +742,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -811,7 +811,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -897,7 +897,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -981,7 +981,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1058,7 +1058,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1122,7 +1122,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1186,7 +1186,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1264,7 +1264,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1336,7 +1336,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1404,7 +1404,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1465,7 +1465,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1541,7 +1541,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1617,7 +1617,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1693,7 +1693,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1769,7 +1769,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1845,7 +1845,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1921,7 +1921,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -1997,7 +1997,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -2073,7 +2073,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -2149,7 +2149,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -2225,7 +2225,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -2301,7 +2301,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -2377,7 +2377,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -2453,7 +2453,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -2529,7 +2529,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -2588,7 +2588,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -2664,7 +2664,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -2745,7 +2745,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -2824,7 +2824,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -2896,7 +2896,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -2972,7 +2972,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -3048,7 +3048,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -3124,7 +3124,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -3200,7 +3200,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -3276,7 +3276,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -3352,7 +3352,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -3428,7 +3428,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.options)
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -3498,7 +3498,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -3568,7 +3568,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -3638,7 +3638,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -3708,7 +3708,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -3778,7 +3778,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -3848,7 +3848,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -3918,7 +3918,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -3988,7 +3988,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -4058,7 +4058,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -4128,7 +4128,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -4198,7 +4198,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -4268,7 +4268,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -4338,7 +4338,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -4408,7 +4408,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -4478,7 +4478,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -4548,7 +4548,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -4618,7 +4618,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -4688,7 +4688,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -4758,7 +4758,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -4828,7 +4828,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -4898,7 +4898,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -4968,7 +4968,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -5026,7 +5026,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -5085,7 +5085,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -5152,7 +5152,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -5213,7 +5213,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -5280,7 +5280,7 @@ module AsposeCadCloud
 
       # http body (model)
       post_body = nil
-      auth_names = ['JWT']
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
