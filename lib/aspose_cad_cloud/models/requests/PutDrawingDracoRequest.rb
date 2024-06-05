@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PaperToCadRequest.rb">
+ # <copyright company="Aspose" file="PutDrawingDracoRequest.rb">
  #   Copyright (c) 2018 Aspose.CAD Cloud
  # </copyright>
  # <summary>
@@ -28,22 +28,30 @@
 module AsposeCadCloud
 
   #
-  # Request model for paper_to_cad operation.
+  # Request model for put_drawing_draco operation.
   #
-  class PaperToCadRequest
+  class PutDrawingDracoRequest
 
-        # Output DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG file format.
-        attr_accessor :output_format
-        # Form-data file
-        attr_accessor :drawing
+        # Input drawing
+        attr_accessor :drawing_data
+        # Path to updated file (if this is empty, response contains streamed file).
+        attr_accessor :out_path
+        # JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/DracoOptionsDTO model definition.
+        attr_accessor :export_options
+        # Your Aspose Cloud Storage name.
+        attr_accessor :storage
 	
         #
         # Initializes a new instance.
-        # @param output_format Output DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG file format.
-        # @param drawing Form-data file
-        def initialize(output_format, drawing = nil)
-           self.output_format = output_format
-           self.drawing = drawing
+        # @param drawing_data Input drawing
+        # @param out_path Path to updated file (if this is empty, response contains streamed file).
+        # @param export_options JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/DracoOptionsDTO model definition.
+        # @param storage Your Aspose Cloud Storage name.
+        def initialize(drawing_data, out_path = nil, export_options = nil, storage = nil)
+           self.drawing_data = drawing_data
+           self.out_path = out_path
+           self.export_options = export_options
+           self.storage = storage
         end
   end
 end
