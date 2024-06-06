@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="PaperToCadRequest.rb">
+ # <copyright company="Aspose" file="PostDrawingDracoRequest.rb">
  #   Copyright (c) 2018 Aspose.CAD Cloud
  # </copyright>
  # <summary>
@@ -28,22 +28,34 @@
 module AsposeCadCloud
 
   #
-  # Request model for paper_to_cad operation.
+  # Request model for post_drawing_draco operation.
   #
-  class PaperToCadRequest
+  class PostDrawingDracoRequest
 
-        # Output DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG file format.
-        attr_accessor :output_format
-        # Form-data file
-        attr_accessor :drawing
+        # Filename of an input drawing on a storage.
+        attr_accessor :name
+        # Export Draco options passed as a JSON on a request body.
+        attr_accessor :options
+        # Folder with a drawing to process.
+        attr_accessor :folder
+        # Path to updated file (if this is empty, response contains streamed file).
+        attr_accessor :out_path
+        # Your Aspose Cloud Storage name.
+        attr_accessor :storage
 	
         #
         # Initializes a new instance.
-        # @param output_format Output DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG file format.
-        # @param drawing Form-data file
-        def initialize(output_format, drawing = nil)
-           self.output_format = output_format
-           self.drawing = drawing
+        # @param name Filename of an input drawing on a storage.
+        # @param options Export Draco options passed as a JSON on a request body.
+        # @param folder Folder with a drawing to process.
+        # @param out_path Path to updated file (if this is empty, response contains streamed file).
+        # @param storage Your Aspose Cloud Storage name.
+        def initialize(name, options, folder = nil, out_path = nil, storage = nil)
+           self.name = name
+           self.options = options
+           self.folder = folder
+           self.out_path = out_path
+           self.storage = storage
         end
   end
 end

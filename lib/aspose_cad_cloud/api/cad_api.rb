@@ -38,7 +38,7 @@ module AsposeCadCloud
       request_token
     end
 
-    # Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.
+    # Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.
     # 
     # @param request ConvertRequest
     # @return [File]
@@ -48,7 +48,7 @@ module AsposeCadCloud
       data
     end
 
-    # Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.
+    # Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.
     # 
     # @param request ConvertRequest
     # @return [Array<(File, Fixnum, Hash)>]
@@ -1419,7 +1419,7 @@ module AsposeCadCloud
       [data, status_code, headers]
     end
 
-    # Convert bitmap image to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG format.
+    # Convert bitmap image to DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG format.
     # 
     # @param request PaperToCadRequest
     # @return [File]
@@ -1429,7 +1429,7 @@ module AsposeCadCloud
       data
     end
 
-    # Convert bitmap image to DXF, DWG, DGN, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG format.
+    # Convert bitmap image to DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, SVG format.
     # 
     # @param request PaperToCadRequest
     # @return [Array<(File, Fixnum, Hash)>]
@@ -1704,6 +1704,82 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#post_drawing_dicom\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export an existing drawing to Draco format with export settings specified.
+    # 
+    # @param request PostDrawingDracoRequest
+    # @return [File]
+    def post_drawing_draco(request)
+      data, _status_code, _headers = post_drawing_draco_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export an existing drawing to Draco format with export settings specified.
+    # 
+    # @param request PostDrawingDracoRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def post_drawing_draco_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PostDrawingDracoRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.post_drawing_draco ...' if @api_client.config.debugging
+      # verify the required parameter 'name' is set
+      raise ArgumentError, 'Missing the required parameter name when calling CadApi.post_drawing_draco' if @api_client.config.client_side_validation && request.name.nil?
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling CadApi.post_drawing_draco' if @api_client.config.client_side_validation && request.options.nil?
+      # resource path
+      local_var_path = '/cad/{name}/drc'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('name') + '}', request.name.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('folder')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('folder') + '}', request.folder.to_s)
+      else
+        query_params[downcase_first_letter('folder')] = request.folder unless request.folder.nil?
+      end
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(request.options)
+      auth_names = ['Bearer']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#post_drawing_draco\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -3649,6 +3725,76 @@ module AsposeCadCloud
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         CadApi#put_drawing_dicom\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Export drawing to Draco format. Drawing data is passed as zero-indexed multipart/form-data as well as export Draco options serialized as JSON. Order of drawing data and Draco options could vary.
+    # 
+    # @param request PutDrawingDracoRequest
+    # @return [File]
+    def put_drawing_draco(request)
+      data, _status_code, _headers = put_drawing_draco_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Export drawing to Draco format. Drawing data is passed as zero-indexed multipart/form-data as well as export Draco options serialized as JSON. Order of drawing data and Draco options could vary.
+    # 
+    # @param request PutDrawingDracoRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    def put_drawing_draco_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? PutDrawingDracoRequest
+
+      @api_client.config.logger.debug 'Calling API: CadApi.put_drawing_draco ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.put_drawing_draco' if @api_client.config.client_side_validation && request.drawing_data.nil?
+      # resource path
+      local_var_path = '/cad/drc'
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('outPath')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('outPath') + '}', request.out_path.to_s)
+      else
+        query_params[downcase_first_letter('outPath')] = request.out_path unless request.out_path.nil?
+      end
+      if local_var_path.include? downcase_first_letter('storage')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('storage') + '}', request.storage.to_s)
+      else
+        query_params[downcase_first_letter('storage')] = request.storage unless request.storage.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+      form_params[downcase_first_letter('exportOptions')] = request.export_options unless request.export_options.nil?
+	  
+      if not form_params.empty?
+        header_params['Content-Type'] = 'multipart/form-data'
+      end
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['Bearer']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        CadApi#put_drawing_draco\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
