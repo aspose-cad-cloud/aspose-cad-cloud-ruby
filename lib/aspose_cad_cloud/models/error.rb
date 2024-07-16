@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="VectorRasterizationOptionsDTO.rb">
+ # <copyright company="Aspose" file="Error.rb">
  #   Copyright (c) 2017 Aspose.CAD Cloud
  # </copyright>
  # <summary>
@@ -29,83 +29,38 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Base raster export options class
-  class VectorRasterizationOptionsDTO
-    # Gets or sets the border X.
-    attr_accessor :border_x
+  # Error
+  class Error
+    # Code             
+    attr_accessor :code
 
-    # Gets or sets the border Y.
-    attr_accessor :border_y
+    # Message             
+    attr_accessor :message
 
-    # Gets or sets the page height.
-    attr_accessor :page_height
+    # Description             
+    attr_accessor :description
 
-    # Gets or sets the page width.
-    attr_accessor :page_width
+    # Inner Error             
+    attr_accessor :inner_error
 
-    # Gets or sets a background color.
-    attr_accessor :background_color
-
-    # Gets or sets a foreground color.
-    attr_accessor :draw_color
-
-    attr_accessor :unit_type
-
-    # Gets or sets a value indicating whether content of a drawing is represented as image inside Pdf. Applicable only for CAD to Pdf export. Default is false.
-    attr_accessor :content_as_bitmap
-
-    # Gets or sets options to render bitmap inside pdf (if ContentAsBitmap is set to true).
-    attr_accessor :graphics_options
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'border_x' => :'BorderX',
-        :'border_y' => :'BorderY',
-        :'page_height' => :'PageHeight',
-        :'page_width' => :'PageWidth',
-        :'background_color' => :'BackgroundColor',
-        :'draw_color' => :'DrawColor',
-        :'unit_type' => :'UnitType',
-        :'content_as_bitmap' => :'ContentAsBitmap',
-        :'graphics_options' => :'GraphicsOptions'
+        :'code' => :'Code',
+        :'message' => :'Message',
+        :'description' => :'Description',
+        :'inner_error' => :'InnerError'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'border_x' => :'Float',
-        :'border_y' => :'Float',
-        :'page_height' => :'Float',
-        :'page_width' => :'Float',
-        :'background_color' => :'ColorDTO',
-        :'draw_color' => :'ColorDTO',
-        :'unit_type' => :'String',
-        :'content_as_bitmap' => :'BOOLEAN',
-        :'graphics_options' => :'GraphicsOptions'
+        :'code' => :'String',
+        :'message' => :'String',
+        :'description' => :'String',
+        :'inner_error' => :'ErrorDetails'
       }
     end
 
@@ -117,40 +72,20 @@ module AsposeCadCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'BorderX')
-        self.border_x = attributes[:'BorderX']
+      if attributes.key?(:'Code')
+        self.code = attributes[:'Code']
       end
 
-      if attributes.key?(:'BorderY')
-        self.border_y = attributes[:'BorderY']
+      if attributes.key?(:'Message')
+        self.message = attributes[:'Message']
       end
 
-      if attributes.key?(:'PageHeight')
-        self.page_height = attributes[:'PageHeight']
+      if attributes.key?(:'Description')
+        self.description = attributes[:'Description']
       end
 
-      if attributes.key?(:'PageWidth')
-        self.page_width = attributes[:'PageWidth']
-      end
-
-      if attributes.key?(:'BackgroundColor')
-        self.background_color = attributes[:'BackgroundColor']
-      end
-
-      if attributes.key?(:'DrawColor')
-        self.draw_color = attributes[:'DrawColor']
-      end
-
-      if attributes.key?(:'UnitType')
-        self.unit_type = attributes[:'UnitType']
-      end
-
-      if attributes.key?(:'ContentAsBitmap')
-        self.content_as_bitmap = attributes[:'ContentAsBitmap']
-      end
-
-      if attributes.key?(:'GraphicsOptions')
-        self.graphics_options = attributes[:'GraphicsOptions']
+      if attributes.key?(:'InnerError')
+        self.inner_error = attributes[:'InnerError']
       end
 
     end
@@ -159,59 +94,13 @@ module AsposeCadCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = []
-      if @border_x.nil?
-        invalid_properties.push("invalid value for 'border_x', border_x cannot be nil.")
-      end
-
-      if @border_y.nil?
-        invalid_properties.push("invalid value for 'border_y', border_y cannot be nil.")
-      end
-
-      if @page_height.nil?
-        invalid_properties.push("invalid value for 'page_height', page_height cannot be nil.")
-      end
-
-      if @page_width.nil?
-        invalid_properties.push("invalid value for 'page_width', page_width cannot be nil.")
-      end
-
-      if @unit_type.nil?
-        invalid_properties.push("invalid value for 'unit_type', unit_type cannot be nil.")
-      end
-
-      if @content_as_bitmap.nil?
-        invalid_properties.push("invalid value for 'content_as_bitmap', content_as_bitmap cannot be nil.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @border_x.nil?
-      return false if @border_y.nil?
-      return false if @page_height.nil?
-      return false if @page_width.nil?
-      return false if @unit_type.nil?
-      unit_type_validator = EnumAttributeValidator.new('String', ["Kilometer", "Meter", "Centimenter", "Millimeter", "Micrometer", "Nanometer", "Angstrom", "Decimeter", "Decameter", "Hectometer", "Gigameter", "AstronomicalUnit", "LightYear", "Parsec", "Mile", "Yard", "Foot", "Inch", "Mil", "MicroInch", "Custom", "Unitless"])
-      return false unless unit_type_validator.valid?(@unit_type)
-      return false if @content_as_bitmap.nil?
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] unit_type Object to be assigned
-    def unit_type=(unit_type)
-      validator = EnumAttributeValidator.new('String', ["Kilometer", "Meter", "Centimenter", "Millimeter", "Micrometer", "Nanometer", "Angstrom", "Decimeter", "Decameter", "Hectometer", "Gigameter", "AstronomicalUnit", "LightYear", "Parsec", "Mile", "Yard", "Foot", "Inch", "Mil", "MicroInch", "Custom", "Unitless"])
-      if unit_type.to_i == 0
-        unless validator.valid?(unit_type)
-          raise ArgumentError, "invalid value for 'unit_type', must be one of #{validator.allowable_values}."
-        end
-        @unit_type = unit_type
-      else
-        @unit_type = validator.allowable_values[unit_type.to_i]
-      end
     end
 
     # Checks equality by comparing each attribute.
@@ -219,15 +108,10 @@ module AsposeCadCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          border_x == other.border_x &&
-          border_y == other.border_y &&
-          page_height == other.page_height &&
-          page_width == other.page_width &&
-          background_color == other.background_color &&
-          draw_color == other.draw_color &&
-          unit_type == other.unit_type &&
-          content_as_bitmap == other.content_as_bitmap &&
-          graphics_options == other.graphics_options
+          code == other.code &&
+          message == other.message &&
+          description == other.description &&
+          inner_error == other.inner_error
     end
 
     # @see the `==` method
@@ -239,7 +123,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [border_x, border_y, page_height, page_width, background_color, draw_color, unit_type, content_as_bitmap, graphics_options].hash
+      [code, message, description, inner_error].hash
     end
 
     # Builds the object from hash

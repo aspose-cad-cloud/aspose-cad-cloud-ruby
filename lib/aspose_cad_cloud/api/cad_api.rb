@@ -38,7 +38,7 @@ module AsposeCadCloud
       request_token
     end
 
-    # Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.
+    # Convert CAD drawing to DXF, DWG, DGN, DRC, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.
     # 
     # @param request ConvertRequest
     # @return [File]
@@ -48,7 +48,7 @@ module AsposeCadCloud
       data
     end
 
-    # Convert CAD drawing to DXF, DWG, DGN, DWF, DWFX, DRC, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.
+    # Convert CAD drawing to DXF, DWG, DGN, DRC, DWF, DWFX, IFC, STL, STP, STEP, CGM, GLB, GLTF, DWT, IGES, PLT, CF2, OBJ, HPGL, IGS, PCL, FBX, PDF, SVG format.
     # 
     # @param request ConvertRequest
     # @return [Array<(File, Fixnum, Hash)>]
@@ -57,6 +57,8 @@ module AsposeCadCloud
       raise ArgumentError, 'Incorrect request type' unless request.is_a? ConvertRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.convert ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.convert' if @api_client.config.client_side_validation && request.drawing_data.nil?
       # verify the required parameter 'output_format' is set
       raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.convert' if @api_client.config.client_side_validation && request.output_format.nil?
       # resource path
@@ -77,11 +79,11 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
 
       # form parameters
       form_params = {}
-      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
 	  
       if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
@@ -540,6 +542,8 @@ module AsposeCadCloud
       raise ArgumentError, 'Incorrect request type' unless request.is_a? EditMetadataRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.edit_metadata ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.edit_metadata' if @api_client.config.client_side_validation && request.drawing_data.nil?
       # resource path
       local_var_path = '/cad/EditMetadata'
 
@@ -551,11 +555,11 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
 
       # form parameters
       form_params = {}
-      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
 	  
       if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
@@ -597,6 +601,8 @@ module AsposeCadCloud
       raise ArgumentError, 'Incorrect request type' unless request.is_a? ExtractMetadataRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.extract_metadata ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.extract_metadata' if @api_client.config.client_side_validation && request.drawing_data.nil?
       # verify the required parameter 'output_format' is set
       raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.extract_metadata' if @api_client.config.client_side_validation && request.output_format.nil?
       # resource path
@@ -612,11 +618,11 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
 
       # form parameters
       form_params = {}
-      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
 	  
       if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
@@ -658,6 +664,8 @@ module AsposeCadCloud
       raise ArgumentError, 'Incorrect request type' unless request.is_a? ExtractTextRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.extract_text ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.extract_text' if @api_client.config.client_side_validation && request.drawing_data.nil?
       # resource path
       local_var_path = '/cad/ExtractText'
 
@@ -669,11 +677,11 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
 
       # form parameters
       form_params = {}
-      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
 	  
       if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
@@ -1438,6 +1446,8 @@ module AsposeCadCloud
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PaperToCadRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.paper_to_cad ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.paper_to_cad' if @api_client.config.client_side_validation && request.drawing_data.nil?
       # verify the required parameter 'output_format' is set
       raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.paper_to_cad' if @api_client.config.client_side_validation && request.output_format.nil?
       # resource path
@@ -1453,11 +1463,11 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
 
       # form parameters
       form_params = {}
-      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
 	  
       if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
@@ -5148,6 +5158,10 @@ module AsposeCadCloud
       raise ArgumentError, 'Incorrect request type' unless request.is_a? PutEditMetadataRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.put_edit_metadata ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.put_edit_metadata' if @api_client.config.client_side_validation && request.drawing_data.nil?
+      # verify the required parameter 'metadata_component' is set
+      raise ArgumentError, 'Missing the required parameter metadata_component when calling CadApi.put_edit_metadata' if @api_client.config.client_side_validation && request.metadata_component.nil?
       # resource path
       local_var_path = '/cad/EditMetadata'
 
@@ -5159,12 +5173,12 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
 
       # form parameters
       form_params = {}
-      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
-      form_params[downcase_first_letter('metadataComponent')] = request.metadata_component unless request.metadata_component.nil?
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+      form_params[downcase_first_letter('metadataComponent')] = request.metadata_component
 	  
       if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'
@@ -5393,8 +5407,12 @@ module AsposeCadCloud
       raise ArgumentError, 'Incorrect request type' unless request.is_a? WatermarkRequest
 
       @api_client.config.logger.debug 'Calling API: CadApi.watermark ...' if @api_client.config.debugging
+      # verify the required parameter 'drawing_data' is set
+      raise ArgumentError, 'Missing the required parameter drawing_data when calling CadApi.watermark' if @api_client.config.client_side_validation && request.drawing_data.nil?
       # verify the required parameter 'output_format' is set
       raise ArgumentError, 'Missing the required parameter output_format when calling CadApi.watermark' if @api_client.config.client_side_validation && request.output_format.nil?
+      # verify the required parameter 'watermark' is set
+      raise ArgumentError, 'Missing the required parameter watermark when calling CadApi.watermark' if @api_client.config.client_side_validation && request.watermark.nil?
       # resource path
       local_var_path = '/cad/Watermark'
 
@@ -5413,12 +5431,12 @@ module AsposeCadCloud
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data', 'application/octet-stream'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/octet-stream', 'multipart/form-data'])
 
       # form parameters
       form_params = {}
-      form_params[downcase_first_letter('drawing')] = request.drawing unless request.drawing.nil?
-      form_params[downcase_first_letter('watermarkRgb')] = request.watermark_rgb unless request.watermark_rgb.nil?
+      form_params[downcase_first_letter('drawingData')] = request.drawing_data
+      form_params[downcase_first_letter('watermark')] = request.watermark
 	  
       if not form_params.empty?
         header_params['Content-Type'] = 'multipart/form-data'

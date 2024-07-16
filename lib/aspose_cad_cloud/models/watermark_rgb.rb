@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="ErrorModel.rb">
+ # <copyright company="Aspose" file="WatermarkRGB.rb">
  #   Copyright (c) 2017 Aspose.CAD Cloud
  # </copyright>
  # <summary>
@@ -29,38 +29,38 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Error
-  class ErrorModel
-    # Code             
-    attr_accessor :code
+  # Watermark text with RGB values
+  class WatermarkRGB
+    # Watermark text.
+    attr_accessor :text
 
-    # Message             
-    attr_accessor :message
+    # Red light(0-255).
+    attr_accessor :r
 
-    # Description             
-    attr_accessor :description
+    # Green light(0-255).
+    attr_accessor :g
 
-    # Inner Error             
-    attr_accessor :inner_error
+    # Blue light(0-255).
+    attr_accessor :b
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'code' => :'Code',
-        :'message' => :'Message',
-        :'description' => :'Description',
-        :'inner_error' => :'InnerError'
+        :'text' => :'Text',
+        :'r' => :'R',
+        :'g' => :'G',
+        :'b' => :'B'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'code' => :'String',
-        :'message' => :'String',
-        :'description' => :'String',
-        :'inner_error' => :'ErrorDetails'
+        :'text' => :'String',
+        :'r' => :'Integer',
+        :'g' => :'Integer',
+        :'b' => :'Integer'
       }
     end
 
@@ -72,20 +72,20 @@ module AsposeCadCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'Code')
-        self.code = attributes[:'Code']
+      if attributes.key?(:'Text')
+        self.text = attributes[:'Text']
       end
 
-      if attributes.key?(:'Message')
-        self.message = attributes[:'Message']
+      if attributes.key?(:'R')
+        self.r = attributes[:'R']
       end
 
-      if attributes.key?(:'Description')
-        self.description = attributes[:'Description']
+      if attributes.key?(:'G')
+        self.g = attributes[:'G']
       end
 
-      if attributes.key?(:'InnerError')
-        self.inner_error = attributes[:'InnerError']
+      if attributes.key?(:'B')
+        self.b = attributes[:'B']
       end
 
     end
@@ -94,12 +94,27 @@ module AsposeCadCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = []
+      if @r.nil?
+        invalid_properties.push("invalid value for 'r', r cannot be nil.")
+      end
+
+      if @g.nil?
+        invalid_properties.push("invalid value for 'g', g cannot be nil.")
+      end
+
+      if @b.nil?
+        invalid_properties.push("invalid value for 'b', b cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @r.nil?
+      return false if @g.nil?
+      return false if @b.nil?
       return true
     end
 
@@ -108,10 +123,10 @@ module AsposeCadCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          code == other.code &&
-          message == other.message &&
-          description == other.description &&
-          inner_error == other.inner_error
+          text == other.text &&
+          r == other.r &&
+          g == other.g &&
+          b == other.b
     end
 
     # @see the `==` method
@@ -123,7 +138,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, message, description, inner_error].hash
+      [text, r, g, b].hash
     end
 
     # Builds the object from hash

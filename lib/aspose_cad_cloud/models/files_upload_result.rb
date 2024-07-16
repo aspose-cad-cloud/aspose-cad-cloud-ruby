@@ -50,7 +50,7 @@ module AsposeCadCloud
     def self.swagger_types
       {
         :'uploaded' => :'Array<String>',
-        :'errors' => :'Array<ErrorModel>'
+        :'errors' => :'Array<Error>'
       }
     end
 

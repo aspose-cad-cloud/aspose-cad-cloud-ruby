@@ -32,17 +32,17 @@ module AsposeCadCloud
   #
   class PutEditMetadataRequest
 
-        # Gets or sets drawing
-        attr_accessor :drawing
-        # Gets or sets metadata_component
+        # Input drawing
+        attr_accessor :drawing_data
+        # Metadata string json from POST/EditMetadata
         attr_accessor :metadata_component
 	
         #
         # Initializes a new instance.
-        # @param drawing 
-        # @param metadata_component 
-        def initialize(drawing = nil, metadata_component = nil)
-           self.drawing = drawing
+        # @param drawing_data Input drawing
+        # @param metadata_component Metadata string json from POST/EditMetadata
+        def initialize(drawing_data, metadata_component)
+           self.drawing_data = drawing_data
            self.metadata_component = metadata_component
         end
   end
