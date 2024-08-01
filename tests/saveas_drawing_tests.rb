@@ -26,10 +26,9 @@
 #
 module AsposeCadCloud
   require_relative 'base_test_context'
+  require 'faraday/middleware'
+  require 'faraday/multipart'
   class SaveAsDrawingTests < BaseTestContext
-    def test_folder
-      ''
-    end
 
     #
     # Test for saving drawing with specified format and fetch result through response

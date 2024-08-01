@@ -28,9 +28,6 @@
 module AsposeCadCloud
   require_relative 'base_test_context'
   class PropertiesDrawingTests < BaseTestContext
-    def test_folder
-      ''
-    end
 
     #
     # Test for retrieving drawing properties

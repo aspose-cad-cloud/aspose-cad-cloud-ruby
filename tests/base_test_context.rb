@@ -30,6 +30,7 @@ module AsposeCadCloud
   
   require "minitest/autorun"
   require "minitest/unit"
+  require 'json'
   require_relative '../lib/aspose_cad_cloud'
 
   class BaseTestContext < Minitest::Test
@@ -57,8 +58,18 @@ module AsposeCadCloud
       @Cad_api.create_folder st_request
     end
 
+    $override_etalon_file = true
+
     def local_test_folder
       'TestData/'
+    end
+
+    def local_temp_folder
+      'Temp/'
+    end
+
+    def reference_data_folder
+      'ReferenceData/'
     end
 
     def remote_test_folder
@@ -72,5 +83,14 @@ module AsposeCadCloud
     def local_common_folder
       'TestData/Common/'
     end
+
+    def get_file_size(path)
+      File.open(path, 'r') do |file|
+        begin
+          return File.size(file)
+        end
+      end
+    end
+
   end
 end

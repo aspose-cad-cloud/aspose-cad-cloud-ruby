@@ -28,9 +28,6 @@
 module AsposeCadCloud
   require_relative 'base_test_context'
   class RotateFlipDrawingTests < BaseTestContext
-    def test_folder
-      ''
-    end
 
     #
     # Test for drawing rotation 270 degrees and flip across X axis with specified format and fetch result through response
@@ -44,7 +41,7 @@ module AsposeCadCloud
       st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r")
       @Cad_api.upload_file st_request
 
-      request = PostDrawingRotateFlipRequest.new File.open(local_test_folder + filename, "r"), output_format, "Rotate270FlipX", remote_test_folder
+      request = PostDrawingRotateFlipRequest.new File.open(local_test_folder + filename, "r"), output_format, "Rotate270FlipX", dest_name
       result = @Cad_api.post_drawing_rotate_flip_with_http_info request
       assert_equal 200, result[1]
     end

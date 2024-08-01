@@ -28,9 +28,6 @@
 module AsposeCadCloud
   require_relative 'base_test_context'
   class ResizeDrawingTests < BaseTestContext
-    def test_folder
-      ''
-    end
 
     #
     # Test for scaling drawing with specified format and fetch result through response
@@ -44,7 +41,7 @@ module AsposeCadCloud
       st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r")
       @Cad_api.upload_file st_request
 
-      request = PostDrawingResizeRequest.new File.open(local_test_folder + filename, "r"), output_format, 320, 240, remote_test_folder
+      request = PostDrawingResizeRequest.new File.open(local_test_folder + filename, "r"), output_format, 320, 240, dest_name
       result = @Cad_api.post_drawing_resize_with_http_info request
       assert_equal 200, result[1]
     end
