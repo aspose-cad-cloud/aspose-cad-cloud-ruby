@@ -27,12 +27,14 @@
 module AsposeCadCloud
   require 'openssl'
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
-  
+
   require "minitest/autorun"
   require "minitest/unit"
   require 'json'
   require_relative '../lib/aspose_cad_cloud'
 
+  require 'faraday/middleware'
+  require 'faraday/multipart'
   class BaseTestContext < Minitest::Test
     include MiniTest::Assertions
     def setup

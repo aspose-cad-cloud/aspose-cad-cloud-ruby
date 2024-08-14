@@ -175,56 +175,56 @@ module AsposeCadCloud
     end
 
 
-  # Builds the HTTP request for access token
-  #
-  # @param [String] http_method HTTP method/verb (e.g. POST)
-  # @param [String] path URL path (e.g. /account/new)
-  # @option opts [Hash] :header_params Header parameters
-  # @option opts [Hash] :query_params Query parameters
-  # @option opts [Hash] :form_params Query parameters
-  # @option opts [Object] :body HTTP body (JSON/XML)
-  # @return [Faraday::Response] A Faraday Response
-  def build_access_token_request(http_method, path, opts = {})
-    url = build_request_token_url(path)
-    http_method = http_method.to_sym.downcase
+    # Builds the HTTP request for access token
+    #
+    # @param [String] http_method HTTP method/verb (e.g. POST)
+    # @param [String] path URL path (e.g. /account/new)
+    # @option opts [Hash] :header_params Header parameters
+    # @option opts [Hash] :query_params Query parameters
+    # @option opts [Hash] :form_params Query parameters
+    # @option opts [Object] :body HTTP body (JSON/XML)
+    # @return [Faraday::Response] A Faraday Response
+    def build_access_token_request(http_method, path, opts = {})
+      url = build_request_token_url(path)
+      http_method = http_method.to_sym.downcase
 
-    header_params = @default_headers.merge(opts[:header_params] || {})
-    query_params = opts[:query_params] || {}
-    form_params = opts[:form_params] || {}
-    body = opts[:body] if opts[:body] || nil?
+      header_params = @default_headers.merge(opts[:header_params] || {})
+      query_params = opts[:query_params] || {}
+      form_params = opts[:form_params] || {}
+      body = opts[:body] if opts[:body] || nil?
 
-    update_params_for_auth! header_params, query_params, opts[:auth_names]
+      update_params_for_auth! header_params, query_params, opts[:auth_names]
 
-    req_opts = {
-      :method => http_method,
-      :headers => header_params,
-      :params => query_params,
-      :body => body
-    }
+      req_opts = {
+        :method => http_method,
+        :headers => header_params,
+        :params => query_params,
+        :body => body
+      }
 
-    if [:post].include?(http_method)
-      req_body = build_request_body(header_params, form_params, opts[:body])
-      req_opts.update :body => req_body
-      if @config.debugging
-        @config.logger.debug "HTTP request body param ~BEGIN~\n#{req_body}\n~END~\n"
+      if [:post].include?(http_method)
+        req_body = build_request_body(header_params, form_params, opts[:body])
+        req_opts.update :body => req_body
+        if @config.debugging
+          @config.logger.debug "HTTP request body param ~BEGIN~\n#{req_body}\n~END~\n"
+        end
+      end
+
+      conn = Faraday.new url, { :params => query_params, :headers => header_params } do |f|
+        f.request :multipart
+        f.request :url_encoded
+        f.adapter Faraday.default_adapter
+      end
+
+      case http_method
+      when :post
+        return conn.post url, req_opts[:body]
+      else
+        return conn.delete url do |c|
+          c.body = req_opts[:body]
+        end
       end
     end
-
-    conn = Faraday.new url, { :params => query_params, :headers => header_params } do |f|
-      f.request :multipart
-      f.request :url_encoded
-      f.adapter Faraday.default_adapter
-    end
-
-    case http_method
-    when :post
-      return conn.post url, req_opts[:body]
-    else
-      return conn.delete url do |c|
-        c.body = req_opts[:body]
-      end
-    end
-  end
 
     # Check if the given MIME is a JSON MIME.
     # JSON MIME examples:
@@ -361,12 +361,12 @@ module AsposeCadCloud
       return req
     end
 
-  def build_request_token_url(path)
-    # Add leading and trailing slashes to path
-    path = "/#{path}".gsub(/\/+/, '/')
-    req = URI::Parser.new.escape auth_token(@config.base_url) + path
-    return req
-  end
+    def build_request_token_url(path)
+      # Add leading and trailing slashes to path
+      path = "/#{path}".gsub(/\/+/, '/')
+      req = URI::Parser.new.escape auth_token(@config.base_url) + path
+      return req
+    end
 
     def auth_token(path)
       pattern = /api(-qa)?/
