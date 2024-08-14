@@ -26,8 +26,6 @@
 #
 module AsposeCadCloud
   require_relative 'base_test_context'
-  require 'faraday/middleware'
-  require 'faraday/multipart'
   class SaveAsDrawingTests < BaseTestContext
 
     #
@@ -37,12 +35,12 @@ module AsposeCadCloud
       filename = '01.026.385.01.0.I SOPORTE ENFRIADOR.dwg'
       remote_name = filename
       output_format = 'pdf'
-      dest_name = remote_test_out + remote_name + '.' + output_format
+      dest_name = cloud_test_data_folder + remote_name + '.' + output_format
 
-      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r")
+      st_request = UploadFileRequest.new cloud_test_data_folder + remote_name, File.open(local_test_folder + filename, "r")
       @Cad_api.upload_file st_request
 
-      request = PostDrawingSaveAsRequest.new File.open(local_test_folder + filename, "r"), output_format, remote_test_folder + filename, nil
+      request = PostDrawingSaveAsRequest.new File.open(local_test_folder + filename, "r"), output_format, cloud_test_folder + filename, nil
       result = @Cad_api.post_drawing_save_as_with_http_info request
       assert_equal 200, result[1]
     end
@@ -54,12 +52,11 @@ module AsposeCadCloud
       filename = '910609.dxf'
       remote_name = filename
       output_format = "jpg"
-      dest_name = remote_test_out + remote_name
 
-      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r")
+      st_request = UploadFileRequest.new cloud_test_data_folder + remote_name, File.open(local_test_folder + filename, "r")
       @Cad_api.upload_file st_request
 
-      request = GetDrawingSaveAsRequest.new remote_name, output_format, remote_test_folder, nil, nil
+      request = GetDrawingSaveAsRequest.new remote_name, output_format, cloud_test_data_folder, nil, nil
       result = @Cad_api.get_drawing_save_as_with_http_info request
       assert_equal 200, result[1]
     end

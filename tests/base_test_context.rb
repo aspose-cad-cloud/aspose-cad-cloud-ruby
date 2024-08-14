@@ -54,34 +54,81 @@ module AsposeCadCloud
         @Cad_api = CadApi.new client
       end
 
-      st_request = CreateFolderRequest.new remote_test_folder
+      $storage_name = creds['Storage']
+      st_request = CreateFolderRequest.new cloud_test_data_folder
+      @Cad_api.create_folder st_request
+
+      st_request = CreateFolderRequest.new cloud_test_folder
       @Cad_api.create_folder st_request
     end
 
-    $override_etalon_file = true
+    $storage_name = 'CAD-QA'
+    $override_reference_files = true
 
     def local_test_folder
       'TestData/'
     end
 
     def local_temp_folder
-      'Temp/'
+      'CloudTempRuby/'
     end
 
     def reference_data_folder
       'ReferenceData/'
     end
 
-    def remote_test_folder
-      'CloudTestRuby/'
+    def cloud_test_data_folder
+      'CloudTestDataRuby/'
     end
 
-    def remote_test_out
+    def cloud_test_folder
       'CloudTestRuby/'
     end
 
     def local_common_folder
       'TestData/Common/'
+    end
+
+    def reference_file_override(result_path, reference_file_path)
+      if $override_reference_files
+        FileUtils.cp(result_path, reference_file_path)
+      end
+    end
+
+    def post_request(test_name, input_file_name, result_file_name, input_handler, out_path, save_to_storage, storage)
+      # Implement the logic to handle the request based on parameters
+      # This is a stub for the actual logic
+      puts "Running test: #{test_name}"
+      puts "Name: #{input_file_name}"
+
+
+      if save_to_storage
+        if out_path.nil?
+          raise test_name + "Out path is empty!"
+        end
+
+        exist_object = ObjectExistsRequest.new out_path storage nil
+        is_exist = @Cad_api.object_exists exist_object
+
+        # remove output file from the storage (if exists)
+        if is_exist
+          delete_file_request = DeleteFileRequest.new out_path storage
+          @Cad_api.delete_file delete_file_request
+        end
+      end
+
+      # Call the input handler (which is a proc/lambda)
+      response = input_handler.call(input_file_name)
+
+      reference_file_path = reference_data_folder + result_file_name
+
+      unless out_path.nil?
+        response = DownloadFileRequest.new out_path storage
+      end
+
+      reference_file_override(response, reference_file_path)
+
+      assert_equal get_file_size(response), get_file_size(reference_file_path)
     end
 
     def get_file_size(path)

@@ -31,11 +31,15 @@ module AsposeCadCloud
     # Test post_bmp
     #
     def test_post_bmp
-      filename = '01.026.385.01.0.I SOPORTE ENFRIADOR.dwg'
-      dest_name = remote_test_out + filename
+      input_file_name = '01.026.385.01.0.I SOPORTE ENFRIADOR.dwg'
+      output_format = 'bmp'
+      method_name = '_post_bmp'
+      folder = cloud_test_data_folder
 
-      st_request = UploadFileRequest.new dest_name, File.open(local_test_folder + filename, "r")
+      st_request = UploadFileRequest.new folder, File.open(local_test_folder + input_file_name, "r")
       @Cad_api.upload_file st_request
+
+      result_file_name = input_file_name + method_name  + '.' + output_format
 
       options = BmpOptionsDTO.new
       vector_raster_options = CadRasterizationOptionsDTO.new
@@ -44,30 +48,53 @@ module AsposeCadCloud
 
       options.vector_rasterization_options = vector_raster_options
 
-      request = PostDrawingBmpRequest.new filename, options, remote_test_out
-      result = @Cad_api.post_drawing_bmp_with_http_info request
-
-      assert_equal 200, result[1]
+      post_request(
+        method_name,
+        input_file_name,
+        result_file_name,
+        lambda do |input_stream|
+          request = PostDrawingBmpRequest.new input_file_name, options, folder
+          @Cad_api.post_drawing_bmp request
+        end,
+        nil,
+        false,
+        $storage_name
+      )
     end
 
     #
     # Test put_bmp
     #
     def test_put_bmp
-      filename = '01.026.385.01.0.I SOPORTE ENFRIADOR.dwg'
+      input_file_name = '01.026.385.01.0.I SOPORTE ENFRIADOR.dwg'
+      output_format = 'bmp'
+      method_name = '_put_bmp'
 
-      request = PutDrawingBmpRequest.new(File.open(local_test_folder + filename, "r"))
-      result = @Cad_api.put_drawing_bmp_with_http_info(request)
-      assert_equal 200, result[1]
+      result_file_name = input_file_name + method_name  + '.' + output_format
+
+      post_request(
+        method_name,
+        input_file_name,
+        result_file_name,
+        lambda do |input_stream|
+          request = PutDrawingBmpRequest.new(File.open(local_test_folder + input_file_name, "r"))
+          @Cad_api.put_drawing_bmp(request)
+        end,
+        nil,
+        false,
+        $storage_name
+      )
     end
 
     #
     # Test put_with_options
     #
     def test_put_bmp_with_options
-      filename = '01.026.385.01.0.I SOPORTE ENFRIADOR.dwg'
+      input_file_name = '01.026.385.01.0.I SOPORTE ENFRIADOR.dwg'
       output_format = 'bmp'
-      etalon_file_path = reference_data_folder + filename + '.' + output_format
+      method_name = '_put_bmp_with_options'
+
+      result_file_name = input_file_name + method_name  + '.' + output_format
 
       options = BmpOptionsDTO.new
       vector_raster_options = CadRasterizationOptionsDTO.new
@@ -76,14 +103,18 @@ module AsposeCadCloud
 
       options.vector_rasterization_options = vector_raster_options
 
-      request = PutDrawingBmpRequest.new(File.open(local_test_folder + filename, "r"), nil, options.to_hash.to_json, nil)
-      result = @Cad_api.put_drawing_bmp request
-
-      if $override_etalon_file
-        FileUtils.cp(result, etalon_file_path)
-      end
-
-      assert_equal get_file_size(result), get_file_size(etalon_file_path)
+      post_request(
+        method_name,
+        input_file_name,
+        result_file_name,
+        lambda do |input_stream|
+          request = PutDrawingBmpRequest.new(File.open(local_test_folder + input_file_name, "r"), nil, options.to_hash.to_json, nil)
+          @Cad_api.put_drawing_bmp(request)
+        end,
+        nil,
+        false,
+        $storage_name
+      )
     end
   end
 end

@@ -36,9 +36,9 @@ module AsposeCadCloud
       filename = '01.026.385.01.0.I SOPORTE ENFRIADOR.dwg'
       remote_name = filename
       output_format = 'pdf'
-      dest_name = remote_test_out + remote_name + '.' + output_format
+      dest_name = cloud_test_folder + remote_name + '.' + output_format
 
-      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r")
+      st_request = UploadFileRequest.new cloud_test_data_folder + remote_name, File.open(local_test_folder + filename, "r")
       @Cad_api.upload_file st_request
 
       request = PostDrawingResizeRequest.new File.open(local_test_folder + filename, "r"), output_format, 320, 240, dest_name
@@ -53,12 +53,12 @@ module AsposeCadCloud
       filename = '910609.dxf'
       remote_name = filename
       output_format = "jpg"
-      dest_name = remote_test_out + remote_name
+      dest_name = cloud_test_folder + remote_name
 
-      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r")
+      st_request = UploadFileRequest.new cloud_test_data_folder + remote_name, File.open(local_test_folder + filename, "r")
       @Cad_api.upload_file st_request
 
-      request = GetDrawingResizeRequest.new remote_name, output_format, 320, 240, remote_test_folder, dest_name, nil
+      request = GetDrawingResizeRequest.new remote_name, output_format, 320, 240, cloud_test_data_folder, dest_name, nil
       result = @Cad_api.get_drawing_resize_with_http_info request
       assert_equal 200, result[1]
     end

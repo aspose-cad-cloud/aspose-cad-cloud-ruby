@@ -33,14 +33,13 @@ module AsposeCadCloud
     # Test for retrieving drawing properties
     #
     def test_get_properties_drawing_tests
-      filename = '910609.dxf'
-      remote_name = filename
-      dest_name = remote_test_out + remote_name
+      input_file_name = '910609.dxf'
+      folder = cloud_test_data_folder
 
-      st_request = UploadFileRequest.new remote_test_folder + remote_name, File.open(local_test_folder + filename, "r")
+      st_request = UploadFileRequest.new folder + input_file_name, File.open(local_test_folder + input_file_name, "r")
       @Cad_api.upload_file st_request
 
-      request = GetDrawingPropertiesRequest.new remote_name, remote_test_folder
+      request = GetDrawingPropertiesRequest.new input_file_name, folder
       result = @Cad_api.get_drawing_properties_with_http_info request
       assert_equal 200, result[1]
     end
