@@ -35,7 +35,7 @@ Detalied official documentation can be found at the [following link](https://doc
 To install this package do the following:
 update your Gemfile
 ```ruby
-gem 'aspose_cad_cloud', '~> 24.5'
+gem 'aspose_cad_cloud', '~> 24.5.1'
 ```
 or install directly
 ```bash
