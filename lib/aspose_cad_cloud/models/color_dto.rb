@@ -4,7 +4,7 @@ require 'date'
 module AsposeCadCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose" file="Color.rb">
+ # <copyright company="Aspose" file="ColorDTO.rb">
  #   Copyright (c) 2017 Aspose.CAD Cloud
  # </copyright>
  # <summary>
@@ -29,23 +29,16 @@ module AsposeCadCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-
-  class Color
+  # RGB color values
+  class ColorDTO
+    # Red light(0-255).
     attr_accessor :r
 
+    # Green light(0-255).
     attr_accessor :g
 
+    # Blue light(0-255).
     attr_accessor :b
-
-    attr_accessor :a
-
-    attr_accessor :is_known_color
-
-    attr_accessor :is_empty
-
-    attr_accessor :is_named_color
-
-    attr_accessor :name
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -53,12 +46,7 @@ module AsposeCadCloud
       {
         :'r' => :'R',
         :'g' => :'G',
-        :'b' => :'B',
-        :'a' => :'A',
-        :'is_known_color' => :'IsKnownColor',
-        :'is_empty' => :'IsEmpty',
-        :'is_named_color' => :'IsNamedColor',
-        :'name' => :'Name'
+        :'b' => :'B'
       }
     end
 
@@ -67,12 +55,7 @@ module AsposeCadCloud
       {
         :'r' => :'Integer',
         :'g' => :'Integer',
-        :'b' => :'Integer',
-        :'a' => :'Integer',
-        :'is_known_color' => :'BOOLEAN',
-        :'is_empty' => :'BOOLEAN',
-        :'is_named_color' => :'BOOLEAN',
-        :'name' => :'String'
+        :'b' => :'Integer'
       }
     end
 
@@ -96,26 +79,6 @@ module AsposeCadCloud
         self.b = attributes[:'B']
       end
 
-      if attributes.key?(:'A')
-        self.a = attributes[:'A']
-      end
-
-      if attributes.key?(:'IsKnownColor')
-        self.is_known_color = attributes[:'IsKnownColor']
-      end
-
-      if attributes.key?(:'IsEmpty')
-        self.is_empty = attributes[:'IsEmpty']
-      end
-
-      if attributes.key?(:'IsNamedColor')
-        self.is_named_color = attributes[:'IsNamedColor']
-      end
-
-      if attributes.key?(:'Name')
-        self.name = attributes[:'Name']
-      end
-
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -134,22 +97,6 @@ module AsposeCadCloud
         invalid_properties.push("invalid value for 'b', b cannot be nil.")
       end
 
-      if @a.nil?
-        invalid_properties.push("invalid value for 'a', a cannot be nil.")
-      end
-
-      if @is_known_color.nil?
-        invalid_properties.push("invalid value for 'is_known_color', is_known_color cannot be nil.")
-      end
-
-      if @is_empty.nil?
-        invalid_properties.push("invalid value for 'is_empty', is_empty cannot be nil.")
-      end
-
-      if @is_named_color.nil?
-        invalid_properties.push("invalid value for 'is_named_color', is_named_color cannot be nil.")
-      end
-
       return invalid_properties
     end
 
@@ -159,10 +106,6 @@ module AsposeCadCloud
       return false if @r.nil?
       return false if @g.nil?
       return false if @b.nil?
-      return false if @a.nil?
-      return false if @is_known_color.nil?
-      return false if @is_empty.nil?
-      return false if @is_named_color.nil?
       return true
     end
 
@@ -173,12 +116,7 @@ module AsposeCadCloud
       self.class == other.class &&
           r == other.r &&
           g == other.g &&
-          b == other.b &&
-          a == other.a &&
-          is_known_color == other.is_known_color &&
-          is_empty == other.is_empty &&
-          is_named_color == other.is_named_color &&
-          name == other.name
+          b == other.b
     end
 
     # @see the `==` method
@@ -190,7 +128,7 @@ module AsposeCadCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [r, g, b, a, is_known_color, is_empty, is_named_color, name].hash
+      [r, g, b].hash
     end
 
     # Builds the object from hash

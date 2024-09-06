@@ -32,18 +32,18 @@ module AsposeCadCloud
   #
   class ExtractMetadataRequest
 
+        # Input drawing
+        attr_accessor :drawing_data
         # Output TXT, XML or JSON file format.
         attr_accessor :output_format
-        # Form-data file
-        attr_accessor :drawing
 	
         #
         # Initializes a new instance.
+        # @param drawing_data Input drawing
         # @param output_format Output TXT, XML or JSON file format.
-        # @param drawing Form-data file
-        def initialize(output_format, drawing = nil)
+        def initialize(drawing_data, output_format)
+           self.drawing_data = drawing_data
            self.output_format = output_format
-           self.drawing = drawing
         end
   end
 end

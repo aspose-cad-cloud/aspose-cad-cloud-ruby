@@ -129,8 +129,8 @@ module AsposeCadCloud
         :'border_y' => :'Float',
         :'page_height' => :'Float',
         :'page_width' => :'Float',
-        :'background_color' => :'Color',
-        :'draw_color' => :'Color',
+        :'background_color' => :'ColorDTO',
+        :'draw_color' => :'ColorDTO',
         :'unit_type' => :'String',
         :'content_as_bitmap' => :'BOOLEAN',
         :'graphics_options' => :'GraphicsOptions',
@@ -242,14 +242,6 @@ module AsposeCadCloud
         invalid_properties.push("invalid value for 'page_width', page_width cannot be nil.")
       end
 
-      if @background_color.nil?
-        invalid_properties.push("invalid value for 'background_color', background_color cannot be nil.")
-      end
-
-      if @draw_color.nil?
-        invalid_properties.push("invalid value for 'draw_color', draw_color cannot be nil.")
-      end
-
       if @unit_type.nil?
         invalid_properties.push("invalid value for 'unit_type', unit_type cannot be nil.")
       end
@@ -284,8 +276,6 @@ module AsposeCadCloud
       return false if @border_y.nil?
       return false if @page_height.nil?
       return false if @page_width.nil?
-      return false if @background_color.nil?
-      return false if @draw_color.nil?
       return false if @unit_type.nil?
       unit_type_validator = EnumAttributeValidator.new('String', ["Kilometer", "Meter", "Centimenter", "Millimeter", "Micrometer", "Nanometer", "Angstrom", "Decimeter", "Decameter", "Hectometer", "Gigameter", "AstronomicalUnit", "LightYear", "Parsec", "Mile", "Yard", "Foot", "Inch", "Mil", "MicroInch", "Custom", "Unitless"])
       return false unless unit_type_validator.valid?(@unit_type)

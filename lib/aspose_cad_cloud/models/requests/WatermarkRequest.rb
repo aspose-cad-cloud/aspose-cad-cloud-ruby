@@ -32,25 +32,25 @@ module AsposeCadCloud
   #
   class WatermarkRequest
 
+        # Input drawing
+        attr_accessor :drawing_data
         # Gets or sets output_format
         attr_accessor :output_format
-        # Gets or sets drawing
-        attr_accessor :drawing
-        # Gets or sets watermark_rgb
-        attr_accessor :watermark_rgb
+        # JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/WatermarkRGB model definition.
+        attr_accessor :watermark
         # Gets or sets output_type_ext
         attr_accessor :output_type_ext
 	
         #
         # Initializes a new instance.
+        # @param drawing_data Input drawing
         # @param output_format 
-        # @param drawing 
-        # @param watermark_rgb 
+        # @param watermark JSON-serialized export options passed as zero-indexed multipart/form-data. Follow #/definitions/WatermarkRGB model definition.
         # @param output_type_ext 
-        def initialize(output_format, drawing = nil, watermark_rgb = nil, output_type_ext = nil)
+        def initialize(drawing_data, output_format, watermark, output_type_ext = nil)
+           self.drawing_data = drawing_data
            self.output_format = output_format
-           self.drawing = drawing
-           self.watermark_rgb = watermark_rgb
+           self.watermark = watermark
            self.output_type_ext = output_type_ext
         end
   end

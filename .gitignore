@@ -114,3 +114,5 @@ hs_err_pid*
 vendor/*
 testReports/*
 /TestData/serverAccess.json
+/tests/.idea
+/Gemfile.lock

@@ -32,14 +32,14 @@ module AsposeCadCloud
   #
   class EditMetadataRequest
 
-        # Gets or sets drawing
-        attr_accessor :drawing
+        # Input drawing
+        attr_accessor :drawing_data
 	
         #
         # Initializes a new instance.
-        # @param drawing 
-        def initialize(drawing = nil)
-           self.drawing = drawing
+        # @param drawing_data Input drawing
+        def initialize(drawing_data)
+           self.drawing_data = drawing_data
         end
   end
 end
